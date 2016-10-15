@@ -1,0 +1,42 @@
+<MyProgressBar>:
+    max: 1
+    value: 0
+    limited_value: min(self.value, self.max)
+    # Filled ratio should never be 0 or 1
+    # otherwise it would cause size_hints equal to 0,
+    # that is, None-type value, resulting in ignoring size_hint
+    filled_ratio: max(.00001, min(.9999, float(self.value) / self.max))
+    empty_ratio: 1-self.filled_ratio
+    filled_color: 0,1,0,1
+    empty_color: .6,.6,.6,.4
+
+    size_hint_y: .5
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    canvas.before:
+        Color:
+            rgba: root.filled_color
+        Rectangle:
+            size: root.width * root.filled_ratio, root.height
+            pos: root.pos
+        Color:
+            rgba: root.empty_color
+        Rectangle:
+            size: root.width * root.empty_ratio, root.height
+            pos: root.x + root.width*root.filled_ratio, root.y
+
+
+
+
+
+
+
+
+# PASTE-TEMPLATE
+# (copy canvas for debugging)
+<RedLabel@Label>:
+    canvas.before:
+        Color:
+            rgba: 1,0,.0,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
