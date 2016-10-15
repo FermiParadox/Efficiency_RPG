@@ -1,7 +1,5 @@
 import calendar
 
-import subjects
-
 
 class Day(object):
     def __init__(self, date, subjects_seq):
