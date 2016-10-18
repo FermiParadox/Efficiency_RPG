@@ -3,7 +3,7 @@
 # Used for screenshots that match size of current screenshots in GooglePlay
 
 
-if 0:
+if 1:
     from kivy.config import Config
     Config.set('graphics', 'width', '410')
     Config.set('graphics', 'height', '700')
@@ -73,6 +73,7 @@ class _Action(EventDispatcher):
     __metaclass__ = abc.ABCMeta
 
     time_invested = NumericProperty(0.)
+    completion_ratio = NumericProperty(0.)
     completed = BooleanProperty(False)
 
     @property
@@ -148,7 +149,7 @@ class Focus(_Action):
 
 class Running(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'heart.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(1,),
@@ -160,7 +161,7 @@ class Running(_Action):
 
 class UpperBody(_Action):
     TITLE = 'Arms'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'arms_training.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 15),
                           hours_tpl=(),
@@ -172,7 +173,7 @@ class UpperBody(_Action):
 
 class LowerBody(_Action):
     TITLE = 'Legs'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'kick.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 15),
                           hours_tpl=(),
@@ -274,7 +275,7 @@ class ScienceAction(_Action):
 
 
 # ---------------------------------------------------------------------------------------------------
-class _Subject(object):
+class _Subject(EventDispatcher):
     """
     A subject (e.g. "athletics") contains various "actions" (e.g. aerobic).
 
@@ -284,6 +285,8 @@ class _Subject(object):
     """
 
     __metaclass__ = abc.ABCMeta
+
+    goal_achieved_ratio = NumericProperty()
 
     # `None` if subject is not a filler, otherwise an `int` indicating bar display-priority.
     @abc.abstractproperty
@@ -326,6 +329,7 @@ class _Subject(object):
     def time_invested(self):
         return sum(a.time_invested for a in self.actions)
 
+    @property
     def goal_achieved_ratio(self):
         return sum(a.completion_ratio * a.BAR_GOAL_HINT for a in self.actions)
 
@@ -413,6 +417,7 @@ class FailedGoals(_Subject):
 
 
 ALL_SUBJECTS = frozenset(_Subject.__subclasses__())
+DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Resting,)
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -421,20 +426,60 @@ class MyProgressBar(Widget):
     empty_ratio = NumericProperty(.01)
 
 
+# ---------------------------------------------------------------------------------------------------
+class SubjectSelectionPage(GridLayout):
+    def __init__(self, **kwargs):
+        super(SubjectSelectionPage, self).__init__(cols=3, **kwargs)
+
+    def populate_page(self):
+        for subj in DISPLAYED_SUBJECTS:
+            box = BoxLayout(orientation='vertical')
+            box.add_widget(Image(source=subj.ICON_IMAGE_NAME))
+            box.add_widget(Label(text=subj.TITLE))
+            self.add_widget(box)
+
+
+# ---------------------------------------------------------------------------------------------------
+class SubjectBar(MyProgressBar):
+    subj_obj = ObjectProperty(Athletics())      # Athletics() is a default value, needed only initially
+
+    def __init__(self, **kwargs):
+        super(SubjectBar, self).__init__(**kwargs)
+
+
 class SubjectsBarsBox(BoxLayout):
     def __init__(self, **kwargs):
-        super(SubjectsBarsBox, self).__init__(**kwargs)
+        super(SubjectsBarsBox, self).__init__(spacing='1sp', **kwargs)
+        self.populate_box()
+
+        self.popup_widg = SubjectSelectionPage()
 
     def populate_box(self):
-        for subj in ALL_SUBJECTS:
-            bar = MyProgressBar()
+        for subj in DISPLAYED_SUBJECTS:
+            bar = SubjectBar()
+            bar.subj_obj = subj()
+            self.add_widget(bar)
+
+    def on_touch_down(self, touch):
+        self.popup_widg.open()
+
+
+class MainWidget(Carousel):
+    def __init__(self, **kwargs):
+        super(MainWidget, self).__init__(**kwargs)
 
 
 class EffRpgApp(App):
     def build(self):
-        main_widg = MyProgressBar()
+        main_widg = MainWidget()
         return main_widg
 
 
 if __name__ == '__main__':
+
+    try:
+        import ignore_build_ensure_images_cited
+    except ImportError:
+        pass
+
     EffRpgApp().run()

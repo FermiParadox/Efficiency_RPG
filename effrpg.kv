@@ -1,6 +1,12 @@
+#:kivy 1.9.1
+
+#:import main main
+
+
 <MyProgressBar>:
     max: 1
     value: 0
+
     limited_value: min(self.value, self.max)
     # Filled ratio should never be 0 or 1
     # otherwise it would cause size_hints equal to 0,
@@ -25,8 +31,72 @@
             pos: root.x + root.width*root.filled_ratio, root.y
 
 
+<VersionLabel@Label>:
+    pos_hint: {'center_x': .8, 'center_y': .07}
+    size_hint: .9, .2
+
+    text: '{} {}'.format('version', main.__version__)
+    font_size: '12sp'
 
 
+<SubjectSelectionPage>
+
+
+<SubjectBar>:
+    max: 1
+    value: self.subj_obj.goal_achieved_ratio
+
+<SubjectsBarsBox>:
+    orientation: 'vertical'
+
+
+<MainWidget>:
+
+    canvas.before:
+        Color:
+            rgba: .1,.2,.1,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    FloatLayout:
+        VersionLabel
+        BoxLayout:
+            id: language_widget
+            orientation: 'vertical'
+            pos_hint: {'center_x': .3, 'center_y': .2}
+            size_hint: .26, .08
+            #Label:
+            #    text: 'Language'
+            #    bold: True
+            #LanguageButton:
+            #    id: lang_button
+        Label:
+            pos_hint: {'center_x': .5, 'center_y': .8}
+            size_hint: .9, .1
+            text: main.APP_NAME
+            font_size: '30sp'
+        BoxLayout:
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            size_hint: .5, .35
+            orientation: 'vertical'
+
+            Button:
+                text: 'Today'
+                bold: True
+                on_release: root.load_slide(today_page)
+            Button:
+                text: 'Calendar'
+                bold: True
+                on_release: root.load_slide(rewards_page)
+            Button:
+                text: 'About'
+                on_release: root.load_slide(about_page)
+            Button:
+                text: 'Citations'
+                on_release: root.load_slide(citations_page)
+    SubjectsBarsBox:
+        id: today_page
 
 
 
