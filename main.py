@@ -197,7 +197,7 @@ class MMA(_Action):
 
 class Course1(_Action):
     TITLE = '1st'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'book_pictogram_1.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
@@ -209,17 +209,17 @@ class Course1(_Action):
 
 class Course2(Course1):
     TITLE = '2nd'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'book_pictogram_2.png'
 
 
 class Course3(Course1):
     TITLE = '3rd'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'book_pictogram_3.png'
 
 
 class ProgrammingAction(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'programming.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
@@ -231,7 +231,7 @@ class ProgrammingAction(_Action):
 
 class TeachingAction(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'teaching_pictogram.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
@@ -243,7 +243,7 @@ class TeachingAction(_Action):
 
 class Breaks(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'resting.png'
     TIME_DATA = _TimeData(description='min / hour',
                           minutes_tpl=(5, 10),
                           hours_tpl=(),
@@ -255,7 +255,7 @@ class Breaks(_Action):
 
 class SleepStart(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'sleep_early.png'
     TIME_DATA = None
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
@@ -351,7 +351,7 @@ class Athletics(_Subject):
     TITLE = 'Athletics'
     FILLER_PRIORITY = None
     BAR_COLOR = 'purple'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'fight_stance.png'
     ACTIONS_SEQUENCE = (Running,
                         UpperBody,
                         LowerBody,
@@ -375,7 +375,7 @@ class Programming(_Subject):
     TITLE = 'Programming'
     FILLER_PRIORITY = None
     BAR_COLOR = 'green'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'programming.png'
     ACTIONS_SEQUENCE = (ProgrammingAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (2, ACTIONS_SEQUENCE)
 
@@ -384,16 +384,16 @@ class Teaching(_Subject):
     TITLE = 'Teaching'
     FILLER_PRIORITY = 2
     BAR_COLOR = 'light_green'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'teaching_pictogram.png'
     ACTIONS_SEQUENCE = (TeachingAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
-class Resting(_Subject):
-    TITLE = 'Resting'
+class Health(_Subject):
+    TITLE = 'Health'
     FILLER_PRIORITY = None
     BAR_COLOR = 'light_blue'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'medicine.png'
     ACTIONS_SEQUENCE = (SleepStart, Breaks,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
@@ -417,7 +417,7 @@ class FailedGoals(_Subject):
 
 
 ALL_SUBJECTS = frozenset(_Subject.__subclasses__())
-DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Resting,)
+DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health,)
 
 
 # ---------------------------------------------------------------------------------------------------
