@@ -139,3 +139,15 @@ HEALTH = ImageCitation(
     creator_pseudonym='Clker-Free-Vector-Images (pixabay user)',
     url='https://pixabay.com/en/medicine-pharmacy-doctor-medic-37101/',
     extra_text='')
+
+SUN = ImageCitation(
+    work_name='M7.9-Class Solar Flare',
+    creation_date='June 25, 2015',
+    licence='public domain',
+    adaptation=False,
+    file_names=['nasa_sun.png'],
+    creator_name='NASA/SDO',
+    creator_pseudonym=None,
+    url='http://www.nasa.gov/image-feature/solar-dynamics-observatory-sees-m79-class-solar-flare',
+    extra_text='')
+

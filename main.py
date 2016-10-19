@@ -363,7 +363,7 @@ class Physics(_Subject):
     TITLE = 'Physics'
     FILLER_PRIORITY = None
     BAR_COLOR = 'blue'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'nasa_sun.png'
     ACTIONS_SEQUENCE = (Course1,
                         Course2,
                         Course3,
