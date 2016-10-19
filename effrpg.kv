@@ -46,6 +46,16 @@
     max: 1
     value: self.subj_obj.goal_achieved_ratio
 
+<SubjectBarBox>:
+    orientation: 'horizontal'
+    image_path: ''
+
+    Image:
+        size_hint_x: .25
+        source: root.image_path
+    SubjectBar:
+        subj_obj: root.subj_obj
+
 <SubjectsBarsBox>:
     orientation: 'vertical'
 

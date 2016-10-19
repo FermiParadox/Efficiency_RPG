@@ -30,6 +30,7 @@ from kivy.event import EventDispatcher
 
 from functools import partial
 import abc
+import os
 
 
 __version__ = '0.0.1'
@@ -43,6 +44,20 @@ APP_NAME = 'EffRpg'
         super(, self).__init__(**kwargs)
 
 """
+
+
+# ---------------------------------------------------------------------------------------------------
+OWN_IMAGES_DIR = 'own_images'
+THIRD_PARTY_IMAGES_DIR = 'third_parties_images'
+
+
+def image_path(im_name):
+    if im_name in os.listdir(OWN_IMAGES_DIR):
+        return os.path.join(OWN_IMAGES_DIR, im_name)
+    elif im_name in os.listdir(THIRD_PARTY_IMAGES_DIR):
+        return os.path.join(THIRD_PARTY_IMAGES_DIR, im_name)
+    else:
+        print('\nWARNING: Image name not found in directories. ({})\n'.format(im_name))
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -447,6 +462,14 @@ class SubjectBar(MyProgressBar):
         super(SubjectBar, self).__init__(**kwargs)
 
 
+class SubjectBarBox(BoxLayout):
+    subj_obj = ObjectProperty(Athletics())      # Athletics() is a default value, needed only initially
+    image_path = StringProperty()
+
+    def __init__(self, **kwargs):
+        super(SubjectBarBox, self).__init__(**kwargs)
+
+
 class SubjectsBarsBox(BoxLayout):
     def __init__(self, **kwargs):
         super(SubjectsBarsBox, self).__init__(spacing='1sp', **kwargs)
@@ -456,9 +479,11 @@ class SubjectsBarsBox(BoxLayout):
 
     def populate_box(self):
         for subj in DISPLAYED_SUBJECTS:
-            bar = SubjectBar()
-            bar.subj_obj = subj()
-            self.add_widget(bar)
+            widg = SubjectBarBox()
+            widg.subj_obj = subj()
+            im_name = subj().ICON_IMAGE_NAME
+            widg.image_path = image_path(im_name=im_name)
+            self.add_widget(widg)
 
     def on_touch_down(self, touch):
         self.popup_widg.open()
