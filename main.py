@@ -137,7 +137,7 @@ class (_Action):
 
 class Focus(_Action):
     TITLE = 'Focus'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'aim.png'
     TIME_DATA = _TimeData(description="Mins wasted / 10' ",
                           minutes_tpl=(1, 2, 5),
                           hours_tpl=(),
@@ -185,7 +185,7 @@ class LowerBody(_Action):
 
 class MMA(_Action):
     TITLE = 'MMA'
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'mma_pictogram.png'
     TIME_DATA = _TimeData(description='Watched MMA',
                           minutes_tpl=(5, 10),
                           hours_tpl=(),
@@ -262,9 +262,9 @@ class SleepStart(_Action):
     DAYS_APPEARING = 'all'
 
 
-class ScienceAction(_Action):
+class StudyScience(_Action):
     TITLE = ''
-    ICON_IMAGE_NAME = ''
+    ICON_IMAGE_NAME = 'book_pictogram.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
@@ -402,8 +402,8 @@ class Science(_Subject):
     TITLE = 'Science'
     FILLER_PRIORITY = None
     BAR_COLOR = 'light_green'
-    ICON_IMAGE_NAME = ''
-    ACTIONS_SEQUENCE = (ScienceAction,)
+    ICON_IMAGE_NAME = 'science.png'
+    ACTIONS_SEQUENCE = (StudyScience,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
