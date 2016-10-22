@@ -3,6 +3,10 @@
 #:import main main
 
 
+<Label>:
+    markup: True
+    color: 0,0,0,1
+
 <MyProgressBar>:
     max: 1
     value: 0
@@ -39,8 +43,6 @@
     font_size: '12sp'
 
 
-<SubjectSelectionPage>
-
 
 <SubjectBar>:
     max: 1
@@ -48,7 +50,6 @@
 
 <SubjectBarBox>:
     orientation: 'horizontal'
-    image_path: ''
 
     Image:
         size_hint_x: .25
@@ -60,11 +61,22 @@
     orientation: 'vertical'
 
 
+<ActionsPage@BoxLayout>:
+    orientation: 'vertical'
+
+    subj_obj:
+
+    SubjectBarBox:
+        subj_obj: root.subj_obj
+    ActionsGrid:
+        cols: 3
+
+
 <MainWidget>:
 
     canvas.before:
         Color:
-            rgba: .1,.2,.1,1
+            rgba: .8,.8,.8,1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -105,7 +117,7 @@
             Button:
                 text: 'Citations'
                 on_release: root.load_slide(citations_page)
-    SubjectsBarsBox:
+    TodayPage:
         id: today_page
 
 
