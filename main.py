@@ -439,6 +439,8 @@ class FailedGoals(_Subject):
 
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
 DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health,)
+ALL_SUBJECTS_INSTANCES = [subj() for subj in ALL_SUBJECTS]
+DISPLAYED_SUBJECTS_INSTANCES = [subj_obj for subj_obj in ALL_SUBJECTS_INSTANCES if type(subj_obj) in DISPLAYED_SUBJECTS]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = Athletics
@@ -453,7 +455,8 @@ class MyProgressBar(Widget):
 
 # ---------------------------------------------------------------------------------------------------
 class SubjectSelectionSlide(GridLayout):
-    selected_subj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subjects_objects = ListProperty()
+    subj_obj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
 
     def __init__(self, **kwargs):
         super(SubjectSelectionSlide, self).__init__(cols=3, spacing=('2sp', '2sp'), **kwargs)
@@ -462,8 +465,11 @@ class SubjectSelectionSlide(GridLayout):
     def set_slide_to_actions(self, *args):
         self.parent.parent.load_next()
 
-    def populate_page(self):
-        for subj in ALL_SUBJECTS:
+    def populate_page(self, *args):
+        if not self.subjects_objects:
+            Clock.schedule_once(self.populate_page, .3)
+
+        for subj in self.subjects_objects:
             if subj == FailedGoals:
                 continue
             box = BoxLayout(orientation='vertical', pos_hint=CENTER_POS_HINT)
@@ -473,7 +479,7 @@ class SubjectSelectionSlide(GridLayout):
             float_layout = FloatLayout()
             float_layout.add_widget(box)
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda *x: setattr(self, 'selected_subj', subj))
+            button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj_obj', subj))
             button.bind(on_release=self.set_slide_to_actions)
             float_layout.add_widget(button)
             self.add_widget(float_layout)
@@ -499,15 +505,19 @@ class SubjectBarBox(BoxLayout):
 
 
 class SubjectsBarsBox(BoxLayout):
+    subjects_objects = ListProperty()
+
     def __init__(self, **kwargs):
         super(SubjectsBarsBox, self).__init__(spacing='1sp', **kwargs)
         self.populate_box()
 
-    def populate_box(self):
-        for subj in DISPLAYED_SUBJECTS:
+    def populate_box(self, *args):
+        if not self.subjects_objects:
+            Clock.schedule_once(self.populate_box, .3)
+        for subj in self.subjects_objects:
             widg = SubjectBarBox()
-            widg.subj_obj = subj()
-            im_name = subj().ICON_IMAGE_NAME
+            widg.subj_obj = subj
+            im_name = subj.ICON_IMAGE_NAME
             widg.image_path = image_path(im_name=im_name)
             self.add_widget(widg)
 
@@ -521,28 +531,25 @@ class ActionsGrid(GridLayout):
         self.populate_grid()
 
     def populate_grid(self):
+        self.clear_widgets()
+
         for act in self.subj_obj.actions:
             im_path = image_path(im_name=act.ICON_IMAGE_NAME)
             float_layout = FloatLayout()
             float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda *x: setattr(self, 'selected_action', act.__class__))
+            button.bind(on_release=lambda _, act=act: setattr(self, 'selected_action', act.__class__))
             float_layout.add_widget(button)
             self.add_widget(float_layout)
 
 
 class TodayPage(Carousel):
-    def __init__(self, **kwargs):
-        super(TodayPage, self).__init__(direction='bottom', **kwargs)
-        self.subjects_box = SubjectsBarsBox()
-        self.add_widget(self.subjects_box)
-        self.subj_selection_slide = SubjectSelectionSlide()
-        self.add_widget(self.subj_selection_slide)
-        self.actions_grid = ActionsGrid()
-        self.add_widget(self.actions_grid)
+    pass
 
 
 class MainWidget(Carousel):
+    subjects_objects = ListProperty(DISPLAYED_SUBJECTS_INSTANCES)
+
     def __init__(self, **kwargs):
         super(MainWidget, self).__init__(**kwargs)
 

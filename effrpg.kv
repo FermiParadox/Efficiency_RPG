@@ -72,7 +72,12 @@
         cols: 3
 
 
+<TodayPage>:
+    direction: 'bottom'
+
+
 <MainWidget>:
+    id: main_widg
 
     canvas.before:
         Color:
@@ -83,16 +88,6 @@
 
     FloatLayout:
         VersionLabel
-        BoxLayout:
-            id: language_widget
-            orientation: 'vertical'
-            pos_hint: {'center_x': .3, 'center_y': .2}
-            size_hint: .26, .08
-            #Label:
-            #    text: 'Language'
-            #    bold: True
-            #LanguageButton:
-            #    id: lang_button
         Label:
             pos_hint: {'center_x': .5, 'center_y': .8}
             size_hint: .9, .1
@@ -120,7 +115,15 @@
     TodayPage:
         id: today_page
 
-
+        SubjectsBarsBox
+            subjects_objects: main_widg.subjects_objects
+        SubjectSelectionSlide
+            id: subj_selection_slide
+            subjects_objects: main_widg.subjects_objects
+            on_subjects_objects: self.populate_page()
+        ActionsGrid:
+            subj_obj: subj_selection_slide.subj_obj
+            on_subj_obj: self.populate_grid()
 
 
 # PASTE-TEMPLATE
