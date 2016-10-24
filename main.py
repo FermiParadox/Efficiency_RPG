@@ -65,6 +65,8 @@ CENTER_POS_HINT = {'center_x': .5, 'center_y': .5}
 
 FAINT_BLACK = (0,0,0,.1)
 
+POPULATING_DELAY = .3
+
 
 # ---------------------------------------------------------------------------------------------------
 class _TimeData(object):
@@ -440,7 +442,7 @@ class FailedGoals(_Subject):
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
 DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health,)
 ALL_SUBJECTS_INSTANCES = [subj() for subj in ALL_SUBJECTS]
-DISPLAYED_SUBJECTS_INSTANCES = [subj_obj for subj_obj in ALL_SUBJECTS_INSTANCES if type(subj_obj) in DISPLAYED_SUBJECTS]
+DISPLAYED_SUBJECTS_INSTANCES = [subj_inst for subj_inst in ALL_SUBJECTS_INSTANCES if type(subj_inst) in DISPLAYED_SUBJECTS]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = Athletics
@@ -455,8 +457,8 @@ class MyProgressBar(Widget):
 
 # ---------------------------------------------------------------------------------------------------
 class SubjectSelectionSlide(GridLayout):
-    subjects_objects = ListProperty()
-    subj_obj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subjects_instances = ListProperty()
+    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
 
     def __init__(self, **kwargs):
         super(SubjectSelectionSlide, self).__init__(cols=3, spacing=('2sp', '2sp'), **kwargs)
@@ -466,10 +468,10 @@ class SubjectSelectionSlide(GridLayout):
         self.parent.parent.load_next()
 
     def populate_page(self, *args):
-        if not self.subjects_objects:
-            Clock.schedule_once(self.populate_page, .3)
+        if not self.subjects_instances:
+            Clock.schedule_once(self.populate_page, POPULATING_DELAY)
 
-        for subj in self.subjects_objects:
+        for subj in self.subjects_instances:
             if subj == FailedGoals:
                 continue
             box = BoxLayout(orientation='vertical', pos_hint=CENTER_POS_HINT)
@@ -479,7 +481,7 @@ class SubjectSelectionSlide(GridLayout):
             float_layout = FloatLayout()
             float_layout.add_widget(box)
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj_obj', subj))
+            button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj_inst', subj))
             button.bind(on_release=self.set_slide_to_actions)
             float_layout.add_widget(button)
             self.add_widget(float_layout)
@@ -487,43 +489,43 @@ class SubjectSelectionSlide(GridLayout):
 
 # ---------------------------------------------------------------------------------------------------
 class SubjectBar(MyProgressBar):
-    subj_obj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
 
     def __init__(self, **kwargs):
         super(SubjectBar, self).__init__(**kwargs)
 
 
 class SubjectBarBox(BoxLayout):
-    subj_obj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
     image_path = StringProperty()
 
     def __init__(self, **kwargs):
         super(SubjectBarBox, self).__init__(**kwargs)
 
-    def on_subj_obj(self, *a):
-        self.image_path = image_path(im_name=self.subj_obj.ICON_IMAGE_NAME)
+    def on_subj_inst(self, *a):
+        self.image_path = image_path(im_name=self.subj_inst.ICON_IMAGE_NAME)
 
 
 class SubjectsBarsBox(BoxLayout):
-    subjects_objects = ListProperty()
+    subjects_instances = ListProperty()
 
     def __init__(self, **kwargs):
         super(SubjectsBarsBox, self).__init__(spacing='1sp', **kwargs)
         self.populate_box()
 
     def populate_box(self, *args):
-        if not self.subjects_objects:
-            Clock.schedule_once(self.populate_box, .3)
-        for subj in self.subjects_objects:
+        if not self.subjects_instances:
+            Clock.schedule_once(self.populate_box, POPULATING_DELAY)
+        for subj in self.subjects_instances:
             widg = SubjectBarBox()
-            widg.subj_obj = subj
+            widg.subj_inst = subj
             im_name = subj.ICON_IMAGE_NAME
             widg.image_path = image_path(im_name=im_name)
             self.add_widget(widg)
 
 
 class ActionsGrid(GridLayout):
-    subj_obj = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
     selected_action = ObjectProperty()
 
     def __init__(self, **kwargs):
@@ -533,7 +535,7 @@ class ActionsGrid(GridLayout):
     def populate_grid(self):
         self.clear_widgets()
 
-        for act in self.subj_obj.actions:
+        for act in self.subj_inst.actions:
             im_path = image_path(im_name=act.ICON_IMAGE_NAME)
             float_layout = FloatLayout()
             float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
@@ -543,12 +545,24 @@ class ActionsGrid(GridLayout):
             self.add_widget(float_layout)
 
 
+class ActionTimesBox(FloatLayout):
+    action_inst = ObjectProperty()
+    description = StringProperty()
+    minutes_box = ObjectProperty()
+    hours_box = ObjectProperty()
+
+    def __init__(self, **kwargs):
+        super(ActionTimesBox, self).__init__(**kwargs)
+
+
+
+
 class TodayPage(Carousel):
     pass
 
 
 class MainWidget(Carousel):
-    subjects_objects = ListProperty(DISPLAYED_SUBJECTS_INSTANCES)
+    subjects_instances = ListProperty(DISPLAYED_SUBJECTS_INSTANCES)
 
     def __init__(self, **kwargs):
         super(MainWidget, self).__init__(**kwargs)

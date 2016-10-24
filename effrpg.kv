@@ -46,7 +46,7 @@
 
 <SubjectBar>:
     max: 1
-    value: self.subj_obj.goal_achieved_ratio
+    value: self.subj_inst.goal_achieved_ratio
 
 <SubjectBarBox>:
     orientation: 'horizontal'
@@ -55,21 +55,25 @@
         size_hint_x: .25
         source: root.image_path
     SubjectBar:
-        subj_obj: root.subj_obj
+        subj_inst: root.subj_inst
 
 <SubjectsBarsBox>:
     orientation: 'vertical'
 
 
-<ActionsPage@BoxLayout>:
+<ActionsSlide@BoxLayout>:
     orientation: 'vertical'
 
-    subj_obj:
-
-    SubjectBarBox:
-        subj_obj: root.subj_obj
-    ActionsGrid:
-        cols: 3
+<ActionTimesBox>:
+    Label:
+        text: root.description
+        pos_hint: {'center_x': .5, 'top': 1}
+    BoxLayout:
+        id: minutes_box
+        pos_hint: {'center_x': .5, 'center_y': .5}
+    BoxLayout:
+        id: hours_box
+        pos_hint: {'center_x': .5, 'top': .0}
 
 
 <TodayPage>:
@@ -116,14 +120,18 @@
         id: today_page
 
         SubjectsBarsBox
-            subjects_objects: main_widg.subjects_objects
+            subjects_instances: main_widg.subjects_instances
         SubjectSelectionSlide
             id: subj_selection_slide
-            subjects_objects: main_widg.subjects_objects
-            on_subjects_objects: self.populate_page()
-        ActionsGrid:
-            subj_obj: subj_selection_slide.subj_obj
-            on_subj_obj: self.populate_grid()
+            subjects_instances: main_widg.subjects_instances
+            on_subjects_instances: self.populate_page()
+        ActionsSlide:
+            ActionsGrid:
+                size_hint_y: .7
+                subj_inst: subj_selection_slide.subj_inst
+                on_subj_inst: self.populate_grid()
+            ActionTimesBox
+
 
 
 # PASTE-TEMPLATE
