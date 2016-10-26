@@ -9,7 +9,7 @@ if 1:
     Config.set('graphics', 'height', '700')
 
 from kivy.app import App
-from kivy.uix.button import Button
+from kivy.uix.button import Button as Button
 from kivy.animation import Animation
 from kivy.uix.label import Label as Label
 from kivy.properties import ObjectProperty, DictProperty, NumericProperty, BooleanProperty, ListProperty, StringProperty
@@ -69,6 +69,19 @@ POPULATING_DELAY = .3
 
 
 # ---------------------------------------------------------------------------------------------------
+class ButtonD(Button):
+    re_enable_scheduled_event = ObjectProperty()
+
+    def __init__(self, **kwargs):
+        super(Button, self).__init__(**kwargs)
+
+    def disable_for(self, time):
+        Clock.unschedule(self.re_enable_scheduled_event)
+        self.disabled = True
+        self.re_enable_scheduled_event = Clock.schedule_once(lambda *_: setattr(self, 'disabled', False), time)
+
+
+# ---------------------------------------------------------------------------------------------------
 class _TimeData(object):
     """
     Contains time values displayed as buttons when an action is being set as complete,
@@ -77,8 +90,8 @@ class _TimeData(object):
 
     def __init__(self, description, minutes_tpl, hours_tpl, completion_time):
         self.description = description
-        self.minutes = minutes_tpl
-        self.hours = hours_tpl
+        self.minutes_tpl = minutes_tpl
+        self.hours_tpl = hours_tpl
         self.completion_time = completion_time
 
 
@@ -96,7 +109,6 @@ class _Action(EventDispatcher):
     __metaclass__ = abc.ABCMeta
 
     time_invested = NumericProperty(0.)
-    completion_ratio = NumericProperty(0.)
     completed = BooleanProperty(False)
 
     @property
@@ -310,6 +322,7 @@ class _Subject(EventDispatcher):
     __metaclass__ = abc.ABCMeta
 
     goal_achieved_ratio = NumericProperty()
+    time_invested = NumericProperty()
 
     # `None` if subject is not a filler, otherwise an `int` indicating bar display-priority.
     @abc.abstractproperty
@@ -349,7 +362,8 @@ class _Subject(EventDispatcher):
         for cls in self.ACTIONS_SEQUENCE:
             self.actions.append(cls())
 
-    def time_invested(self):
+    @property
+    def _time_invested(self):
         return sum(a.time_invested for a in self.actions)
 
     @property
@@ -445,7 +459,7 @@ ALL_SUBJECTS_INSTANCES = [subj() for subj in ALL_SUBJECTS]
 DISPLAYED_SUBJECTS_INSTANCES = [subj_inst for subj_inst in ALL_SUBJECTS_INSTANCES if type(subj_inst) in DISPLAYED_SUBJECTS]
 
 # (Needed only for initializations)
-DUMMY_SUBJ_CLASS = Athletics
+DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
 DUMMY_SUBJ_INSTANCE = DUMMY_SUBJ_CLASS()
 
 
@@ -458,7 +472,7 @@ class MyProgressBar(Widget):
 # ---------------------------------------------------------------------------------------------------
 class SubjectSelectionSlide(GridLayout):
     subjects_instances = ListProperty()
-    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj_inst = ObjectProperty(DISPLAYED_SUBJECTS_INSTANCES[0])
 
     def __init__(self, **kwargs):
         super(SubjectSelectionSlide, self).__init__(cols=3, spacing=('2sp', '2sp'), **kwargs)
@@ -526,7 +540,7 @@ class SubjectsBarsBox(BoxLayout):
 
 class ActionsGrid(GridLayout):
     subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
-    selected_action = ObjectProperty()
+    action_inst = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(ActionsGrid, self).__init__(cols=3, **kwargs)
@@ -540,19 +554,59 @@ class ActionsGrid(GridLayout):
             float_layout = FloatLayout()
             float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda _, act=act: setattr(self, 'selected_action', act.__class__))
+            button.bind(on_release=lambda _, act=act: setattr(self, 'action_inst', act))
             float_layout.add_widget(button)
             self.add_widget(float_layout)
 
 
-class ActionTimesBox(FloatLayout):
+class TimesButtonsBox(BoxLayout):
+    # "h" or "'"
+    measuring_unit = StringProperty()
+    times_seq = ListProperty()
+    time_added = NumericProperty()
+
+    def increase_time_added(self, btn):
+        self.time_added += btn.time_val
+
+    def on_times_seq(self, *args):
+        self.clear_widgets()
+
+        for t in self.times_seq:
+            txt = '{}{}'.format(t, self.measuring_unit)
+            button = Button(text=txt)
+
+            if self.measuring_unit == 'h':
+                pass
+            elif self.measuring_unit == "'":
+                t /= 60.
+            else:
+                raise NotImplementedError('Unexpected measuring unit. ({})'.format(self.measuring_unit))
+            button.time_val = t
+            button.bind(on_release=self.increase_time_added)
+            print t
+            self.add_widget(button)
+
+    def reset_time_added(self, time):
+        Clock.schedule_once(lambda *_: setattr(self, 'time_added', 0), time)
+
+
+class ActionTimesBox(BoxLayout):
     action_inst = ObjectProperty()
     description = StringProperty()
-    minutes_box = ObjectProperty()
-    hours_box = ObjectProperty()
+    minutes_lst = ListProperty()
+    hours_lst = ListProperty()
 
     def __init__(self, **kwargs):
         super(ActionTimesBox, self).__init__(**kwargs)
+
+    def set_times_lists(self, *args):
+        time_data = self.action_inst.TIME_DATA
+        if not time_data:
+            return
+
+        self.minutes_lst = time_data.minutes_tpl
+        self.hours_lst = time_data.hours_tpl
+
 
 
 

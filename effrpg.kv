@@ -64,16 +64,6 @@
 <ActionsSlide@BoxLayout>:
     orientation: 'vertical'
 
-<ActionTimesBox>:
-    Label:
-        text: root.description
-        pos_hint: {'center_x': .5, 'top': 1}
-    BoxLayout:
-        id: minutes_box
-        pos_hint: {'center_x': .5, 'center_y': .5}
-    BoxLayout:
-        id: hours_box
-        pos_hint: {'center_x': .5, 'top': .0}
 
 
 <TodayPage>:
@@ -126,12 +116,53 @@
             subjects_instances: main_widg.subjects_instances
             on_subjects_instances: self.populate_page()
         ActionsSlide:
+            SubjectBarBox:
+                subj_inst: subj_selection_slide.subj_inst
+                size_hint_y: .3
             ActionsGrid:
+                id: actions_grid
                 size_hint_y: .7
                 subj_inst: subj_selection_slide.subj_inst
                 on_subj_inst: self.populate_grid()
             ActionTimesBox
+                id: action_times_box
+                orientation: 'vertical'
 
+                minutes_box: minutes_box
+                hours_box: hours_box
+                action_inst: actions_grid.action_inst
+                on_action_inst: self.set_times_lists()
+
+                Label:
+                    text: action_times_box.description
+                    size_hint_y: .3
+                TimesButtonsBox:
+                    id: minutes_box
+                    size_hint_y: .3
+                    measuring_unit: "'"
+                    times_seq: action_times_box.minutes_lst
+                TimesButtonsBox:
+                    id: hours_box
+                    size_hint_y: .4
+                    measuring_unit: 'h'
+                    times_seq: action_times_box.hours_lst
+                    on_time_added: print(self.time_added)
+                BoxLayout:
+                    size_hint_y: .2
+                    Label
+                    ButtonD:
+                        text: 'ok'
+                        on_release: action_times_box.action_inst.time_invested += minutes_box.time_added + hours_box.time_added
+                        on_release: print(action_times_box.action_inst.time_invested)
+                        on_release: print(hours_box.time_added)
+                        on_release: minutes_box.reset_time_added(time=.3)
+                        on_release: hours_box.reset_time_added(time=.3)
+                        on_release: self.disable_for(.53)
+                    ButtonD:
+                        text: 'delete'
+                        on_release: minutes_box.reset_time_added(time=.1)
+                        on_release: hours_box.reset_time_added(time=.1)
+                    Label
 
 
 # PASTE-TEMPLATE
