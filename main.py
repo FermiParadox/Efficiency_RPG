@@ -105,19 +105,27 @@ _TimeData(description=,
 """
 
 
-class _Action(EventDispatcher):
+# ---------------------------------------------------------------------------------------------------
+# All actions should contain "Action" in their name,
+# in order to avoid accidental overriding of methods in kivy-app.
+class _Action(object):
     __metaclass__ = abc.ABCMeta
 
-    time_invested = NumericProperty(0.)
-    completed = BooleanProperty(False)
+    @classmethod
+    def completion_ratio(cls, hours_invested):
+        time_data = cls.TIME_DATA
+        if time_data:
+            completion_time = time_data.completion_time
 
-    @property
-    def completion_ratio(self):
-        if self.TIME_DATA:
-            ratio = float(self.time_invested) / self.TIME_DATA.completion_time
-            return min(ratio, 1.)
+            if completion_time:
+                ratio = float(hours_invested) / completion_time
+                return min(ratio, 1.)
 
-        return self.completed
+        return 'undefined'
+
+    @classmethod
+    def name(cls):
+        return cls.__name__.lower()
 
     # Displayed on action's icon. Can be empty str.
     @abc.abstractproperty
@@ -170,7 +178,7 @@ class (_Action):
 """
 
 
-class Focus(_Action):
+class FocusAction(_Action):
     TITLE = 'Focus'
     ICON_IMAGE_NAME = 'aim.png'
     TIME_DATA = _TimeData(description="Mins wasted / 10' ",
@@ -182,7 +190,7 @@ class Focus(_Action):
     DAYS_APPEARING = 'all'
 
 
-class Running(_Action):
+class RunningAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'heart.png'
     TIME_DATA = _TimeData(description='',
@@ -194,7 +202,7 @@ class Running(_Action):
     DAYS_APPEARING = 'all'
 
 
-class UpperBody(_Action):
+class UpperBodyAction(_Action):
     TITLE = 'Arms'
     ICON_IMAGE_NAME = 'arms_training.png'
     TIME_DATA = _TimeData(description='',
@@ -206,7 +214,7 @@ class UpperBody(_Action):
     DAYS_APPEARING = 3
 
 
-class LowerBody(_Action):
+class LowerBodyAction(_Action):
     TITLE = 'Legs'
     ICON_IMAGE_NAME = 'kick.png'
     TIME_DATA = _TimeData(description='',
@@ -218,7 +226,7 @@ class LowerBody(_Action):
     DAYS_APPEARING = 3
 
 
-class MMA(_Action):
+class MMAAction(_Action):
     TITLE = 'MMA'
     ICON_IMAGE_NAME = 'mma_pictogram.png'
     TIME_DATA = _TimeData(description='Watched MMA',
@@ -230,7 +238,7 @@ class MMA(_Action):
     DAYS_APPEARING = 'all'
 
 
-class Course1(_Action):
+class Course1Action(_Action):
     TITLE = '1st'
     ICON_IMAGE_NAME = 'book_pictogram_1.png'
     TIME_DATA = _TimeData(description='',
@@ -242,12 +250,12 @@ class Course1(_Action):
     DAYS_APPEARING = 'all'
 
 
-class Course2(Course1):
+class Course2Action(Course1Action):
     TITLE = '2nd'
     ICON_IMAGE_NAME = 'book_pictogram_2.png'
 
 
-class Course3(Course1):
+class Course3Action(Course1Action):
     TITLE = '3rd'
     ICON_IMAGE_NAME = 'book_pictogram_3.png'
 
@@ -276,7 +284,7 @@ class TeachingAction(_Action):
     DAYS_APPEARING = 'all'
 
 
-class Breaks(_Action):
+class BreaksAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'resting.png'
     TIME_DATA = _TimeData(description='min / hour',
@@ -288,7 +296,7 @@ class Breaks(_Action):
     DAYS_APPEARING = 'all'
 
 
-class SleepStart(_Action):
+class SleepStartAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'sleep_early.png'
     TIME_DATA = None
@@ -297,7 +305,7 @@ class SleepStart(_Action):
     DAYS_APPEARING = 'all'
 
 
-class StudyScience(_Action):
+class StudyScienceAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'book_pictogram.png'
     TIME_DATA = _TimeData(description='',
@@ -310,7 +318,7 @@ class StudyScience(_Action):
 
 
 # ---------------------------------------------------------------------------------------------------
-class _Subject(EventDispatcher):
+class _Subject(object):
     """
     A subject (e.g. "athletics") contains various "actions" (e.g. aerobic).
 
@@ -321,8 +329,9 @@ class _Subject(EventDispatcher):
 
     __metaclass__ = abc.ABCMeta
 
-    goal_achieved_ratio = NumericProperty()
-    time_invested = NumericProperty()
+    @classmethod
+    def name(cls):
+        return cls.__name__.lower()
 
     # `None` if subject is not a filler, otherwise an `int` indicating bar display-priority.
     @abc.abstractproperty
@@ -353,22 +362,13 @@ class _Subject(EventDispatcher):
     def CUMULATIVE_COMPLETION_TIME_AND_ACTIONS(self):
         pass
 
-    def __init__(self):
-        # Actions classes are converted to instances.
-        self.actions = []
-        self._actions_classes_to_instances()
-
-    def _actions_classes_to_instances(self):
-        for cls in self.ACTIONS_SEQUENCE:
-            self.actions.append(cls())
-
     @property
     def _time_invested(self):
-        return sum(a.time_invested for a in self.actions)
+        return sum(a.time_invested for a in self.ACTIONS_SEQUENCE)
 
     @property
     def goal_achieved_ratio(self):
-        return sum(a.completion_ratio * a.BAR_GOAL_HINT for a in self.actions)
+        return sum(a.completion_ratio * a.BAR_GOAL_HINT for a in self.ACTIONS_SEQUENCE)
 
 
 # Paste-template
@@ -389,10 +389,10 @@ class Athletics(_Subject):
     FILLER_PRIORITY = None
     BAR_COLOR = 'purple'
     ICON_IMAGE_NAME = 'fight_stance.png'
-    ACTIONS_SEQUENCE = (Running,
-                        UpperBody,
-                        LowerBody,
-                        MMA)
+    ACTIONS_SEQUENCE = (RunningAction,
+                        UpperBodyAction,
+                        LowerBodyAction,
+                        MMAAction)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
@@ -401,11 +401,11 @@ class Physics(_Subject):
     FILLER_PRIORITY = None
     BAR_COLOR = 'blue'
     ICON_IMAGE_NAME = 'nasa_sun.png'
-    ACTIONS_SEQUENCE = (Course1,
-                        Course2,
-                        Course3,
-                        Focus)
-    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE) - {Focus})
+    ACTIONS_SEQUENCE = (Course1Action,
+                        Course2Action,
+                        Course3Action,
+                        FocusAction)
+    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE) - {FocusAction})
 
 
 class Programming(_Subject):
@@ -431,7 +431,7 @@ class Health(_Subject):
     FILLER_PRIORITY = None
     BAR_COLOR = 'light_blue'
     ICON_IMAGE_NAME = 'medicine.png'
-    ACTIONS_SEQUENCE = (SleepStart, Breaks,)
+    ACTIONS_SEQUENCE = (SleepStartAction, BreaksAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
@@ -440,7 +440,7 @@ class Science(_Subject):
     FILLER_PRIORITY = None
     BAR_COLOR = 'light_green'
     ICON_IMAGE_NAME = 'science.png'
-    ACTIONS_SEQUENCE = (StudyScience,)
+    ACTIONS_SEQUENCE = (StudyScienceAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
@@ -455,12 +455,9 @@ class FailedGoals(_Subject):
 
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
 DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health,)
-ALL_SUBJECTS_INSTANCES = [subj() for subj in ALL_SUBJECTS]
-DISPLAYED_SUBJECTS_INSTANCES = [subj_inst for subj_inst in ALL_SUBJECTS_INSTANCES if type(subj_inst) in DISPLAYED_SUBJECTS]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
-DUMMY_SUBJ_INSTANCE = DUMMY_SUBJ_CLASS()
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -471,8 +468,7 @@ class MyProgressBar(Widget):
 
 # ---------------------------------------------------------------------------------------------------
 class SubjectSelectionSlide(GridLayout):
-    subjects_instances = ListProperty()
-    subj_inst = ObjectProperty(DISPLAYED_SUBJECTS_INSTANCES[0])
+    subj = ObjectProperty(DISPLAYED_SUBJECTS[0])
 
     def __init__(self, **kwargs):
         super(SubjectSelectionSlide, self).__init__(cols=3, spacing=('2sp', '2sp'), **kwargs)
@@ -482,10 +478,7 @@ class SubjectSelectionSlide(GridLayout):
         self.parent.parent.load_next()
 
     def populate_page(self, *args):
-        if not self.subjects_instances:
-            Clock.schedule_once(self.populate_page, POPULATING_DELAY)
-
-        for subj in self.subjects_instances:
+        for subj in DISPLAYED_SUBJECTS:
             if subj == FailedGoals:
                 continue
             box = BoxLayout(orientation='vertical', pos_hint=CENTER_POS_HINT)
@@ -495,7 +488,7 @@ class SubjectSelectionSlide(GridLayout):
             float_layout = FloatLayout()
             float_layout.add_widget(box)
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj_inst', subj))
+            button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj', subj))
             button.bind(on_release=self.set_slide_to_actions)
             float_layout.add_widget(button)
             self.add_widget(float_layout)
@@ -503,44 +496,41 @@ class SubjectSelectionSlide(GridLayout):
 
 # ---------------------------------------------------------------------------------------------------
 class SubjectBar(MyProgressBar):
-    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj = ObjectProperty(DUMMY_SUBJ_CLASS)
 
     def __init__(self, **kwargs):
         super(SubjectBar, self).__init__(**kwargs)
 
 
 class SubjectBarBox(BoxLayout):
-    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
+    subj = ObjectProperty(DUMMY_SUBJ_CLASS)
     image_path = StringProperty()
 
     def __init__(self, **kwargs):
         super(SubjectBarBox, self).__init__(**kwargs)
 
-    def on_subj_inst(self, *a):
-        self.image_path = image_path(im_name=self.subj_inst.ICON_IMAGE_NAME)
+    def on_subj(self, *a):
+        self.image_path = image_path(im_name=self.subj.ICON_IMAGE_NAME)
 
 
 class SubjectsBarsBox(BoxLayout):
-    subjects_instances = ListProperty()
 
     def __init__(self, **kwargs):
         super(SubjectsBarsBox, self).__init__(spacing='1sp', **kwargs)
         self.populate_box()
 
     def populate_box(self, *args):
-        if not self.subjects_instances:
-            Clock.schedule_once(self.populate_box, POPULATING_DELAY)
-        for subj in self.subjects_instances:
+        for subj in DISPLAYED_SUBJECTS:
             widg = SubjectBarBox()
-            widg.subj_inst = subj
+            widg.subj = subj
             im_name = subj.ICON_IMAGE_NAME
             widg.image_path = image_path(im_name=im_name)
             self.add_widget(widg)
 
 
 class ActionsGrid(GridLayout):
-    subj_inst = ObjectProperty(DUMMY_SUBJ_INSTANCE)
-    action_inst = ObjectProperty()
+    subj = ObjectProperty(DUMMY_SUBJ_CLASS)
+    action = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(ActionsGrid, self).__init__(cols=3, **kwargs)
@@ -549,14 +539,16 @@ class ActionsGrid(GridLayout):
     def populate_grid(self):
         self.clear_widgets()
 
-        for act in self.subj_inst.actions:
+        for act in self.subj.ACTIONS_SEQUENCE:
             im_path = image_path(im_name=act.ICON_IMAGE_NAME)
             float_layout = FloatLayout()
             float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
             button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
-            button.bind(on_release=lambda _, act=act: setattr(self, 'action_inst', act))
+            button.bind(on_release=lambda _, act=act: setattr(self, 'action', act))
             float_layout.add_widget(button)
             self.add_widget(float_layout)
+
+        self.action = self.subj.ACTIONS_SEQUENCE[0]
 
 
 class TimesButtonsBox(BoxLayout):
@@ -583,7 +575,6 @@ class TimesButtonsBox(BoxLayout):
                 raise NotImplementedError('Unexpected measuring unit. ({})'.format(self.measuring_unit))
             button.time_val = t
             button.bind(on_release=self.increase_time_added)
-            print t
             self.add_widget(button)
 
     def reset_time_added(self, time):
@@ -591,7 +582,7 @@ class TimesButtonsBox(BoxLayout):
 
 
 class ActionTimesBox(BoxLayout):
-    action_inst = ObjectProperty()
+    action = ObjectProperty()
     description = StringProperty()
     minutes_lst = ListProperty()
     hours_lst = ListProperty()
@@ -599,9 +590,14 @@ class ActionTimesBox(BoxLayout):
     def __init__(self, **kwargs):
         super(ActionTimesBox, self).__init__(**kwargs)
 
+    def reset_times_lists(self, *args):
+        self.minutes_lst = ()
+        self.hours_lst = ()
+
     def set_times_lists(self, *args):
-        time_data = self.action_inst.TIME_DATA
+        time_data = self.action.TIME_DATA
         if not time_data:
+            self.reset_times_lists()
             return
 
         self.minutes_lst = time_data.minutes_tpl
@@ -616,16 +612,59 @@ class TodayPage(Carousel):
 
 
 class MainWidget(Carousel):
-    subjects_instances = ListProperty(DISPLAYED_SUBJECTS_INSTANCES)
-
     def __init__(self, **kwargs):
         super(MainWidget, self).__init__(**kwargs)
 
+
+# ---------------------------------------------------------------------------------------------------
+"""# Storage file is checked/stored in different dir on androids
+# to avoid overwriting it during updates.
+storage_file = 'storage.json'
+if platform == 'android':
+    storage_file = '/'.join([str(App.user_data_dir), storage_file])
+elif platform in ('ios', 'win'):
+    raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
+_store = JsonStore(storage_file)
+if not _store:
+   """
 
 class EffRpgApp(App):
     def build(self):
         main_widg = MainWidget()
         return main_widg
+
+    def modify_action(self, subj, act, time_added):
+        """Modifies subject's DictProperty.
+
+        If `time` or `compl_ratio` is not provided,
+        they will be set to their current value.
+
+        :param subj: (class)
+        :param act: (class)
+        :param time_added: (float) or 'same'
+        :return: (None)
+        """
+        subj_n = subj.name()
+        act_n = act.name()
+        # (e.g. athletics[cardioaction])
+        old_time, old_compl_ratio = getattr(self, subj_n)[act_n]
+        tot_time = time_added + old_time
+
+        compl_ratio = act.completion_ratio(hours_invested=tot_time)
+        if compl_ratio == 'undefined':
+            compl_ratio = not old_compl_ratio
+
+        subj_dct = getattr(self, subj_n)
+        subj_dct[act_n] = (tot_time, compl_ratio)
+
+
+# Create tracked properties of all subjects and their actions.
+DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
+
+for s in ALL_SUBJECTS:
+    s_name = s.name()
+    d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
+    setattr(EffRpgApp, s_name, DictProperty(d))
 
 
 if __name__ == '__main__':

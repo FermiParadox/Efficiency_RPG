@@ -1,6 +1,7 @@
 #:kivy 1.9.1
 
 #:import main main
+#:import App kivy.app
 
 
 <Label>:
@@ -46,7 +47,8 @@
 
 <SubjectBar>:
     max: 1
-    value: self.subj_inst.goal_achieved_ratio
+    subj_dict: getattr(app, self.subj.name())
+    value: sum(self.subj_dict[a][0] for a in self.subj_dict)
 
 <SubjectBarBox>:
     orientation: 'horizontal'
@@ -55,7 +57,7 @@
         size_hint_x: .25
         source: root.image_path
     SubjectBar:
-        subj_inst: root.subj_inst
+        subj: root.subj
 
 <SubjectsBarsBox>:
     orientation: 'vertical'
@@ -110,28 +112,27 @@
         id: today_page
 
         SubjectsBarsBox
-            subjects_instances: main_widg.subjects_instances
         SubjectSelectionSlide
             id: subj_selection_slide
-            subjects_instances: main_widg.subjects_instances
-            on_subjects_instances: self.populate_page()
         ActionsSlide:
             SubjectBarBox:
-                subj_inst: subj_selection_slide.subj_inst
+                subj: subj_selection_slide.subj
                 size_hint_y: .3
             ActionsGrid:
                 id: actions_grid
                 size_hint_y: .7
-                subj_inst: subj_selection_slide.subj_inst
-                on_subj_inst: self.populate_grid()
+                subj: subj_selection_slide.subj
+                on_subj: self.populate_grid()
             ActionTimesBox
                 id: action_times_box
                 orientation: 'vertical'
 
                 minutes_box: minutes_box
                 hours_box: hours_box
-                action_inst: actions_grid.action_inst
-                on_action_inst: self.set_times_lists()
+                action: actions_grid.action
+                on_action: self.set_times_lists()
+                subj: subj_selection_slide.subj
+                on_subj: self.reset_times_lists()
 
                 Label:
                     text: action_times_box.description
@@ -146,23 +147,25 @@
                     size_hint_y: .4
                     measuring_unit: 'h'
                     times_seq: action_times_box.hours_lst
-                    on_time_added: print(self.time_added)
                 BoxLayout:
                     size_hint_y: .2
-                    Label
+                    Label:
+                        hours: int(confirm_button.time_added)
+                        minutes: int((confirm_button.time_added - self.hours) * 60)
+                        text: "Extra time: {}h {}'".format(self.hours, self.minutes)
                     ButtonD:
+                        id: confirm_button
                         text: 'ok'
-                        on_release: action_times_box.action_inst.time_invested += minutes_box.time_added + hours_box.time_added
-                        on_release: print(action_times_box.action_inst.time_invested)
-                        on_release: print(hours_box.time_added)
+                        time_added: minutes_box.time_added + hours_box.time_added
+                        on_release: app.modify_action(subj=subj_selection_slide.subj, act=action_times_box.action, time_added=self.time_added)
                         on_release: minutes_box.reset_time_added(time=.3)
                         on_release: hours_box.reset_time_added(time=.3)
                         on_release: self.disable_for(.53)
                     ButtonD:
-                        text: 'delete'
+                        text: 'cancel'
                         on_release: minutes_box.reset_time_added(time=.1)
                         on_release: hours_box.reset_time_added(time=.1)
-                    Label
+
 
 
 # PASTE-TEMPLATE
