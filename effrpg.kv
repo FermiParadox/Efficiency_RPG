@@ -46,8 +46,9 @@
 
 
 <SubjectBar>:
+    subj_dicts_changed: app.subj_dicts_changed
     max: 1
-    subj_dict: getattr(app, self.subj.name())
+    on_subj_dicts_changed: self.subj_dict = getattr(app, self.subj.name())
     value: sum(self.subj_dict[a][0] for a in self.subj_dict)
 
 <SubjectBarBox>:
@@ -126,7 +127,6 @@
             ActionTimesBox
                 id: action_times_box
                 orientation: 'vertical'
-
                 minutes_box: minutes_box
                 hours_box: hours_box
                 action: actions_grid.action

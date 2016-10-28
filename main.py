@@ -362,13 +362,16 @@ class _Subject(object):
     def CUMULATIVE_COMPLETION_TIME_AND_ACTIONS(self):
         pass
 
-    @property
-    def _time_invested(self):
-        return sum(a.time_invested for a in self.ACTIONS_SEQUENCE)
+    @classmethod
+    def tot_time_invested(cls):
+        return sum(a.time_invested for a in cls.ACTIONS_SEQUENCE)
 
-    @property
-    def goal_achieved_ratio(self):
-        return sum(a.completion_ratio * a.BAR_GOAL_HINT for a in self.ACTIONS_SEQUENCE)
+    @classmethod
+    def goal_achieved_ratio(cls, subj_dct):
+        tot_ratio = 0
+        for a in cls.ACTIONS_SEQUENCE:
+            tot_ratio += subj_dct[a][1] * a.BAR_GOAL_HINT
+        return tot_ratio
 
 
 # Paste-template
@@ -497,6 +500,7 @@ class SubjectSelectionSlide(GridLayout):
 # ---------------------------------------------------------------------------------------------------
 class SubjectBar(MyProgressBar):
     subj = ObjectProperty(DUMMY_SUBJ_CLASS)
+    subj_dict = DictProperty()
 
     def __init__(self, **kwargs):
         super(SubjectBar, self).__init__(**kwargs)
@@ -508,6 +512,7 @@ class SubjectBarBox(BoxLayout):
 
     def __init__(self, **kwargs):
         super(SubjectBarBox, self).__init__(**kwargs)
+        self.on_subj()
 
     def on_subj(self, *a):
         self.image_path = image_path(im_name=self.subj.ICON_IMAGE_NAME)
@@ -629,6 +634,8 @@ if not _store:
    """
 
 class EffRpgApp(App):
+    subj_dicts_changed = BooleanProperty(False)
+
     def build(self):
         main_widg = MainWidget()
         return main_widg
@@ -657,6 +664,8 @@ class EffRpgApp(App):
         subj_dct = getattr(self, subj_n)
         subj_dct[act_n] = (tot_time, compl_ratio)
 
+    def _on_subj_dict_base(self, *args):
+        self.subj_dicts_changed = True
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
@@ -665,6 +674,7 @@ for s in ALL_SUBJECTS:
     s_name = s.name()
     d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
     setattr(EffRpgApp, s_name, DictProperty(d))
+    setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
 
 
 if __name__ == '__main__':
