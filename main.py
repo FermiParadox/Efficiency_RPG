@@ -362,17 +362,6 @@ class _Subject(object):
     def CUMULATIVE_COMPLETION_TIME_AND_ACTIONS(self):
         pass
 
-    @classmethod
-    def tot_time_invested(cls):
-        return sum(a.time_invested for a in cls.ACTIONS_SEQUENCE)
-
-    @classmethod
-    def goal_achieved_ratio(cls, subj_dct):
-        tot_ratio = 0
-        for a in cls.ACTIONS_SEQUENCE:
-            tot_ratio += subj_dct[a][1] * a.BAR_GOAL_HINT
-        return tot_ratio
-
 
 # Paste-template
 """
@@ -636,6 +625,7 @@ if not _store:
 class EffRpgApp(App):
     # Each change adds 1 in order to be able to constantly use the Property,
     # without redundant checks, and val reset.
+    SUBJS_LOWER_NAMES = []
     subj_dicts_changed = NumericProperty(0)
 
     def build(self):
@@ -666,6 +656,28 @@ class EffRpgApp(App):
         subj_dct = getattr(self, subj_n)
         subj_dct[act_n] = (tot_time, compl_ratio)
 
+    def subj_goal_ratio_and_time(self, subj):
+        subj_dct = getattr(self, subj.name())
+        acts_seq = subj.ACTIONS_SEQUENCE
+        n = len(acts_seq) or 1  # (avoid div by 0)
+        tot_ratio = 0.
+        tot_hours = 0.
+        for a in acts_seq:
+            a_name = a.name()
+            tot_ratio += subj_dct[a_name][0] * a.BAR_GOAL_HINT
+            tot_hours += subj_dct[a_name][1]
+        return tot_ratio/n, tot_hours
+
+    def daily_goal_ratio_and_time(self):
+        n = len(ALL_SUBJECTS)
+        tot_ratio = 0.
+        tot_hours = 0.
+        for s in ALL_SUBJECTS:
+            new_t, new_r = self.subj_goal_ratio_and_time(subj=s)
+            tot_ratio += new_t
+            tot_hours += new_r
+        return tot_ratio/n, tot_hours
+
     def _on_subj_dict_base(self, *args):
         self.subj_dicts_changed += 1
 
@@ -677,6 +689,7 @@ for s in ALL_SUBJECTS:
     d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
     setattr(EffRpgApp, s_name, DictProperty(d))
     setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
+    EffRpgApp.SUBJS_LOWER_NAMES.append(s_name)
 
 
 if __name__ == '__main__':

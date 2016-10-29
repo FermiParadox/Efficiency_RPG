@@ -114,7 +114,17 @@
     TodayPage:
         id: today_page
 
-        SubjectsBarsBox
+        BoxLayout:
+            orientation: 'vertical'
+            SubjectsBarsBox
+            Label:
+                size_hint_y: .2
+                subj_dicts_changed: app.subj_dicts_changed
+                text: 'Goals: {}% \nWork hours: {}'.format(*app.daily_goal_ratio_and_time())
+                on_subj_dicts_changed: self.text = 'Goals: {:.0%} \nWork hours: {}'.format(*app.daily_goal_ratio_and_time())
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
         SubjectSelectionSlide
             id: subj_selection_slide
         ActionsSlide:
