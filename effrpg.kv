@@ -50,6 +50,8 @@
     max: 1
     on_subj_dicts_changed: self.subj_dict = getattr(app, self.subj.name())
     value: sum(self.subj_dict[a][0] for a in self.subj_dict)
+    on_subj: self.subj_dict = getattr(app, self.subj.name())
+
 
 <SubjectBarBox>:
     orientation: 'horizontal'

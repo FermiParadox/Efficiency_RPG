@@ -514,7 +514,7 @@ class SubjectBarBox(BoxLayout):
         super(SubjectBarBox, self).__init__(**kwargs)
         self.on_subj()
 
-    def on_subj(self, *a):
+    def on_subj(self, *args):
         self.image_path = image_path(im_name=self.subj.ICON_IMAGE_NAME)
 
 
@@ -634,7 +634,9 @@ if not _store:
    """
 
 class EffRpgApp(App):
-    subj_dicts_changed = BooleanProperty(False)
+    # Each change adds 1 in order to be able to constantly use the Property,
+    # without redundant checks, and val reset.
+    subj_dicts_changed = NumericProperty(0)
 
     def build(self):
         main_widg = MainWidget()
@@ -665,7 +667,7 @@ class EffRpgApp(App):
         subj_dct[act_n] = (tot_time, compl_ratio)
 
     def _on_subj_dict_base(self, *args):
-        self.subj_dicts_changed = True
+        self.subj_dicts_changed += 1
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
