@@ -8,6 +8,11 @@
     markup: True
     color: 0,0,0,1
 
+<Button>:
+    background_normal: 'own_images/simple_grey_button.png'
+    background_down: 'own_images/simple_grey_button_pressed.png'
+    background_disabled_normal: self.background_down
+
 <MyProgressBar>:
     max: 1
     value: 0
@@ -18,8 +23,6 @@
     # that is, None-type value, resulting in ignoring size_hint
     filled_ratio: max(.00001, min(.9999, float(self.value) / self.max))
     empty_ratio: 1-self.filled_ratio
-    filled_color: 0,1,0,1
-    empty_color: 1,0,0,1
 
     size_hint_y: .5
     pos_hint: {'center_x': .5, 'center_y': .5}
@@ -48,6 +51,9 @@
 <SubjectBar>:
     subj_dicts_changed: app.subj_dicts_changed
     max: 1
+    on_subj:
+        if self.subj.FILLER: self.empty_color = (.2,.2,.2,1); self.filled_color = (0,.4,0,1)
+        else: self.empty_color = self.DEFAULT_EMPTY_COLOR; self.filled_color = self.DEFAULT_FILLED_COLOR
     on_subj_dicts_changed: self.subj_dict = getattr(app, self.subj.name())
     on_subj_dicts_changed: self.value = app.subj_goal_ratio_and_time(subj=self.subj)[0]
     value: app.subj_goal_ratio_and_time(subj=self.subj)[0]
@@ -70,6 +76,12 @@
 <ActionsSlide@BoxLayout>:
     orientation: 'vertical'
 
+<FocusBox@BoxLayout>:
+    Image:
+        source: main.image_path(im_name='aim.png')
+    FocusButton:
+        text: '{}%'.format(self.focus_percent)
+        on_text: app.focus_percent
 
 
 <TodayPage>:
@@ -118,9 +130,12 @@
         BoxLayout:
             orientation: 'vertical'
             SubjectsBarsBox
+            FocusBox
+                size_hint_y: .2
             Label:
                 size_hint_y: .2
                 subj_dicts_changed: app.subj_dicts_changed
+                bold: True
                 text: 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
                 on_subj_dicts_changed: self.text = 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
                 text_size: self.size
@@ -165,8 +180,10 @@
                     Label:
                         hours: int(confirm_button.time_added)
                         minutes: int((confirm_button.time_added - self.hours) * 60)
-                        text: "Extra time: +{}:{:0<2}".format(self.hours, self.minutes)
+                        bold: True
+                        text: "+{}:{:0<2}".format(self.hours, self.minutes)
                     ButtonD:
+                        size_hint_y: .8
                         id: confirm_button
                         text: 'ok'
                         time_added: minutes_box.time_added + hours_box.time_added
@@ -175,6 +192,7 @@
                         on_release: hours_box.reset_time_added(time=.3)
                         on_release: self.disable_for(.53)
                     ButtonD:
+                        size_hint_y: .8
                         text: 'cancel'
                         on_release: minutes_box.reset_time_added(time=.1)
                         on_release: hours_box.reset_time_added(time=.1)

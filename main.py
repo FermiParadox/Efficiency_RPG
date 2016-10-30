@@ -11,7 +11,8 @@ if 1:
 from kivy.app import App
 from kivy.uix.button import Button as Button
 from kivy.animation import Animation
-from kivy.uix.label import Label as Label
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
 from kivy.properties import ObjectProperty, DictProperty, NumericProperty, BooleanProperty, ListProperty, StringProperty
 from kivy.storage.jsonstore import JsonStore
 from kivy.uix.boxlayout import BoxLayout
@@ -179,18 +180,6 @@ class (_Action):
 """
 
 
-class FocusAction(_Action):
-    TITLE = 'Focus'
-    ICON_IMAGE_NAME = 'aim.png'
-    TIME_DATA = _TimeData(description="Mins wasted / 10' ",
-                          minutes_tpl=(1, 2, 5),
-                          hours_tpl=(),
-                          completion_time=None)
-    BAR_GOAL_HINT = 0
-    MARK_WHEN_OMITTED = True
-    DAYS_APPEARING = 'all'
-
-
 class RunningAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'heart.png'
@@ -279,7 +268,7 @@ class TeachingAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
-                          completion_time=None)
+                          completion_time=9)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -317,27 +306,19 @@ class StudyScienceAction(_Action):
 
 # ---------------------------------------------------------------------------------------------------
 class _Subject(object):
-    """
-    A subject (e.g. "athletics") contains various "actions" (e.g. aerobic).
-
-    Non-"filler" subjects have their own bar (e.g. "athletics"),
-    otherwise they fill existing bars (e.g. "failed_goals") and
-    are taken into account in productivity estimation.
-    """
-
     __metaclass__ = abc.ABCMeta
 
     @classmethod
     def name(cls):
         return cls.__name__.lower()
 
-    # `None` if subject is not a filler, otherwise an `int` indicating bar display-priority.
     @abc.abstractproperty
     def TITLE(self):
         pass
 
+    # Filler-subjects have no requirements.
     @abc.abstractproperty
-    def FILLER_PRIORITY(self):
+    def FILLER(self):
         pass
 
     @abc.abstractproperty
@@ -365,7 +346,7 @@ class _Subject(object):
 """
 class (_Subject):
     TITLE =
-    FILLER_PRIORITY =
+    FILLER =
     BAR_COLOR =
     ICON_IMAGE_NAME =
     ACTIONS_SEQUENCE =
@@ -376,7 +357,7 @@ class (_Subject):
 
 class Athletics(_Subject):
     TITLE = 'Athletics'
-    FILLER_PRIORITY = None
+    FILLER = None
     BAR_COLOR = 'purple'
     ICON_IMAGE_NAME = 'fight_stance.png'
     ACTIONS_SEQUENCE = (RunningAction,
@@ -388,19 +369,18 @@ class Athletics(_Subject):
 
 class Physics(_Subject):
     TITLE = 'Physics'
-    FILLER_PRIORITY = None
+    FILLER = None
     BAR_COLOR = 'blue'
     ICON_IMAGE_NAME = 'nasa_sun.png'
     ACTIONS_SEQUENCE = (Course1Action,
                         Course2Action,
-                        Course3Action,
-                        FocusAction)
-    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE) - {FocusAction})
+                        Course3Action)
+    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE))
 
 
 class Programming(_Subject):
     TITLE = 'Programming'
-    FILLER_PRIORITY = None
+    FILLER = None
     BAR_COLOR = 'green'
     ICON_IMAGE_NAME = 'programming.png'
     ACTIONS_SEQUENCE = (ProgrammingAction,)
@@ -409,7 +389,7 @@ class Programming(_Subject):
 
 class Teaching(_Subject):
     TITLE = 'Teaching'
-    FILLER_PRIORITY = 2
+    FILLER = True
     BAR_COLOR = 'light_green'
     ICON_IMAGE_NAME = 'teaching_pictogram.png'
     ACTIONS_SEQUENCE = (TeachingAction,)
@@ -418,7 +398,7 @@ class Teaching(_Subject):
 
 class Health(_Subject):
     TITLE = 'Health'
-    FILLER_PRIORITY = None
+    FILLER = False
     BAR_COLOR = 'light_blue'
     ICON_IMAGE_NAME = 'medicine.png'
     ACTIONS_SEQUENCE = (SleepStartAction, BreaksAction,)
@@ -427,7 +407,7 @@ class Health(_Subject):
 
 class Science(_Subject):
     TITLE = 'Science'
-    FILLER_PRIORITY = None
+    FILLER = False
     BAR_COLOR = 'light_green'
     ICON_IMAGE_NAME = 'science.png'
     ACTIONS_SEQUENCE = (StudyScienceAction,)
@@ -436,7 +416,7 @@ class Science(_Subject):
 
 class FailedGoals(_Subject):
     TITLE = 'Failed goals'
-    FILLER_PRIORITY = 1
+    FILLER = False
     BAR_COLOR = 'red'
     ICON_IMAGE_NAME = ''
     ACTIONS_SEQUENCE = ()
@@ -444,7 +424,8 @@ class FailedGoals(_Subject):
 
 
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
-DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health,)
+DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health, Teaching)
+NON_FILLERS_SUBJECTS = [s for s in ALL_SUBJECTS if not s.FILLER]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
@@ -452,6 +433,10 @@ DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
 
 # ---------------------------------------------------------------------------------------------------
 class MyProgressBar(Widget):
+    DEFAULT_FILLED_COLOR = 0,1,0,1
+    DEFAULT_EMPTY_COLOR = 1,0,0,1
+    filled_color = ListProperty(DEFAULT_FILLED_COLOR)
+    empty_color = ListProperty(DEFAULT_EMPTY_COLOR)
     filled_ratio = NumericProperty(.01)
     empty_ratio = NumericProperty(.01)
 
@@ -596,11 +581,29 @@ class ActionTimesBox(BoxLayout):
         self.hours_lst = time_data.hours_tpl
 
 
+class FocusButton(Button):
+    focus_percent = NumericProperty()
 
+    def __init__(self, **kwargs):
+        super(FocusButton, self).__init__(**kwargs)
+        self.popup = Popup(title='Focus percentage: ',
+                           size_hint=[.9, .7], separator_color=(0, 0, 0, 0))
+        self.buttons_box = GridLayout(cols=3)
+        self.popup.add_widget(self.buttons_box)
+        self.populate_buttons_box()
+        self.bind(on_release=self.popup.open)
+
+    def populate_buttons_box(self, *args):
+        for n in xrange(10, 101, 10):
+            b = Button(text=str(n))
+            b.val = n
+            b.bind(on_release=lambda btn=b: setattr(self, 'focus_percent', btn.val))
+            self.buttons_box.add_widget(b)
 
 
 class TodayPage(Carousel):
-    pass
+    def __init__(self, **kwargs):
+        super(TodayPage, self).__init__(loop=True, **kwargs)
 
 
 class MainWidget(Carousel):
@@ -623,12 +626,15 @@ if not _store:
 class EffRpgApp(App):
     # Each change adds 1 in order to be able to constantly use the Property,
     # without redundant checks, and val reset.
-    SUBJS_LOWER_NAMES = []
     subj_dicts_changed = NumericProperty(0)
+    focus_percent = NumericProperty(0)
 
     def build(self):
         main_widg = MainWidget()
         return main_widg
+
+    def on_focus_percent(self, *args):
+        self.subj_dicts_changed()
 
     def modify_action(self, subj, act, time_added):
         """Modifies subject's DictProperty.
@@ -648,8 +654,6 @@ class EffRpgApp(App):
         if compl_ratio == 'undefined':
             compl_ratio = not old_compl_ratio
             tot_time = 1.
-        print '====='
-        print subj_n, act, (tot_time, compl_ratio)
         subj_dct = getattr(self, subj_n)
         subj_dct[act_n] = (tot_time, compl_ratio)
 
@@ -685,17 +689,17 @@ class EffRpgApp(App):
                 n += hint
 
         n = n or 1  # (avoid ZeroDivisionError)
-        print tot_ratio_achieved, n, subj
         return tot_ratio_achieved/n, tot_hours
 
     def daily_goal_ratio_and_time(self):
-        n = len(ALL_SUBJECTS)
+        n = len(NON_FILLERS_SUBJECTS)
         tot_ratio_achieved = 0.
         tot_hours = 0.
         for s in ALL_SUBJECTS:
             new_t, new_r = self.subj_goal_ratio_and_time(subj=s)
-            tot_ratio_achieved += new_t
             tot_hours += new_r
+            if not s.FILLER:
+                tot_ratio_achieved += new_t
         return tot_ratio_achieved/n, tot_hours
 
     def _on_subj_dict_base(self, *args):
@@ -709,7 +713,6 @@ for s in ALL_SUBJECTS:
     d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
     setattr(EffRpgApp, s_name, DictProperty(d))
     setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
-    EffRpgApp.SUBJS_LOWER_NAMES.append(s_name)
 
 
 if __name__ == '__main__':
