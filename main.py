@@ -61,6 +61,7 @@ def image_path(im_name):
 
 
 # ---------------------------------------------------------------------------------------------------
+# Misc
 CENTER_POS_HINT = {'center_x': .5, 'center_y': .5}
 
 FAINT_BLACK = (0,0,0,.1)
@@ -130,28 +131,28 @@ class _Action(object):
     # Displayed on action's icon. Can be empty str.
     @abc.abstractproperty
     def TITLE(self):
-        raise NotImplementedError
+        pass
 
     @abc.abstractproperty
     def ICON_IMAGE_NAME(self):
-        raise NotImplementedError
+        pass
 
     # `None` or "time_data_object". Used for time buttons when action is selected.
     @abc.abstractproperty
     def TIME_DATA(self):
-        raise NotImplementedError
+        pass
 
     # Bar size ratio from 0. to 1.
     # e.g. if 3 actions with BAR_GOAL_HINTs 1., .5, .5,
     # then they ll take up 50%, 25%, 25%.
     @abc.abstractproperty
     def BAR_GOAL_HINT(self):
-        raise NotImplementedError
+        pass
 
     # `bool`; Mark on subject's bar when this action is omitted (e.g. "Sleep time")
     @abc.abstractproperty
     def MARK_WHEN_OMITTED(self):
-        raise NotImplementedError
+        pass
 
     # 'all' or `tuple` of specific days the action is a goal or `int` of days per week
     @abc.abstractproperty
@@ -244,7 +245,7 @@ class Course1Action(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
-                          completion_time=1)
+                          completion_time=1.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -287,10 +288,7 @@ class TeachingAction(_Action):
 class BreaksAction(_Action):
     TITLE = ''
     ICON_IMAGE_NAME = 'resting.png'
-    TIME_DATA = _TimeData(description='min / hour',
-                          minutes_tpl=(5, 10),
-                          hours_tpl=(),
-                          completion_time=None)
+    TIME_DATA = None
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
     DAYS_APPEARING = 'all'
@@ -635,9 +633,6 @@ class EffRpgApp(App):
     def modify_action(self, subj, act, time_added):
         """Modifies subject's DictProperty.
 
-        If `time` or `compl_ratio` is not provided,
-        they will be set to their current value.
-
         :param subj: (class)
         :param act: (class)
         :param time_added: (float) or 'same'
@@ -652,31 +647,56 @@ class EffRpgApp(App):
         compl_ratio = act.completion_ratio(hours_invested=tot_time)
         if compl_ratio == 'undefined':
             compl_ratio = not old_compl_ratio
-
+            tot_time = 1.
+        print '====='
+        print subj_n, act, (tot_time, compl_ratio)
         subj_dct = getattr(self, subj_n)
         subj_dct[act_n] = (tot_time, compl_ratio)
 
     def subj_goal_ratio_and_time(self, subj):
         subj_dct = getattr(self, subj.name())
         acts_seq = subj.ACTIONS_SEQUENCE
-        n = len(acts_seq) or 1  # (avoid div by 0)
-        tot_ratio = 0.
+        n = 0
+        tot_ratio_achieved = 0.
         tot_hours = 0.
-        for a in acts_seq:
-            a_name = a.name()
-            tot_ratio += subj_dct[a_name][0] * a.BAR_GOAL_HINT
-            tot_hours += subj_dct[a_name][1]
-        return tot_ratio/n, tot_hours
+
+        cumulative_compl_tpl = subj.CUMULATIVE_COMPLETION_TIME_AND_ACTIONS
+        if cumulative_compl_tpl:
+            # (cumulative time is considered as a hint==1)
+            cumulative_compl_time = cumulative_compl_tpl[0]
+            n += cumulative_compl_time
+            relevant_actions = cumulative_compl_tpl[1]
+            relevant_acts_time = 0
+            for a in relevant_actions:
+                a_name = a.name()
+                hint = a.BAR_GOAL_HINT
+                hours = subj_dct[a_name][0]
+                tot_hours += hours
+                relevant_acts_time += hours
+                tot_ratio_achieved += subj_dct[a_name][1] * hint
+                n += hint
+            tot_ratio_achieved += min(cumulative_compl_time, relevant_acts_time)
+        else:
+            for a in acts_seq:
+                a_name = a.name()
+                hint = a.BAR_GOAL_HINT
+                tot_hours += subj_dct[a_name][0]
+                tot_ratio_achieved += subj_dct[a_name][1] * hint
+                n += hint
+
+        n = n or 1  # (avoid ZeroDivisionError)
+        print tot_ratio_achieved, n, subj
+        return tot_ratio_achieved/n, tot_hours
 
     def daily_goal_ratio_and_time(self):
         n = len(ALL_SUBJECTS)
-        tot_ratio = 0.
+        tot_ratio_achieved = 0.
         tot_hours = 0.
         for s in ALL_SUBJECTS:
             new_t, new_r = self.subj_goal_ratio_and_time(subj=s)
-            tot_ratio += new_t
+            tot_ratio_achieved += new_t
             tot_hours += new_r
-        return tot_ratio/n, tot_hours
+        return tot_ratio_achieved/n, tot_hours
 
     def _on_subj_dict_base(self, *args):
         self.subj_dicts_changed += 1

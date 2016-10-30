@@ -49,7 +49,8 @@
     subj_dicts_changed: app.subj_dicts_changed
     max: 1
     on_subj_dicts_changed: self.subj_dict = getattr(app, self.subj.name())
-    value: sum(self.subj_dict[a][0] for a in self.subj_dict)
+    on_subj_dicts_changed: self.value = app.subj_goal_ratio_and_time(subj=self.subj)[0]
+    value: app.subj_goal_ratio_and_time(subj=self.subj)[0]
     on_subj: self.subj_dict = getattr(app, self.subj.name())
 
 
@@ -120,8 +121,8 @@
             Label:
                 size_hint_y: .2
                 subj_dicts_changed: app.subj_dicts_changed
-                text: 'Goals: {}% \nWork hours: {}'.format(*app.daily_goal_ratio_and_time())
-                on_subj_dicts_changed: self.text = 'Goals: {:.0%} \nWork hours: {}'.format(*app.daily_goal_ratio_and_time())
+                text: 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
+                on_subj_dicts_changed: self.text = 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
                 text_size: self.size
                 halign: 'center'
                 valign: 'middle'
@@ -164,7 +165,7 @@
                     Label:
                         hours: int(confirm_button.time_added)
                         minutes: int((confirm_button.time_added - self.hours) * 60)
-                        text: "Extra time: {}h {}'".format(self.hours, self.minutes)
+                        text: "Extra time: +{}:{:0<2}".format(self.hours, self.minutes)
                     ButtonD:
                         id: confirm_button
                         text: 'ok'
