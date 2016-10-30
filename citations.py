@@ -118,17 +118,6 @@ KICK = ImageCitation(
     url='https://pixabay.com/en/kickboxing-kick-karate-muay-thai-150330/',
     extra_text='')
 
-HEALTH_2 = ImageCitation(
-    work_name='universal-health-care-3d-transparent-1095124',
-    creation_date='Dec 2015',
-    licence='cc0',
-    adaptation=False,
-    file_names=['health.png'],
-    creator_name=None,
-    creator_pseudonym='Activedia (pixabay user)',
-    url='https://pixabay.com/en/universal-health-care-3d-transparent-1095124/',
-    extra_text='')
-
 HEALTH = ImageCitation(
     work_name='medicine-37101',
     creation_date='April 18, 2012',

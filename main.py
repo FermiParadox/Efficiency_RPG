@@ -33,6 +33,8 @@ from functools import partial
 import abc
 import os
 
+import citations
+
 
 __version__ = '0.0.1'
 
@@ -49,14 +51,14 @@ APP_NAME = 'EffRpg'
 
 # ---------------------------------------------------------------------------------------------------
 OWN_IMAGES_DIR = 'own_images'
-THIRD_PARTY_IMAGES_DIR = 'third_parties_images'
+THIRD_PARTIES_IMAGES_DIR = 'third_parties_images'
 
 
 def image_path(im_name):
     if im_name in os.listdir(OWN_IMAGES_DIR):
         return os.path.join(OWN_IMAGES_DIR, im_name)
-    elif im_name in os.listdir(THIRD_PARTY_IMAGES_DIR):
-        return os.path.join(THIRD_PARTY_IMAGES_DIR, im_name)
+    elif im_name in os.listdir(THIRD_PARTIES_IMAGES_DIR):
+        return os.path.join(THIRD_PARTIES_IMAGES_DIR, im_name)
     else:
         print('\nWARNING: Image name not found in directories. ({})\n'.format(im_name))
 
@@ -439,6 +441,24 @@ class MyProgressBar(Widget):
     empty_color = ListProperty(DEFAULT_EMPTY_COLOR)
     filled_ratio = NumericProperty(.01)
     empty_ratio = NumericProperty(.01)
+
+
+# ---------------------------------------------------------------------------------------------------
+class ConfinedTextLabel(Label):
+    pass
+
+
+class CitationsBox(GridLayout):
+    def __init__(self, **kwargs):
+        super(CitationsBox, self).__init__(cols=2, **kwargs)
+        self.create_citations()
+
+    def create_citations(self):
+        for im_file_name, citation_obj in citations.FIRST_IMAGE_TO_CITATION_MAP.items():
+            im_widg = Image(source='/'.join([THIRD_PARTIES_IMAGES_DIR, im_file_name]),
+                            size_hint=(.3,.3))
+            self.add_widget(im_widg)
+            self.add_widget(ConfinedTextLabel(text=citation_obj.full_text()))
 
 
 # ---------------------------------------------------------------------------------------------------

@@ -13,6 +13,12 @@
     background_down: 'own_images/simple_grey_button_pressed.png'
     background_disabled_normal: self.background_down
 
+<ConfinedTextLabel>:
+    color: 0,0,0,1
+    text_size: self.width * .8, None
+    size_hint_y: None
+    height: self.texture_size[1]
+
 <MyProgressBar>:
     max: 1
     value: 0
@@ -196,6 +202,8 @@
                         text: 'cancel'
                         on_release: minutes_box.reset_time_added(time=.1)
                         on_release: hours_box.reset_time_added(time=.1)
+    CitationsBox:
+        id: citations_page
 
 
 
