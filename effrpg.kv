@@ -140,7 +140,7 @@
             pos: self.pos
             size: self.size
 
-    on_current_slide: if self.current_slide == calendar_page: calendar_page.update_averages_label()
+    on_current_slide: if self.current_slide == calendar_page: calendar_page.update_averages_label(); calendar_page.populate_days_grid()
 
     FloatLayout:
         VersionLabel

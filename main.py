@@ -642,7 +642,6 @@ class CalendarPage(BoxLayout):
         self.add_widget(self.days_grid)
         self.day_label = DayLabel(bold=True, size_hint_y=.2)
         self.add_widget(self.day_label)
-        Clock.schedule_once(self.populate_days_grid, 1)
 
     def update_averages_label(self, *args):
         self.day_label.focus = self.average_focus
@@ -667,6 +666,7 @@ class CalendarPage(BoxLayout):
         return self._average_x_attr(attr_name='focus')
 
     def populate_days_grid(self, *args):
+        self.days_grid.clear_widgets()
         store = self.app.stored_data
         day = datetime.date.today() - datetime.timedelta(days=self.MAX_DAYS_DISPLAYED)
         for n in xrange(1, self.MAX_DAYS_DISPLAYED + 1):
