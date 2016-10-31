@@ -32,6 +32,8 @@ from kivy.event import EventDispatcher
 from functools import partial
 import abc
 import os
+import datetime
+import copy
 
 import citations
 
@@ -357,7 +359,7 @@ class (_Subject):
 """
 
 
-class Athletics(_Subject):
+class AthleticsSubject(_Subject):
     TITLE = 'Athletics'
     FILLER = None
     BAR_COLOR = 'purple'
@@ -369,7 +371,7 @@ class Athletics(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
-class Physics(_Subject):
+class PhysicsSubject(_Subject):
     TITLE = 'Physics'
     FILLER = None
     BAR_COLOR = 'blue'
@@ -380,7 +382,7 @@ class Physics(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE))
 
 
-class Programming(_Subject):
+class ProgrammingSubject(_Subject):
     TITLE = 'Programming'
     FILLER = None
     BAR_COLOR = 'green'
@@ -389,7 +391,7 @@ class Programming(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (2, ACTIONS_SEQUENCE)
 
 
-class Teaching(_Subject):
+class TeachingSubject(_Subject):
     TITLE = 'Teaching'
     FILLER = True
     BAR_COLOR = 'light_green'
@@ -398,7 +400,7 @@ class Teaching(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
-class Health(_Subject):
+class HealthSubject(_Subject):
     TITLE = 'Health'
     FILLER = False
     BAR_COLOR = 'light_blue'
@@ -407,7 +409,7 @@ class Health(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
-class Science(_Subject):
+class ScienceSubject(_Subject):
     TITLE = 'Science'
     FILLER = False
     BAR_COLOR = 'light_green'
@@ -416,17 +418,8 @@ class Science(_Subject):
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
 
 
-class FailedGoals(_Subject):
-    TITLE = 'Failed goals'
-    FILLER = False
-    BAR_COLOR = 'red'
-    ICON_IMAGE_NAME = ''
-    ACTIONS_SEQUENCE = ()
-    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
-
-
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
-DISPLAYED_SUBJECTS = (Athletics, Physics, Programming, Science, Health, Teaching)
+DISPLAYED_SUBJECTS = (AthleticsSubject, PhysicsSubject, ProgrammingSubject, ScienceSubject, HealthSubject, TeachingSubject)
 NON_FILLERS_SUBJECTS = [s for s in ALL_SUBJECTS if not s.FILLER]
 
 # (Needed only for initializations)
@@ -474,8 +467,6 @@ class SubjectSelectionSlide(GridLayout):
 
     def populate_page(self, *args):
         for subj in DISPLAYED_SUBJECTS:
-            if subj == FailedGoals:
-                continue
             box = BoxLayout(orientation='vertical', pos_hint=CENTER_POS_HINT)
             im_path = image_path(im_name=subj.ICON_IMAGE_NAME)
             box.add_widget(Image(source=im_path))
@@ -617,8 +608,12 @@ class FocusButton(Button):
         for n in xrange(10, 101, 10):
             b = Button(text=str(n))
             b.val = n
-            b.bind(on_release=lambda btn=b: setattr(self, 'focus_percent', btn.val))
+            b.bind(on_release=self.set_focus_percent_and_dismiss)
             self.buttons_box.add_widget(b)
+
+    def set_focus_percent_and_dismiss(self, *args):
+        self.focus_percent = args[0].val
+        self.popup.dismiss()
 
 
 class TodayPage(Carousel):
@@ -632,29 +627,75 @@ class MainWidget(Carousel):
 
 
 # ---------------------------------------------------------------------------------------------------
-"""# Storage file is checked/stored in different dir on androids
-# to avoid overwriting it during updates.
-storage_file = 'storage.json'
-if platform == 'android':
-    storage_file = '/'.join([str(App.user_data_dir), storage_file])
-elif platform in ('ios', 'win'):
-    raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
-_store = JsonStore(storage_file)
-if not _store:
-   """
-
 class EffRpgApp(App):
+    LOWERCASE_SUBJECTS_NAMES = []
     # Each change adds 1 in order to be able to constantly use the Property,
     # without redundant checks, and val reset.
     subj_dicts_changed = NumericProperty(0)
     focus_percent = NumericProperty(0)
+    goal_ratio = 0
+    productive_hours = 0
 
     def build(self):
         main_widg = MainWidget()
         return main_widg
 
+    def on_pause(self, *args):
+        return True
+
+    def __init__(self, **kwargs):
+        super(EffRpgApp, self).__init__(**kwargs)
+        self.increment_subj_dicts_changed_scheduled_event = None
+        self.today = ''
+        self.set_today()
+        Clock.schedule_interval(self.set_today, 30*60)
+        # Storage file is checked/stored in different dir on androids
+        # to avoid overwriting it during updates.
+        storage_file_name = 'storage.json'
+        if platform == 'android':
+            storage_file_name = '/'.join([str(self.user_data_dir), storage_file_name])
+        elif platform in ('ios', 'win'):
+            raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
+        self._store = JsonStore(storage_file_name)
+        if self._store and (self.today in self._store):
+            self.update_subjs_dicts_from_store()
+        else:
+            self.store_today_data()
+        self.storage_scheduled_event = None
+
+    def update_subjs_dicts_from_store(self):
+        for k1, v1 in self._store[self.today].items():
+            if k1 != 'subjects_dict':
+                setattr(self, k1, copy.deepcopy(v1))
+            else:
+                for k2, v2 in v1.items():
+                    setattr(self, k2, copy.deepcopy(v2))
+
+    def schedule_storing(self, time=None):
+        time = time or 2.
+        if self.storage_scheduled_event:
+            self.storage_scheduled_event.cancel()
+        self.storage_scheduled_event = Clock.schedule_once(self.store_today_data, time)
+
+    def day_dict(self):
+        self.daily_goal_ratio_and_time()    # (creates hours and goals)
+        day_dct = {'focus_percent': self.focus_percent,
+                   'productive_hours': self.productive_hours,
+                   "goal_ratio": self.goal_ratio,
+                   'subjects_dict': {}}
+        for s_name in self.LOWERCASE_SUBJECTS_NAMES:
+            day_dct['subjects_dict'].update({s_name: getattr(self, s_name)})
+        return day_dct
+
+    def store_today_data(self, *args):
+        self._store[self.today] = self.day_dict()
+
+    def set_today(self, *args):
+        self.today = datetime.date.today().isoformat()
+
     def on_focus_percent(self, *args):
-        self.subj_dicts_changed()
+        print self.focus_percent
+        self._on_subj_dict_base()
 
     def modify_action(self, subj, act, time_added):
         """Modifies subject's DictProperty.
@@ -713,16 +754,27 @@ class EffRpgApp(App):
 
     def daily_goal_ratio_and_time(self):
         n = len(NON_FILLERS_SUBJECTS)
-        tot_ratio_achieved = 0.
+        ratios_sum = 0.
         tot_hours = 0.
         for s in ALL_SUBJECTS:
             new_t, new_r = self.subj_goal_ratio_and_time(subj=s)
             tot_hours += new_r
             if not s.FILLER:
-                tot_ratio_achieved += new_t
-        return tot_ratio_achieved/n, tot_hours
+                ratios_sum += new_t
+        self.goal_ratio = ratios_sum/n
+        self.productive_hours = tot_hours
+        return self.goal_ratio, tot_hours
 
     def _on_subj_dict_base(self, *args):
+        # Scheduling used in order to avoid lots of redundant operations during storage.
+        if self.increment_subj_dicts_changed_scheduled_event:
+            self.increment_subj_dicts_changed_scheduled_event.cancel()
+        self.increment_subj_dicts_changed_scheduled_event = Clock.schedule_once(self.increment_subj_dicts_changed, .2)
+
+    def on_subj_dicts_changed(self, *args):
+        self.schedule_storing()
+
+    def increment_subj_dicts_changed(self, *args):
         self.subj_dicts_changed += 1
 
 # Create tracked properties of all subjects and their actions.
@@ -733,6 +785,7 @@ for s in ALL_SUBJECTS:
     d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
     setattr(EffRpgApp, s_name, DictProperty(d))
     setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
+    EffRpgApp.LOWERCASE_SUBJECTS_NAMES.append(s_name)
 
 
 if __name__ == '__main__':

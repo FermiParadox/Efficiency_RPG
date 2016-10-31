@@ -86,8 +86,10 @@
     Image:
         source: main.image_path(im_name='aim.png')
     FocusButton:
+        focus_percent: app.focus_percent
         text: '{}%'.format(self.focus_percent)
-        on_text: app.focus_percent
+        on_focus_percent: self.text = '{}%'.format(self.focus_percent)
+        on_focus_percent: app.focus_percent = self.focus_percent
 
 
 <TodayPage>:
