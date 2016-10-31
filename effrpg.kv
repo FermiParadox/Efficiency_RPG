@@ -13,6 +13,16 @@
     background_down: 'own_images/simple_grey_button_pressed.png'
     background_disabled_normal: self.background_down
 
+<PaintedLabel>:
+    label_background: 0,0,0,0
+
+    canvas.before:
+        Color:
+            rgba: self.label_background
+        Rectangle:
+            pos: root.pos
+            size: self.size
+
 <ConfinedTextLabel>:
     color: 0,0,0,1
     text_size: self.width * .8, None
@@ -91,6 +101,30 @@
         on_focus_percent: self.text = '{}%'.format(self.focus_percent)
         on_focus_percent: app.focus_percent = self.focus_percent
 
+<DayLabel>:
+    goals: 0
+    hours: 0
+    focus: 0
+    text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(self.goals, self.hours, self.focus)
+
+<DayBox>:
+    MyProgressBar:
+        size_hint: .9,.9
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        value: root.goals
+        max: 1
+    DayLabel:
+        size_hint: .9,.9
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        goals: 0
+        hours: 0
+        focus: 0
+        text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(root.goals, root.hours, root.focus)
+        font_size: '12sp'
+
+<CalendarPage>:
+    orientation: 'vertical'
+    app: app
 
 <TodayPage>:
     direction: 'bottom'
@@ -105,6 +139,8 @@
         Rectangle:
             pos: self.pos
             size: self.size
+
+    on_current_slide: if self.current_slide == calendar_page: calendar_page.update_averages_label()
 
     FloatLayout:
         VersionLabel
@@ -125,7 +161,7 @@
             Button:
                 text: 'Calendar'
                 bold: True
-                on_release: root.load_slide(rewards_page)
+                on_release: root.load_slide(calendar_page)
             Button:
                 text: 'About'
                 on_release: root.load_slide(about_page)
@@ -204,6 +240,8 @@
                         text: 'cancel'
                         on_release: minutes_box.reset_time_added(time=.1)
                         on_release: hours_box.reset_time_added(time=.1)
+    CalendarPage:
+        id: calendar_page
     CitationsBox:
         id: citations_page
 

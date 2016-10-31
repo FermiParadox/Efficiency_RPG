@@ -260,7 +260,7 @@ class ProgrammingAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
-                          completion_time=None)
+                          completion_time=2)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -388,7 +388,7 @@ class ProgrammingSubject(_Subject):
     BAR_COLOR = 'green'
     ICON_IMAGE_NAME = 'programming.png'
     ACTIONS_SEQUENCE = (ProgrammingAction,)
-    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (2, ACTIONS_SEQUENCE)
+    CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = None
 
 
 class TeachingSubject(_Subject):
@@ -436,7 +436,6 @@ class MyProgressBar(Widget):
     empty_ratio = NumericProperty(.01)
 
 
-# ---------------------------------------------------------------------------------------------------
 class ConfinedTextLabel(Label):
     pass
 
@@ -452,6 +451,10 @@ class CitationsBox(GridLayout):
                             size_hint=(.3,.3))
             self.add_widget(im_widg)
             self.add_widget(ConfinedTextLabel(text=citation_obj.full_text()))
+
+
+class PaintedLabel(Label):
+    pass
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -480,7 +483,6 @@ class SubjectSelectionSlide(GridLayout):
             self.add_widget(float_layout)
 
 
-# ---------------------------------------------------------------------------------------------------
 class SubjectBar(MyProgressBar):
     subj = ObjectProperty(DUMMY_SUBJ_CLASS)
     subj_dict = DictProperty()
@@ -616,6 +618,77 @@ class FocusButton(Button):
         self.popup.dismiss()
 
 
+class DayLabel(Label):
+    def __init__(self, **kwargs):
+        super(DayLabel, self).__init__(**kwargs)
+
+
+class DayBox(FloatLayout):
+    focus = NumericProperty()
+    hours = NumericProperty()
+    goals = NumericProperty()
+
+    def __init__(self, **kwargs):
+        super(DayBox, self).__init__(**kwargs)
+
+
+class CalendarPage(BoxLayout):
+    previous_goals_hours_focus_dct = {}
+    MAX_DAYS_DISPLAYED = 30
+
+    def __init__(self, **kwargs):
+        super(CalendarPage, self).__init__(**kwargs)
+        self.days_grid = GridLayout(cols=5)
+        self.add_widget(self.days_grid)
+        self.day_label = DayLabel(bold=True, size_hint_y=.2)
+        self.add_widget(self.day_label)
+        Clock.schedule_once(self.populate_days_grid, 1)
+
+    def update_averages_label(self, *args):
+        self.day_label.focus = self.average_focus
+        self.day_label.hours = self.average_hours
+        self.day_label.goals = self.average_goals
+
+    def _average_x_attr(self, attr_name):
+        n = len(self.previous_goals_hours_focus_dct) or 1
+        tot = sum((d[attr_name] for d in self.previous_goals_hours_focus_dct.values()))
+        return tot / float(n)
+
+    @property
+    def average_hours(self):
+        return self._average_x_attr(attr_name='hours')
+
+    @property
+    def average_goals(self):
+        return self._average_x_attr(attr_name='goals')
+
+    @property
+    def average_focus(self):
+        return self._average_x_attr(attr_name='focus')
+
+    def populate_days_grid(self, *args):
+        store = self.app.stored_data
+        day = datetime.date.today() - datetime.timedelta(days=self.MAX_DAYS_DISPLAYED)
+        for n in xrange(1, self.MAX_DAYS_DISPLAYED + 1):
+            day += datetime.timedelta(days=1)
+            day_as_str = day.isoformat()
+            if day_as_str in store:
+                day_store = store[day_as_str]
+                hours = day_store['productive_hours']
+                focus = day_store['focus_percent']
+                goals = day_store['goal_ratio']
+                day_box = DayBox()
+                day_box.hours = hours
+                day_box.focus = focus
+                day_box.goals = goals
+                self.days_grid.add_widget(day_box)
+                self.previous_goals_hours_focus_dct[day_as_str] = dict(hours=hours, goals=goals, focus=focus)
+            else:
+                self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
+
+
+
+
 class TodayPage(Carousel):
     def __init__(self, **kwargs):
         super(TodayPage, self).__init__(loop=True, **kwargs)
@@ -656,15 +729,15 @@ class EffRpgApp(App):
             storage_file_name = '/'.join([str(self.user_data_dir), storage_file_name])
         elif platform in ('ios', 'win'):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
-        self._store = JsonStore(storage_file_name)
-        if self._store and (self.today in self._store):
+        self.stored_data = JsonStore(storage_file_name)
+        if self.stored_data and (self.today in self.stored_data):
             self.update_subjs_dicts_from_store()
         else:
             self.store_today_data()
         self.storage_scheduled_event = None
 
     def update_subjs_dicts_from_store(self):
-        for k1, v1 in self._store[self.today].items():
+        for k1, v1 in self.stored_data[self.today].items():
             if k1 != 'subjects_dict':
                 setattr(self, k1, copy.deepcopy(v1))
             else:
@@ -688,13 +761,12 @@ class EffRpgApp(App):
         return day_dct
 
     def store_today_data(self, *args):
-        self._store[self.today] = self.day_dict()
+        self.stored_data[self.today] = self.day_dict()
 
     def set_today(self, *args):
         self.today = datetime.date.today().isoformat()
 
     def on_focus_percent(self, *args):
-        print self.focus_percent
         self._on_subj_dict_base()
 
     def modify_action(self, subj, act, time_added):
@@ -780,12 +852,14 @@ class EffRpgApp(App):
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
 
+SUBJS_DICTS_DCT = {}
 for s in ALL_SUBJECTS:
     s_name = s.name()
-    d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
-    setattr(EffRpgApp, s_name, DictProperty(d))
+    act_d = {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in s.ACTIONS_SEQUENCE}
+    setattr(EffRpgApp, s_name, DictProperty(act_d))
     setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
     EffRpgApp.LOWERCASE_SUBJECTS_NAMES.append(s_name)
+    SUBJS_DICTS_DCT.update({s_name: act_d})
 
 
 if __name__ == '__main__':
