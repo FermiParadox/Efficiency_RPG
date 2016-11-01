@@ -424,6 +424,7 @@ NON_FILLERS_SUBJECTS = [s for s in ALL_SUBJECTS if not s.FILLER]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
+DUMMY_ACTION_CLASS = DISPLAYED_SUBJECTS[0].ACTIONS_SEQUENCE[0]
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -437,6 +438,13 @@ class MyProgressBar(Widget):
 
 
 class ConfinedTextLabel(Label):
+    pass
+
+
+# Class code below (including the corresponding in .kv file)
+# by Alexander Taylor
+# from https://github.com/kivy/kivy/wiki/Scrollable-Label
+class ScrollLabel(ScrollView):
     pass
 
 
@@ -454,17 +462,6 @@ class CitationsBox(GridLayout):
 
 
 class PaintedLabel(Label):
-    pass
-
-
-class ConfinedTextLabel(Label):
-    pass
-
-
-# Class code below (including the corresponding in .kv file)
-# by Alexander Taylor
-# from https://github.com/kivy/kivy/wiki/Scrollable-Label
-class ScrollLabel(ScrollView):
     pass
 
 
@@ -486,7 +483,7 @@ class SubjectSelectionSlide(GridLayout):
             box.add_widget(Image(source=im_path))
             box.add_widget(Label(text=subj.TITLE, text_size=self.size, valign='top', halign='center'))
             float_layout = FloatLayout()
-            button = Button(background_color=(1,1,1,.2), pos_hint=CENTER_POS_HINT)
+            button = Button(pos_hint=CENTER_POS_HINT)
             button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj', subj))
             button.bind(on_release=self.set_slide_to_actions)
             float_layout.add_widget(button)
@@ -544,10 +541,10 @@ class ActionsGrid(GridLayout):
         for act in self.subj.ACTIONS_SEQUENCE:
             im_path = image_path(im_name=act.ICON_IMAGE_NAME)
             float_layout = FloatLayout()
-            float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
-            button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
+            button = Button(pos_hint=CENTER_POS_HINT)
             button.bind(on_release=lambda _, act=act: setattr(self, 'action', act))
             float_layout.add_widget(button)
+            float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
             self.add_widget(float_layout)
 
         self.action = self.subj.ACTIONS_SEQUENCE[0]
@@ -584,13 +581,14 @@ class TimesButtonsBox(BoxLayout):
 
 
 class ActionTimesBox(BoxLayout):
-    action = ObjectProperty()
+    action = ObjectProperty(DUMMY_ACTION_CLASS)
     description = StringProperty()
     minutes_lst = ListProperty()
     hours_lst = ListProperty()
 
     def __init__(self, **kwargs):
         super(ActionTimesBox, self).__init__(**kwargs)
+        self.set_times_lists()
 
     def reset_times_lists(self, *args):
         self.minutes_lst = ()
@@ -697,8 +695,6 @@ class CalendarPage(BoxLayout):
                 self.previous_goals_hours_focus_dct[day_as_str] = dict(hours=hours, goals=goals, focus=focus)
             else:
                 self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
-
-
 
 
 class TodayPage(Carousel):
