@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 _KIVY_LICENCE_FIRST_LINE = "Copyright (c) 2010-2016 Kivy Team and other contributors"
 
-with open('LICENSE.TXT') as _license_file:
+with open('LICENSE.txt') as _license_file:
     _license_file_as_str = _license_file.read()
 PROJECT_LICENCE = _license_file_as_str
 

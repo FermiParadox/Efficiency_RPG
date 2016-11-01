@@ -40,7 +40,7 @@ import citations
 
 __version__ = '0.0.1'
 
-APP_NAME = 'EffRpg'
+APP_NAME = 'Efficiency RPG'
 
 # PASTE-TEMPLATE
 """
