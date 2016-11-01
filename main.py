@@ -457,6 +457,17 @@ class PaintedLabel(Label):
     pass
 
 
+class ConfinedTextLabel(Label):
+    pass
+
+
+# Class code below (including the corresponding in .kv file)
+# by Alexander Taylor
+# from https://github.com/kivy/kivy/wiki/Scrollable-Label
+class ScrollLabel(ScrollView):
+    pass
+
+
 # ---------------------------------------------------------------------------------------------------
 class SubjectSelectionSlide(GridLayout):
     subj = ObjectProperty(DISPLAYED_SUBJECTS[0])
@@ -475,12 +486,13 @@ class SubjectSelectionSlide(GridLayout):
             box.add_widget(Image(source=im_path))
             box.add_widget(Label(text=subj.TITLE, text_size=self.size, valign='top', halign='center'))
             float_layout = FloatLayout()
-            float_layout.add_widget(box)
-            button = Button(background_color=FAINT_BLACK, pos_hint=CENTER_POS_HINT)
+            button = Button(background_color=(1,1,1,.2), pos_hint=CENTER_POS_HINT)
             button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj', subj))
             button.bind(on_release=self.set_slide_to_actions)
             float_layout.add_widget(button)
+            float_layout.add_widget(box)
             self.add_widget(float_layout)
+        self.add_widget(Label())
 
 
 class SubjectBar(MyProgressBar):

@@ -2,6 +2,7 @@
 
 #:import main main
 #:import App kivy.app
+#:import about_module about_module
 
 
 <Label>:
@@ -28,6 +29,11 @@
     text_size: self.width * .8, None
     size_hint_y: None
     height: self.texture_size[1]
+
+<ScrollLabel>:
+    text: ''
+    ConfinedTextLabel:
+        text: root.text
 
 <MyProgressBar>:
     max: 1
@@ -242,6 +248,16 @@
                         on_release: hours_box.reset_time_added(time=.1)
     CalendarPage:
         id: calendar_page
+    BoxLayout:
+        id: about_page
+        orientation: 'vertical'
+        Label:
+            size_hint_y: .1
+            text: 'About'
+            font_size: '20sp'
+            bold: True
+        ScrollLabel:
+            text: about_module.ABOUT_TEXT
     CitationsBox:
         id: citations_page
 

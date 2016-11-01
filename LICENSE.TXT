@@ -1,0 +1,5 @@
+Copyright (c) 2016 Fermi Paradox
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITH NO WARRANTY, NEITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF FITNESS FOR USE, MERCHANTABILITY AND NON-INFRINGEMENT. THE AUTHORS OR COPYRIGHT HOLDERS WILL NOT BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, ARISING FROM OR IN CONNECTION WITH THE SOFTWARE.
+
+The Software isn't endorsed by Kivy or any other entity mentioned or included in any way in the Software. The opinions and views in the Software do not necessarily state or reflect those of the aforementioned entities.
