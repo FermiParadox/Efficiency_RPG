@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -481,7 +481,7 @@ class SubjectSelectionSlide(GridLayout):
             box = BoxLayout(orientation='vertical', pos_hint=CENTER_POS_HINT)
             im_path = image_path(im_name=subj.ICON_IMAGE_NAME)
             box.add_widget(Image(source=im_path))
-            box.add_widget(Label(text=subj.TITLE, text_size=self.size, valign='top', halign='center'))
+            box.add_widget(Label(text=subj.TITLE))
             float_layout = FloatLayout()
             button = Button(pos_hint=CENTER_POS_HINT)
             button.bind(on_release=lambda _, subj=subj: setattr(self, 'subj', subj))
