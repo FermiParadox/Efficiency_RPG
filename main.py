@@ -190,7 +190,7 @@ class RunningAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(1,),
-                          completion_time=1.)
+                          completion_time=.5/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -345,6 +345,11 @@ class _Subject(object):
     def CUMULATIVE_COMPLETION_TIME_AND_ACTIONS(self):
         pass
 
+    # From 0 to 1; used as a weight factor for goal completion ratio
+    @abc.abstractproperty
+    def IMPORTANCE(self):
+        pass
+
 
 # Paste-template
 """
@@ -355,6 +360,7 @@ class (_Subject):
     ICON_IMAGE_NAME =
     ACTIONS_SEQUENCE =
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS =
+    IMPORTANCE =
 
 """
 
@@ -369,6 +375,7 @@ class AthleticsSubject(_Subject):
                         LowerBodyAction,
                         MMAAction)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
+    IMPORTANCE = 1
 
 
 class PhysicsSubject(_Subject):
@@ -380,6 +387,7 @@ class PhysicsSubject(_Subject):
                         Course2Action,
                         Course3Action)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = (6, set(ACTIONS_SEQUENCE))
+    IMPORTANCE = 1
 
 
 class ProgrammingSubject(_Subject):
@@ -389,6 +397,7 @@ class ProgrammingSubject(_Subject):
     ICON_IMAGE_NAME = 'programming.png'
     ACTIONS_SEQUENCE = (ProgrammingAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = None
+    IMPORTANCE = 1
 
 
 class TeachingSubject(_Subject):
@@ -398,6 +407,7 @@ class TeachingSubject(_Subject):
     ICON_IMAGE_NAME = 'teaching_pictogram.png'
     ACTIONS_SEQUENCE = (TeachingAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
+    IMPORTANCE = 0
 
 
 class HealthSubject(_Subject):
@@ -407,6 +417,7 @@ class HealthSubject(_Subject):
     ICON_IMAGE_NAME = 'medicine.png'
     ACTIONS_SEQUENCE = (SleepStartAction, BreaksAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
+    IMPORTANCE = 1
 
 
 class ScienceSubject(_Subject):
@@ -416,11 +427,11 @@ class ScienceSubject(_Subject):
     ICON_IMAGE_NAME = 'science.png'
     ACTIONS_SEQUENCE = (StudyScienceAction,)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
+    IMPORTANCE = .5
 
 
 ALL_SUBJECTS = sorted(_Subject.__subclasses__())
 DISPLAYED_SUBJECTS = (AthleticsSubject, PhysicsSubject, ProgrammingSubject, ScienceSubject, HealthSubject, TeachingSubject)
-NON_FILLERS_SUBJECTS = [s for s in ALL_SUBJECTS if not s.FILLER]
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
@@ -833,14 +844,16 @@ class EffRpgApp(App):
         return tot_ratio_achieved/n, tot_hours
 
     def daily_goal_ratio_and_time(self):
-        n = len(NON_FILLERS_SUBJECTS)
+        n = 0.
         ratios_sum = 0.
         tot_hours = 0.
         for s in ALL_SUBJECTS:
-            new_t, new_r = self.subj_goal_ratio_and_time(subj=s)
-            tot_hours += new_r
+            subj_importance = s.IMPORTANCE
+            n += subj_importance
+            subj_time, subj_ratio = self.subj_goal_ratio_and_time(subj=s)
+            tot_hours += subj_ratio * subj_importance
             if not s.FILLER:
-                ratios_sum += new_t
+                ratios_sum += subj_time
         self.goal_ratio = ratios_sum/n
         self.productive_hours = tot_hours
         return self.goal_ratio, tot_hours
