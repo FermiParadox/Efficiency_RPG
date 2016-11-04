@@ -302,7 +302,7 @@ class StudyScienceAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
-                          completion_time=None)
+                          completion_time=1)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'

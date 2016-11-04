@@ -111,7 +111,7 @@
     goals: 0
     hours: 0
     focus: 0
-    text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(self.goals, self.hours, self.focus)
+    text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(self.goals, self.hours, int(self.focus))
 
 <DayBox>:
     MyProgressBar:
@@ -179,7 +179,12 @@
 
         BoxLayout:
             orientation: 'vertical'
-            SubjectsBarsBox
+            FloatLayout:
+                Button:
+                    on_release: today_page.load_slide(subj_selection_slide)
+                SubjectsBarsBox:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+
             FocusBox
                 size_hint_y: .2
             Label:
