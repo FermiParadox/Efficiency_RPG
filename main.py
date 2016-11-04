@@ -118,14 +118,33 @@ class _Action(object):
     __metaclass__ = abc.ABCMeta
 
     @classmethod
-    def completion_ratio(cls, hours_invested):
+    def time_required(cls):
+        completion_time = 0
         time_data = cls.TIME_DATA
         if time_data:
             completion_time = time_data.completion_time
+        return completion_time
 
-            if completion_time:
-                ratio = float(hours_invested) / completion_time
-                return min(ratio, 1.)
+    @classmethod
+    def minutes_required(cls):
+        completion_time = cls.time_required()
+        return int((completion_time % 1) * 60)
+
+    @classmethod
+    def hours_required(cls):
+        completion_time = cls.time_required()
+        return int(completion_time)
+
+    @classmethod
+    def time_required_as_str(cls):
+        return '{:0>1}:{:0>2}'.format(cls.hours_required(), cls.minutes_required())
+
+    @classmethod
+    def completion_ratio(cls, hours_invested):
+        completion_time = cls.time_required()
+        if completion_time:
+            ratio = float(hours_invested) / completion_time
+            return min(ratio, 1.)
 
         return 'undefined'
 
@@ -185,7 +204,7 @@ class (_Action):
 
 
 class RunningAction(_Action):
-    TITLE = ''
+    TITLE = 'Cardio'
     ICON_IMAGE_NAME = 'heart.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
@@ -255,7 +274,7 @@ class Course3Action(Course1Action):
 
 
 class ProgrammingAction(_Action):
-    TITLE = ''
+    TITLE = 'Programming'
     ICON_IMAGE_NAME = 'programming.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
@@ -267,7 +286,7 @@ class ProgrammingAction(_Action):
 
 
 class TeachingAction(_Action):
-    TITLE = ''
+    TITLE = 'Teaching'
     ICON_IMAGE_NAME = 'teaching_pictogram.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
@@ -279,7 +298,7 @@ class TeachingAction(_Action):
 
 
 class BreaksAction(_Action):
-    TITLE = ''
+    TITLE = 'Breaks'
     ICON_IMAGE_NAME = 'resting.png'
     TIME_DATA = None
     BAR_GOAL_HINT = 1
@@ -288,7 +307,7 @@ class BreaksAction(_Action):
 
 
 class SleepStartAction(_Action):
-    TITLE = ''
+    TITLE = 'Sleep early'
     ICON_IMAGE_NAME = 'sleep_early.png'
     TIME_DATA = None
     BAR_GOAL_HINT = 1
@@ -297,7 +316,7 @@ class SleepStartAction(_Action):
 
 
 class StudyScienceAction(_Action):
-    TITLE = ''
+    TITLE = 'General science'
     ICON_IMAGE_NAME = 'book_pictogram.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
@@ -538,6 +557,10 @@ class SubjectsBarsBox(BoxLayout):
             self.add_widget(widg)
 
 
+class ActionImageAndLabel(BoxLayout):
+    action = ObjectProperty()
+
+
 class ActionsGrid(GridLayout):
     subj = ObjectProperty(DUMMY_SUBJ_CLASS)
     action = ObjectProperty()
@@ -550,12 +573,11 @@ class ActionsGrid(GridLayout):
         self.clear_widgets()
 
         for act in self.subj.ACTIONS_SEQUENCE:
-            im_path = image_path(im_name=act.ICON_IMAGE_NAME)
-            float_layout = FloatLayout()
             button = Button(pos_hint=CENTER_POS_HINT)
             button.bind(on_release=lambda _, act=act: setattr(self, 'action', act))
+            float_layout = FloatLayout()
             float_layout.add_widget(button)
-            float_layout.add_widget(Image(source=im_path, pos_hint=CENTER_POS_HINT))
+            float_layout.add_widget(ActionImageAndLabel(action=act, pos_hint=CENTER_POS_HINT))
             self.add_widget(float_layout)
 
         self.action = self.subj.ACTIONS_SEQUENCE[0]

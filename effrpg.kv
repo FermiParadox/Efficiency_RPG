@@ -94,6 +94,24 @@
 <SubjectsBarsBox>:
     orientation: 'vertical'
 
+<ActionImageAndLabel>:
+    orientation: 'vertical'
+
+    Image:
+        source: main.image_path(im_name=root.action.ICON_IMAGE_NAME)
+        size_hint_y: .7
+    BoxLayout:
+        size_hint_y: .2
+        Label:
+            text: '{} '.format(root.action.TITLE)
+            text_size: self.size
+            halign: 'right'
+            valign: 'middle'
+        Label:
+            text: root.action.time_required_as_str()
+            text_size: self.size
+            halign: 'right'
+            valign: 'middle'
 
 <ActionsSlide@BoxLayout>:
     orientation: 'vertical'
