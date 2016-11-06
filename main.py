@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -101,6 +101,22 @@ class _TimeData(object):
         self.completion_time = completion_time
 
 
+# Added to minutes (floats) like "9.9999.." in order to display them correctly
+# when the decimal part is ignored.
+# WARNING !!! Values that are indeed less than "10." will become "10."
+# but this should not be a problem in this program.
+# WARNING !!! 10**-10 assumes the error occurs on the 11th decimal,
+# that is, there are 5 or less significant integers.
+# https://github.com/kivy/kivy/pull/4579#issuecomment-244723457
+FLOAT_COMPENSATOR = 10**-10
+
+
+def time_as_string(t):
+    m = (t % 1) * 60
+    h = int(t)
+    return '{:0>1}:{:0>2}'.format(int(h + FLOAT_COMPENSATOR), int(m + FLOAT_COMPENSATOR))
+
+
 # Paste-template
 """
 _TimeData(description=,
@@ -119,25 +135,25 @@ class _Action(object):
 
     @classmethod
     def time_required(cls):
-        completion_time = 0
+        t = 0
         time_data = cls.TIME_DATA
         if time_data:
-            completion_time = time_data.completion_time
-        return completion_time
+            t = time_data.completion_time
+        return t
 
     @classmethod
     def minutes_required(cls):
-        completion_time = cls.time_required()
-        return int((completion_time % 1) * 60)
+        t = cls.time_required()
+        return int((t % 1) * 60)
 
     @classmethod
     def hours_required(cls):
-        completion_time = cls.time_required()
-        return int(completion_time)
+        t = cls.time_required()
+        return int(t)
 
     @classmethod
     def time_required_as_str(cls):
-        return '{:0>1}:{:0>2}'.format(cls.hours_required(), cls.minutes_required())
+        return time_as_string(t=cls.time_required())
 
     @classmethod
     def completion_ratio(cls, hours_invested):
@@ -209,7 +225,7 @@ class RunningAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(1,),
-                          completion_time=.5/60.)
+                          completion_time=5/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'

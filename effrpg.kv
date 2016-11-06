@@ -129,7 +129,7 @@
     goals: 0
     hours: 0
     focus: 0
-    text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(self.goals, self.hours, int(self.focus))
+    text: 'Goals: {:.0%}\n{}\nFocus: {}%'.format(self.goals, main.time_as_string(t=self.hours), int(self.focus))
 
 <DayBox>:
     MyProgressBar:
@@ -156,6 +156,9 @@
 
 <MainWidget>:
     id: main_widg
+    daily_ratio_and_time: app.daily_goal_ratio_and_time()
+    daily_ratio: self.daily_ratio_and_time[0]
+    daily_time: self.daily_ratio_and_time[1]
 
     canvas.before:
         Color:
@@ -210,8 +213,8 @@
                 size_hint_y: .2
                 subj_dicts_changed: app.subj_dicts_changed
                 bold: True
-                text: 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
-                on_subj_dicts_changed: self.text = 'Goals: {:.0%} \nWork hours: {:.1f}'.format(*app.daily_goal_ratio_and_time())
+                text: 'Goals: {:.0%} \nWork hours: {}'.format(root.daily_ratio, main.time_as_string(t=root.daily_time))
+                on_subj_dicts_changed: root.daily_ratio_and_time = app.daily_goal_ratio_and_time()
                 text_size: self.size
                 halign: 'center'
                 valign: 'middle'
@@ -252,10 +255,8 @@
                 BoxLayout:
                     size_hint_y: .2
                     Label:
-                        hours: int(confirm_button.time_added)
-                        minutes: int((confirm_button.time_added - self.hours) * 60)
                         bold: True
-                        text: "+{}:{:0>2}".format(self.hours, self.minutes)
+                        text: main.time_as_string(t=confirm_button.time_added)
                     ButtonD:
                         size_hint_y: .8
                         id: confirm_button

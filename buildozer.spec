@@ -22,10 +22,10 @@ source.include_exts = py,png,jpg,kv,atlas,txt
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = tests, bin, ignore_build_images, buildozer
+source.exclude_dirs = tests, bin, ignore_build_images, buildozer, .buildozer
 
 # (list) List of exclusions using pattern matching
-source.exclude_patterns = IGNORE_BUILD_ensure_images_cited.py, IGNORE_BUILD_ensure_images_cited.pyo, exp1.py, exp2.py, exp3.py, my_log.txt, storage.json
+source.exclude_patterns = ignore_build_ensure_images_cited.py, ignore_build_ensure_images_cited.pyo, exp1.py, exp2.py, exp3.py, my_log.txt, storage.json
 
 # (str) Application versioning (method 1)
 #version = 0.1
