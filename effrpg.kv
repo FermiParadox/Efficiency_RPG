@@ -10,9 +10,20 @@
     color: 0,0,0,1
 
 <Button>:
+    border: 0,0,0,0
     background_normal: 'own_images/simple_grey_button.png'
     background_down: 'own_images/simple_grey_button_pressed.png'
     background_disabled_normal: self.background_down
+
+<GridLayout>:
+    grid_background: 1,1,1,1
+
+    canvas.before:
+        Color:
+            rgba: self.grid_background
+        Rectangle:
+            pos: self.pos
+            size: self.size
 
 <PaintedLabel>:
     label_background: 0,0,0,0
@@ -32,8 +43,10 @@
 
 <ScrollLabel>:
     text: ''
+    color: 0,0,0,1
     ConfinedTextLabel:
         text: root.text
+        color: root.color
 
 <MyProgressBar>:
     max: 1
@@ -162,7 +175,7 @@
 
     canvas.before:
         Color:
-            rgba: .8,.8,.8,1
+            rgba: .9,.9,1,1
         Rectangle:
             pos: self.pos
             size: self.size

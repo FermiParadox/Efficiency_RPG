@@ -499,17 +499,40 @@ class ScrollLabel(ScrollView):
     pass
 
 
-class CitationsBox(GridLayout):
+class CitationsBox(BoxLayout):
+    # TODO: Grid buttons need to maintain ratio, without resorting to fixed size.
     def __init__(self, **kwargs):
-        super(CitationsBox, self).__init__(cols=2, **kwargs)
-        self.create_citations()
+        super(CitationsBox, self).__init__(orientation='vertical', **kwargs)
+        self.add_widget(Label(text='Citations', size_hint_y=.2, bold=True))
+        self.grid = GridLayout(cols=3)
+        self.add_widget(self.grid)
+        self.populate_grid()
+        self.popup = Popup(title='', size_hint=[.9, .7], separator_color=(0, 0, 0, 0))
+        self.popup_image = Image(source='')
+        self.popup_text_label = ScrollLabel(text='')
+        box = BoxLayout(orientation='vertical')
+        box.add_widget(self.popup_image)
+        box.add_widget(self.popup_text_label)
+        self.popup.add_widget(box)
 
-    def create_citations(self):
-        for im_file_name, citation_obj in citations.FIRST_IMAGE_TO_CITATION_MAP.items():
-            im_widg = Image(source='/'.join([THIRD_PARTIES_IMAGES_DIR, im_file_name]),
-                            size_hint=(.3,.3))
-            self.add_widget(im_widg)
-            self.add_widget(ConfinedTextLabel(text=citation_obj.full_text()))
+    @staticmethod
+    def image_path(im_name):
+        return '/'.join([THIRD_PARTIES_IMAGES_DIR, im_name])
+
+    def populate_grid(self):
+        for im_name, citation_obj in citations.FIRST_IMAGE_TO_CITATION_MAP.items():
+            im_path = self.image_path(im_name=im_name)
+            b = Button(background_normal=im_path, size_hint=(None, None), width='50sp', height='50sp')
+            b.image_name = im_name
+            b.image_text = citation_obj.full_text()
+            b.bind(on_release=self.update_popup_and_open)
+            self.grid.add_widget(b)
+
+    def update_popup_and_open(self, *args):
+        im_name = args[0].image_name
+        self.popup_image.source = self.image_path(im_name=im_name)
+        self.popup_text_label.text = args[0].image_text
+        self.popup.open()
 
 
 class PaintedLabel(Label):
