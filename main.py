@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -113,8 +113,13 @@ FLOAT_COMPENSATOR = 10**-10
 
 def time_as_string(t):
     m = (t % 1) * 60
+    m = int(m + FLOAT_COMPENSATOR)
     h = int(t)
-    return '{:0>1}:{:0>2}'.format(int(h + FLOAT_COMPENSATOR), int(m + FLOAT_COMPENSATOR))
+    # Prohibits display of "0:59.9999" as "0:60"
+    if m >= 60:
+        h += 1
+        m = 0
+    return '{:0>1}:{:0>2}'.format(h, m)
 
 
 # Paste-template
@@ -225,7 +230,7 @@ class RunningAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(1,),
-                          completion_time=5/60.)
+                          completion_time=30/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -786,7 +791,7 @@ class EffRpgApp(App):
             storage_file_name = '/'.join([str(self.user_data_dir), storage_file_name])
         elif platform in ('ios', 'win'):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
-        self.stored_data = JsonStore(storage_file_name)
+        self.stored_data = JsonStore(storage_file_name, indent=4, sort_keys=True)
         if self.stored_data and (self.today in self.stored_data):
             self.update_subjs_dicts_from_store()
         else:
@@ -831,7 +836,7 @@ class EffRpgApp(App):
 
         :param subj: (class)
         :param act: (class)
-        :param time_added: (float) or 'same'
+        :param time_added: (float)
         :return: (None)
         """
         subj_n = subj.name()
@@ -888,10 +893,10 @@ class EffRpgApp(App):
         for s in ALL_SUBJECTS:
             subj_importance = s.IMPORTANCE
             n += subj_importance
-            subj_time, subj_ratio = self.subj_goal_ratio_and_time(subj=s)
-            tot_hours += subj_ratio * subj_importance
+            subj_ratio, subj_time = self.subj_goal_ratio_and_time(subj=s)
+            tot_hours += subj_time
             if not s.FILLER:
-                ratios_sum += subj_time
+                ratios_sum += subj_ratio * subj_importance
         self.goal_ratio = ratios_sum/n
         self.productive_hours = tot_hours
         return self.goal_ratio, tot_hours
