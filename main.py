@@ -274,6 +274,18 @@ class MMAAction(_Action):
     DAYS_APPEARING = 'all'
 
 
+class GunsTrainingAction(_Action):
+    TITLE = 'Guns'
+    ICON_IMAGE_NAME = 'handgun.jpg'
+    TIME_DATA = _TimeData(description='Operated guns (simulation)',
+                          minutes_tpl=(5,10),
+                          hours_tpl=(),
+                          completion_time=5)
+    BAR_GOAL_HINT = .5
+    MARK_WHEN_OMITTED = False
+    DAYS_APPEARING = 'all'
+
+
 class Course1Action(_Action):
     TITLE = '1st'
     ICON_IMAGE_NAME = 'book_pictogram_1.png'
@@ -424,7 +436,8 @@ class AthleticsSubject(_Subject):
     ACTIONS_SEQUENCE = (RunningAction,
                         UpperBodyAction,
                         LowerBodyAction,
-                        MMAAction)
+                        MMAAction,
+                        GunsTrainingAction)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
     IMPORTANCE = 1
 
@@ -697,7 +710,7 @@ class FocusButton(Button):
 
     def __init__(self, **kwargs):
         super(FocusButton, self).__init__(**kwargs)
-        self.popup = Popup(title='Focus percentage: ',
+        self.popup = Popup(title='Focus percentage: ', title_color=(0,0,0,1),
                            size_hint=[.9, .7], separator_color=(0, 0, 0, 0))
         self.buttons_box = GridLayout(cols=3)
         self.popup.add_widget(self.buttons_box)

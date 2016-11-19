@@ -118,6 +118,17 @@ SUN = ImageCitation(
     url='http://www.nasa.gov/image-feature/solar-dynamics-observatory-sees-m79-class-solar-flare',
     extra_text='')
 
+HANDGUN = ImageCitation(
+    work_name='handgun',
+    creation_date='Dec. 8, 2013',
+    licence='public domain',
+    adaptation=False,
+    file_names=['handgun.jpg'],
+    creator_name=None,
+    creator_pseudonym='Brett_Hondow (pixabay user)',
+    url='https://pixabay.com/en/handgun-pistol-firearms-gun-231699/',
+    extra_text='')
+
 KICK = ImageCitation(
     work_name='kickboxing-kick-karate-muay-thai-150330',
     creation_date='Oct 12, 2013',

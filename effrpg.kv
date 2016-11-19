@@ -10,7 +10,6 @@
     color: 0,0,0,1
 
 <Button>:
-    border: [0]*4
     background_normal: 'own_images/simple_grey_button.png'
     background_down: 'own_images/simple_grey_button_pressed.png'
     background_disabled_normal: self.background_down
@@ -198,16 +197,20 @@
             Button:
                 text: 'Today'
                 bold: True
+                border: [0]*4
                 on_release: root.load_slide(today_page)
             Button:
                 text: 'Calendar'
+                border: [0]*4
                 bold: True
                 on_release: root.load_slide(calendar_page)
             Button:
                 text: 'About'
+                border: [0]*4
                 on_release: root.load_slide(about_page)
             Button:
                 text: 'Citations'
+                border: [0]*4
                 on_release: root.load_slide(citations_page)
     TodayPage:
         id: today_page
