@@ -827,6 +827,7 @@ class EffRpgApp(App):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
         self.stored_data = JsonStore(storage_file_name, indent=4, sort_keys=True)
         if self.stored_data and (self.today in self.stored_data):
+            self.add_subjs_and_acts_added_by_new_version()
             self.update_subjs_dicts_from_store()
         else:
             self.store_today_data()
@@ -845,6 +846,13 @@ class EffRpgApp(App):
         if self.storage_scheduled_event:
             self.storage_scheduled_event.cancel()
         self.storage_scheduled_event = Clock.schedule_once(self.store_today_data, time)
+
+    def add_subjs_and_acts_added_by_new_version(self):
+        today_subjs_dct = self.stored_data[self.today]['subjects_dict']
+        for s_name in self.LOWERCASE_SUBJECTS_NAMES:
+            subj_dct = today_subjs_dct.setdefault(s_name, {})
+            for act_name in getattr(self, s_name):
+                subj_dct.setdefault(act_name, DEFAULT_ACTION_VALUE_IN_STORE)
 
     def day_dict(self):
         self.daily_goal_ratio_and_time()    # (creates hours and goals)
@@ -949,6 +957,9 @@ class EffRpgApp(App):
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
+
+def actions_dct_for_storage(subj):
+    return {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in subj.ACTIONS_SEQUENCE}
 
 SUBJS_DICTS_DCT = {}
 for s in ALL_SUBJECTS:
