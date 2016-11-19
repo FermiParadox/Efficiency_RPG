@@ -111,10 +111,10 @@
 
     Image:
         source: main.image_path(im_name=root.action.ICON_IMAGE_NAME)
-        size_hint_y: .7
+        size_hint_y: .5
     BoxLayout:
         orientation: 'vertical'
-        size_hint_y: .2
+        size_hint_y: .3
         Label:
             text: '{} '.format(root.action.TITLE)
             text_size: self.size
@@ -142,7 +142,7 @@
     goals: 0
     hours: 0
     focus: 0
-    text: '[b]Average[/b]\n\nGoals: [b]{:.0%}[/b]\nProductive time: [b]{}[/b]\nFocus: [b]{}%[/b]'.format(self.goals, main.time_as_string(t=self.hours), int(self.focus))
+    text: 'Goals: [b]{:.0%}[/b]\nProductive time: [b]{}[/b]\nFocus: [b]{}%[/b]'.format(self.goals, main.time_as_string(t=self.hours), int(self.focus))
 
 <DayBox>:
     MyProgressBar:
@@ -240,10 +240,10 @@
         ActionsSlide:
             SubjectBarBox:
                 subj: subj_selection_slide.subj
-                size_hint_y: .3
+                size_hint_y: .25
             ActionsGrid:
                 id: actions_grid
-                size_hint_y: .7
+                size_hint_y: .8
                 subj: subj_selection_slide.subj
                 on_subj: self.populate_grid()
             ActionTimesBox
@@ -258,19 +258,19 @@
 
                 Label:
                     text: action_times_box.description
-                    size_hint_y: .3
+                    size_hint_y: .2
                 TimesButtonsBox:
                     id: minutes_box
-                    size_hint_y: .3
+                    size_hint_y: .15
                     measuring_unit: "'"
                     times_seq: action_times_box.minutes_lst
                 TimesButtonsBox:
                     id: hours_box
-                    size_hint_y: .4
+                    size_hint_y: .15
                     measuring_unit: 'h'
                     times_seq: action_times_box.hours_lst
                 BoxLayout:
-                    size_hint_y: .2
+                    size_hint_y: .17
                     Label:
                         bold: True
                         text: main.time_as_string(t=confirm_button.time_added)
