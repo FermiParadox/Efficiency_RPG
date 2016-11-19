@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="sleep_early.svg"
-   inkscape:export-filename="/home/blue/arms_training.png"
-   inkscape:export-xdpi="27.206306"
-   inkscape:export-ydpi="27.206306">
+   inkscape:export-filename="/home/gold/PycharmProjects/eff_rpg/own_images/sleep_early.png"
+   inkscape:export-xdpi="48.849998"
+   inkscape:export-ydpi="48.849998">
   <defs
      id="defs4230" />
   <sodipodi:namedview
@@ -29,14 +29,14 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="91.880825"
+     inkscape:cx="31.953525"
      inkscape:cy="82.675142"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="1000"
-     inkscape:window-x="0"
+     inkscape:window-width="1309"
+     inkscape:window-height="744"
+     inkscape:window-x="57"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

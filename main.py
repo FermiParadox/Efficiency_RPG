@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -72,6 +72,8 @@ CENTER_POS_HINT = {'center_x': .5, 'center_y': .5}
 FAINT_BLACK = (0,0,0,.1)
 
 POPULATING_DELAY = .3
+
+BACKGROUND_COLOR = .9,.9,1,1
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -328,11 +330,20 @@ class BreaksAction(_Action):
 
 
 class SleepStartAction(_Action):
-    TITLE = 'Sleep early'
+    TITLE = 'Sleep'
     ICON_IMAGE_NAME = 'sleep_early.png'
     TIME_DATA = None
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
+    DAYS_APPEARING = 'all'
+
+
+class TeethAction(_Action):
+    TITLE = 'Teeth'
+    ICON_IMAGE_NAME = 'toothpaste_toothbrush.jpg'
+    TIME_DATA = None
+    BAR_GOAL_HINT = 1
+    MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
 
 
@@ -455,7 +466,7 @@ class HealthSubject(_Subject):
     FILLER = False
     BAR_COLOR = 'light_blue'
     ICON_IMAGE_NAME = 'medicine.png'
-    ACTIONS_SEQUENCE = (SleepStartAction, BreaksAction,)
+    ACTIONS_SEQUENCE = (SleepStartAction, BreaksAction, TeethAction)
     CUMULATIVE_COMPLETION_TIME_AND_ACTIONS = False
     IMPORTANCE = 1
 
@@ -601,7 +612,7 @@ class SubjectsBarsBox(BoxLayout):
             self.add_widget(widg)
 
 
-class ActionImageAndLabel(BoxLayout):
+class ActionImageAndLabels(BoxLayout):
     action = ObjectProperty()
 
 
@@ -621,7 +632,7 @@ class ActionsGrid(GridLayout):
             button.bind(on_release=lambda _, act=act: setattr(self, 'action', act))
             float_layout = FloatLayout()
             float_layout.add_widget(button)
-            float_layout.add_widget(ActionImageAndLabel(action=act, pos_hint=CENTER_POS_HINT))
+            float_layout.add_widget(ActionImageAndLabels(action=act, pos_hint=CENTER_POS_HINT))
             self.add_widget(float_layout)
 
         self.action = self.subj.ACTIONS_SEQUENCE[0]
@@ -727,7 +738,7 @@ class CalendarPage(BoxLayout):
         super(CalendarPage, self).__init__(**kwargs)
         self.days_grid = GridLayout(cols=5)
         self.add_widget(self.days_grid)
-        self.day_label = DayLabel(bold=True, size_hint_y=.2)
+        self.day_label = DayLabel(size_hint_y=.2)
         self.add_widget(self.day_label)
 
     def update_averages_label(self, *args):

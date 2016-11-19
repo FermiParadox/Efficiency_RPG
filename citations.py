@@ -107,6 +107,17 @@ class ImageCitation(object):
 """
 
 
+SUN = ImageCitation(
+    work_name='M7.9-Class Solar Flare',
+    creation_date='June 25, 2015',
+    licence='public domain',
+    adaptation=False,
+    file_names=['nasa_sun.png'],
+    creator_name='NASA/SDO',
+    creator_pseudonym=None,
+    url='http://www.nasa.gov/image-feature/solar-dynamics-observatory-sees-m79-class-solar-flare',
+    extra_text='')
+
 KICK = ImageCitation(
     work_name='kickboxing-kick-karate-muay-thai-150330',
     creation_date='Oct 12, 2013',
@@ -129,14 +140,13 @@ HEALTH = ImageCitation(
     url='https://pixabay.com/en/medicine-pharmacy-doctor-medic-37101/',
     extra_text='')
 
-SUN = ImageCitation(
-    work_name='M7.9-Class Solar Flare',
-    creation_date='June 25, 2015',
+TOOTHPASTE_TOOTHBRUSH= ImageCitation(
+    work_name='toothbrush toothpaste white',
+    creation_date='Nov 3, 2016',
     licence='public domain',
     adaptation=False,
-    file_names=['nasa_sun.png'],
-    creator_name='NASA/SDO',
-    creator_pseudonym=None,
-    url='http://www.nasa.gov/image-feature/solar-dynamics-observatory-sees-m79-class-solar-flare',
+    file_names=['toothpaste_toothbrush.jpg'],
+    creator_name=None,
+    creator_pseudonym='WDnetStudio (pixabay user)',
+    url='https://pixabay.com/en/toothpaste-toothbrush-white-1786388/',
     extra_text='')
-
