@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -122,16 +122,6 @@ def time_as_string(t):
         h += 1
         m = 0
     return '{:0>1}:{:0>2}'.format(h, m)
-
-
-# Paste-template
-"""
-_TimeData(description=,
-    minutes_tpl=,
-    hours_tpl=,
-    completion_time=)
-
-"""
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -280,7 +270,7 @@ class GunsTrainingAction(_Action):
     TIME_DATA = _TimeData(description='Operated guns (simulation)',
                           minutes_tpl=(5,10),
                           hours_tpl=(),
-                          completion_time=5)
+                          completion_time=10/60.)
     BAR_GOAL_HINT = .5
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -335,7 +325,10 @@ class TeachingAction(_Action):
 class BreaksAction(_Action):
     TITLE = 'Breaks'
     ICON_IMAGE_NAME = 'resting.png'
-    TIME_DATA = None
+    TIME_DATA = _TimeData(description='',
+                          minutes_tpl=(10, 30),
+                          hours_tpl=(1,),
+                          completion_time=5/60. * 8)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
     DAYS_APPEARING = 'all'
@@ -353,7 +346,10 @@ class SleepStartAction(_Action):
 class TeethAction(_Action):
     TITLE = 'Teeth'
     ICON_IMAGE_NAME = 'toothpaste_toothbrush.jpg'
-    TIME_DATA = None
+    TIME_DATA = _TimeData(description='',
+                          minutes_tpl=(5, 15),
+                          hours_tpl=(),
+                          completion_time=15/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -774,7 +770,16 @@ class CalendarPage(BoxLayout):
 
     @property
     def average_focus(self):
-        return self._average_x_attr(attr_name='focus')
+        """Average focus is calculated differently.
+        Since 0-valued focus is impossible unless omitted, 0-valued focus is ignored."""
+        n = 0
+        tot = 0
+        for d in self.previous_goals_hours_focus_dct.values():
+            focus_val = d['focus']
+            if focus_val:
+                tot += focus_val
+                n += 1
+        return tot / float(n)
 
     def populate_days_grid(self, *args):
         self.days_grid.clear_widgets()
