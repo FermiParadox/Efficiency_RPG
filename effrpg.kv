@@ -153,10 +153,8 @@
     DayLabel:
         size_hint: .9,.9
         pos_hint: {'center_x': .5, 'center_y': .5}
-        goals: 0
-        hours: 0
-        focus: 0
-        text: 'Goals: {:.0%}\n{:.1f}h\nFocus: {}%'.format(root.goals, root.hours, root.focus)
+        focus_text: '{}%'.format(root.focus) if root.focus else '?'
+        text: 'Goals: {:.0%}\n{}\nFocus: {}'.format(root.goals, main.time_as_string(t=root.hours), self.focus_text)
         font_size: '12sp'
 
 <CalendarPage>:
@@ -180,7 +178,7 @@
             pos: self.pos
             size: self.size
  
-    on_current_slide: if self.current_slide == calendar_page: calendar_page.populate_days_grid(); calendar_page.update_averages_label()
+    on_current_slide: if self.current_slide == calendar_page: calendar_page.populate_or_update_days_grid(); calendar_page.update_averages_label()
 
     FloatLayout:
         VersionLabel

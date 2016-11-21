@@ -542,7 +542,7 @@ class CitationsBox(BoxLayout):
     def populate_grid(self):
         for im_name, citation_obj in citations.FIRST_IMAGE_TO_CITATION_MAP.items():
             im_path = self.image_path(im_name=im_name)
-            b = Button(background_normal=im_path, size_hint=(None, None), width='50sp', height='50sp')
+            b = Button(background_normal=im_path, size_hint=(None, None), width='50sp', height='50sp', border=(0,0,0,0))
             b.image_name = im_name
             b.image_text = citation_obj.full_text()
             b.bind(on_release=self.update_popup_and_open)
@@ -781,11 +781,11 @@ class CalendarPage(BoxLayout):
                 n += 1
         return tot / float(n)
 
-    def populate_days_grid(self, *args):
+    def populate_or_update_days_grid(self, *args):
         self.days_grid.clear_widgets()
         store = self.app.stored_data
         day = datetime.date.today() - datetime.timedelta(days=self.MAX_DAYS_DISPLAYED)
-        for n in xrange(1, self.MAX_DAYS_DISPLAYED + 1):
+        for n in xrange(0, self.MAX_DAYS_DISPLAYED):
             day += datetime.timedelta(days=1)
             day_as_str = day.isoformat()
             if day_as_str in store:
@@ -793,11 +793,17 @@ class CalendarPage(BoxLayout):
                 hours = day_store['productive_hours']
                 focus = day_store['focus_percent']
                 goals = day_store['goal_ratio']
-                day_box = DayBox()
-                day_box.hours = hours
-                day_box.focus = focus
-                day_box.goals = goals
-                self.days_grid.add_widget(day_box)
+                if len(self.days_grid.children) == self.MAX_DAYS_DISPLAYED:
+                    child = self.days_grid.children[n]
+                    child.hours = hours
+                    child.focus = focus
+                    child.goals = goals
+                else:
+                    day_box = DayBox()
+                    day_box.hours = hours
+                    day_box.focus = focus
+                    day_box.goals = goals
+                    self.days_grid.add_widget(day_box)
                 self.previous_goals_hours_focus_dct[day_as_str] = dict(hours=hours, goals=goals, focus=focus)
             else:
                 self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
