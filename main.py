@@ -749,6 +749,7 @@ class CalendarPage(BoxLayout):
         self.add_widget(self.days_grid)
         self.day_label = DayLabel(size_hint_y=.2)
         self.add_widget(self.day_label)
+        self.add_widget(CreateHistoryButton(size_hint=(.5, .1)))
 
     def update_averages_label(self, *args):
         self.day_label.focus = self.average_focus
@@ -779,7 +780,10 @@ class CalendarPage(BoxLayout):
             if focus_val:
                 tot += focus_val
                 n += 1
-        return tot / float(n)
+        if n:
+            return tot / float(n)
+        else:
+            return '?'
 
     def populate_or_update_days_grid(self, *args):
         self.days_grid.clear_widgets()
@@ -809,6 +813,34 @@ class CalendarPage(BoxLayout):
                 self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
 
 
+class CreateHistoryButton(Button):
+    """
+    Used for setting history to default history,
+    when for example the app is installed for the first time on a device.
+    """
+    def __init__(self, **kwargs):
+        super(CreateHistoryButton, self).__init__(text='Restore old history', background_color=(1,.5,0,1), **kwargs)
+        self.popup_widg = None
+
+    def create_popup(self, *args):
+        self.popup_widg = Popup(title='[b]Replace existing history with default?[/b] \n(this can [b]not[/b] be undone)',
+                                size_hint=[.9, .3], separator_color=(0, 0, 0, 0), title_color=(0,0,0,1))
+        yes_button = Button(text='YES', background_color=[1, 0, 0, 1])
+        yes_button.bind(on_release=self.popup_widg.dismiss)
+        yes_button.bind(on_release=self.app.replace_history_with_default)
+        no_button = Button(text='NO', background_color=[0, 2, 0, 1])
+        no_button.bind(on_release=self.popup_widg.dismiss)
+        popup_box = BoxLayout()
+        popup_box.add_widget(yes_button)
+        popup_box.add_widget(no_button)
+        self.popup_widg.add_widget(popup_box)
+
+    def on_release(self, *args):
+        if not self.popup_widg:
+            self.create_popup()
+        self.popup_widg.open()
+
+
 class TodayPage(Carousel):
     def __init__(self, **kwargs):
         super(TodayPage, self).__init__(loop=True, **kwargs)
@@ -821,6 +853,7 @@ class MainWidget(Carousel):
 
 # ---------------------------------------------------------------------------------------------------
 class EffRpgApp(App):
+    DEFAULT_STORAGE_NAME = 'storage.json'
     LOWERCASE_SUBJECTS_NAMES = []
     # Each change adds 1 in order to be able to constantly use the Property,
     # without redundant checks, and val reset.
@@ -844,7 +877,7 @@ class EffRpgApp(App):
         Clock.schedule_interval(self.set_today, 30*60)
         # Storage file is checked/stored in different dir on androids
         # to avoid overwriting it during updates.
-        storage_file_name = 'storage.json'
+        storage_file_name = self.DEFAULT_STORAGE_NAME
         if platform == 'android':
             storage_file_name = '/'.join([str(self.user_data_dir), storage_file_name])
         elif platform in ('ios', 'win'):
@@ -856,6 +889,12 @@ class EffRpgApp(App):
         else:
             self.store_today_data()
         self.storage_scheduled_event = None
+
+    def replace_history_with_default(self, *args):
+        default_history = JsonStore(self.DEFAULT_STORAGE_NAME)
+        self.stored_data.clear()
+        for k in default_history:
+            self.stored_data[k] = default_history[k]
 
     def update_subjs_dicts_from_store(self):
         for k1, v1 in self.stored_data[self.today].items():

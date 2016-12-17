@@ -13,7 +13,7 @@ package.domain = com.gmail.fermiparadoxso
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,txt
+source.include_exts = py,png,jpg,kv,atlas,txt,json
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
@@ -25,7 +25,7 @@ source.include_exts = py,png,jpg,kv,atlas,txt
 source.exclude_dirs = tests, bin, ignore_build_images, buildozer, .buildozer
 
 # (list) List of exclusions using pattern matching
-source.exclude_patterns = exp1.py, exp2.py, exp3.py, my_log.txt, storage.json
+source.exclude_patterns = exp1.py, exp2.py, exp3.py, my_log.txt
 
 # (str) Application versioning (method 1)
 #version = 0.1
