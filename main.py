@@ -326,7 +326,7 @@ class BreaksAction(_Action):
     TITLE = 'Breaks'
     ICON_IMAGE_NAME = 'resting.png'
     TIME_DATA = _TimeData(description='',
-                          minutes_tpl=(10, 30),
+                          minutes_tpl=(5, 10, 30),
                           hours_tpl=(1,),
                           completion_time=5/60. * 8)
     BAR_GOAL_HINT = 1
@@ -347,9 +347,9 @@ class TeethAction(_Action):
     TITLE = 'Teeth'
     ICON_IMAGE_NAME = 'toothpaste_toothbrush.jpg'
     TIME_DATA = _TimeData(description='',
-                          minutes_tpl=(5, 15),
+                          minutes_tpl=(5, 10),
                           hours_tpl=(),
-                          completion_time=15/60.)
+                          completion_time=10/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -873,8 +873,9 @@ class EffRpgApp(App):
         super(EffRpgApp, self).__init__(**kwargs)
         self.increment_subj_dicts_changed_scheduled_event = None
         self.today = ''
+        # Only restarting the app resets 'today',
+        # in order to allow noting omitted data the following day in the morning.
         self.set_today()
-        Clock.schedule_interval(self.set_today, 30*60)
         # Storage file is checked/stored in different dir on androids
         # to avoid overwriting it during updates.
         storage_file_name = self.DEFAULT_STORAGE_NAME
