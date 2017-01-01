@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.7'
+__version__ = '0.0.8'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -749,8 +749,8 @@ class CalendarPage(BoxLayout):
         self.add_widget(self.days_grid)
         self.day_label = DayLabel(size_hint_y=.2)
         self.add_widget(self.day_label)
-        self.add_widget(SetHistoryToDefaultButton())
-        self.add_widget(ResetTodayHistoryButton())
+        # self.add_widget(SetHistoryToDefaultButton())
+        # self.add_widget(ResetTodayHistoryButton())
 
     def update_averages_label(self, *args):
         self.day_label.focus = self.average_focus
