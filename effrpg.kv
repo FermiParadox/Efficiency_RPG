@@ -1,6 +1,7 @@
 #:kivy 1.9.1
 
 #:import main main
+#:import datetime datetime
 #:import App kivy.app
 #:import about_module about_module
 
@@ -164,9 +165,14 @@
 <TodayPage>:
     direction: 'bottom'
 
-<CreateHistoryButton>:
+<ResetTodayHistoryButton>:
+    size_hint: .4, .06
+    pos_hint: {'right': .95}
+    on_release: app.reset_today_data_and_exit()
+
+<SetHistoryToDefaultButton>:
     app: app
-    size_hint: .2, .05
+    size_hint: .4, .06
     pos_hint: {'right': .95}
 
 <MainWidget>:
@@ -219,6 +225,9 @@
 
         BoxLayout:
             orientation: 'vertical'
+            Label:
+                text: datetime.date.today().isoformat()
+                size_hint_y: .1
             FloatLayout:
                 Button:
                     on_release: today_page.load_slide(subj_selection_slide)

@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -749,7 +749,8 @@ class CalendarPage(BoxLayout):
         self.add_widget(self.days_grid)
         self.day_label = DayLabel(size_hint_y=.2)
         self.add_widget(self.day_label)
-        self.add_widget(CreateHistoryButton(size_hint=(.5, .1)))
+        self.add_widget(SetHistoryToDefaultButton())
+        self.add_widget(ResetTodayHistoryButton())
 
     def update_averages_label(self, *args):
         self.day_label.focus = self.average_focus
@@ -813,13 +814,18 @@ class CalendarPage(BoxLayout):
                 self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
 
 
-class CreateHistoryButton(Button):
+class ResetTodayHistoryButton(Button):
+    def __init__(self, **kwargs):
+        super(ResetTodayHistoryButton, self).__init__(text='Reset today', background_color=(1,.5,0,1), **kwargs)
+
+
+class SetHistoryToDefaultButton(Button):
     """
     Used for setting history to default history,
     when for example the app is installed for the first time on a device.
     """
     def __init__(self, **kwargs):
-        super(CreateHistoryButton, self).__init__(text='Restore old history', background_color=(1,.5,0,1), **kwargs)
+        super(SetHistoryToDefaultButton, self).__init__(text='Revert history', background_color=(1,.5,0,1), **kwargs)
         self.popup_widg = None
 
     def create_popup(self, *args):
@@ -927,6 +933,10 @@ class EffRpgApp(App):
         for s_name in self.LOWERCASE_SUBJECTS_NAMES:
             day_dct['subjects_dict'].update({s_name: getattr(self, s_name)})
         return day_dct
+
+    def reset_today_data_and_exit(self, *args):
+        self.stored_data.delete(self.today)
+        self.stop()
 
     def store_today_data(self, *args):
         self.stored_data[self.today] = self.day_dict()
