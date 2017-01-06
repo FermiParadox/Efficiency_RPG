@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.9'
+__version__ = '0.0.10'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -903,7 +903,6 @@ class EffRpgApp(App):
         elif platform in ('ios', 'win'):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
         self.stored_data = JsonStore(storage_file_name, indent=4, sort_keys=True)
-        self.fix_store_physics_hours()
         if self.stored_data and (self.today in self.stored_data):
             self.add_subjs_and_acts_added_by_new_version()
             self.update_subjs_dicts_from_store()
@@ -913,6 +912,9 @@ class EffRpgApp(App):
 
     def fix_store_physics_hours(self):
         """Adds "physics_hours" in storage.
+
+        Used only for older versions where "physics_hours" where not being tracked.
+        Needs to be ran only once.
         """
         for d in self.stored_data:
             val = self.stored_data[d]
