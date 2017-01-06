@@ -143,7 +143,8 @@
     goals: 0
     hours: 0
     focus: 0
-    text: 'Goals: [b]{:.0%}[/b]\nProductive time: [b]{}[/b]\nFocus: [b]{}%[/b]'.format(self.goals, main.time_as_string(t=self.hours), int(self.focus))
+    physics_hours: 0
+    text: 'Goals: [b]{:.0%}[/b]\nProductive time: [b]{}[/b]\nFocus: [b]{}%[/b]\nPhysics: [b]{}[/b]'.format(self.goals, main.time_as_string(t=self.hours), int(self.focus), main.time_as_string(t=self.physics_hours))
 
 <DayBox>:
     MyProgressBar:
@@ -155,7 +156,7 @@
         size_hint: .9,.9
         pos_hint: {'center_x': .5, 'center_y': .5}
         focus_text: '{}%'.format(root.focus) if root.focus else '?'
-        text: 'Goals: {:.0%}\n{}\nFocus: {}'.format(root.goals, main.time_as_string(t=root.hours), self.focus_text)
+        text: 'Goals: {:.0%}\nPhysics: {}\nTotal: {}\nFocus: {}'.format(root.goals, main.time_as_string(t=root.physics_hours), main.time_as_string(t=root.hours), self.focus_text)
         font_size: '12sp'
 
 <CalendarPage>:
@@ -177,9 +178,10 @@
 
 <MainWidget>:
     id: main_widg
-    daily_ratio_and_time: app.daily_goal_ratio_and_time()
-    daily_ratio: self.daily_ratio_and_time[0]
-    daily_time: self.daily_ratio_and_time[1]
+    daily_ratio_and_time_and_physics: app.daily_goal_ratio_and_time_and_physics()
+    daily_ratio: self.daily_ratio_and_time_and_physics['goals']
+    daily_time: self.daily_ratio_and_time_and_physics['productive_hours']
+    daily_physics: self.daily_ratio_and_time_and_physics['physics']
 
     canvas.before:
         Color:
@@ -241,8 +243,8 @@
                 size_hint_y: .2
                 subj_dicts_changed: app.subj_dicts_changed
                 bold: True
-                text: 'Goals: {:.0%} \nWork hours: {}'.format(root.daily_ratio, main.time_as_string(t=root.daily_time))
-                on_subj_dicts_changed: root.daily_ratio_and_time = app.daily_goal_ratio_and_time()
+                text: 'Goals: {:.0%} \nWork hours: {} \nPhysics: {}'.format(root.daily_ratio, main.time_as_string(t=root.daily_time), main.time_as_string(t=root.daily_physics))
+                on_subj_dicts_changed: root.daily_ratio_and_time_and_physics = app.daily_goal_ratio_and_time_and_physics()
                 text_size: self.size
                 halign: 'center'
                 valign: 'middle'

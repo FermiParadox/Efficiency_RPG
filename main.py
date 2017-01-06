@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -304,7 +304,7 @@ class ProgrammingAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(10, 30),
                           hours_tpl=(1, 2, 5),
-                          completion_time=2)
+                          completion_time=1)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -327,7 +327,7 @@ class BreaksAction(_Action):
     ICON_IMAGE_NAME = 'resting.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
-                          hours_tpl=(1,),
+                          hours_tpl=(),
                           completion_time=5/60. * 8)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
@@ -734,6 +734,7 @@ class DayBox(FloatLayout):
     focus = NumericProperty()
     hours = NumericProperty()
     goals = NumericProperty()
+    physics_hours = NumericProperty()
 
     def __init__(self, **kwargs):
         super(DayBox, self).__init__(**kwargs)
@@ -756,6 +757,7 @@ class CalendarPage(BoxLayout):
         self.day_label.focus = self.average_focus
         self.day_label.hours = self.average_hours
         self.day_label.goals = self.average_goals
+        self.day_label.physics_hours = self.average_physics
 
     def _average_x_attr(self, attr_name):
         n = len(self.previous_goals_hours_focus_dct) or 1
@@ -769,6 +771,10 @@ class CalendarPage(BoxLayout):
     @property
     def average_goals(self):
         return self._average_x_attr(attr_name='goals')
+
+    @property
+    def average_physics(self):
+        return self._average_x_attr(attr_name='physics_hours')
 
     @property
     def average_focus(self):
@@ -798,18 +804,24 @@ class CalendarPage(BoxLayout):
                 hours = day_store['productive_hours']
                 focus = day_store['focus_percent']
                 goals = day_store['goal_ratio']
+                physics_hours = day_store['physics_hours']
                 if len(self.days_grid.children) == self.MAX_DAYS_DISPLAYED:
                     child = self.days_grid.children[n]
                     child.hours = hours
                     child.focus = focus
                     child.goals = goals
+                    child.physics_hours = physics_hours
                 else:
                     day_box = DayBox()
                     day_box.hours = hours
                     day_box.focus = focus
                     day_box.goals = goals
+                    day_box.physics_hours = physics_hours
                     self.days_grid.add_widget(day_box)
-                self.previous_goals_hours_focus_dct[day_as_str] = dict(hours=hours, goals=goals, focus=focus)
+                self.previous_goals_hours_focus_dct[day_as_str] = dict(hours=hours,
+                                                                       goals=goals,
+                                                                       focus=focus,
+                                                                       physics_hours=physics_hours)
             else:
                 self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
 
@@ -867,6 +879,7 @@ class EffRpgApp(App):
     focus_percent = NumericProperty(0)
     goal_ratio = 0
     productive_hours = 0
+    physics_hours = 0
 
     def build(self):
         main_widg = MainWidget()
@@ -890,12 +903,26 @@ class EffRpgApp(App):
         elif platform in ('ios', 'win'):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
         self.stored_data = JsonStore(storage_file_name, indent=4, sort_keys=True)
+        self.fix_store_physics_hours()
         if self.stored_data and (self.today in self.stored_data):
             self.add_subjs_and_acts_added_by_new_version()
             self.update_subjs_dicts_from_store()
         else:
             self.store_today_data()
         self.storage_scheduled_event = None
+
+    def fix_store_physics_hours(self):
+        """Adds "physics_hours" in storage.
+        """
+        for d in self.stored_data:
+            val = self.stored_data[d]
+            physics_hours = 0
+            for action in val['subjects_dict']['physicssubject']:
+                physics_hours += val['subjects_dict']['physicssubject'][action][0]
+            # DictProperties are shallow copies, and don't track deeper changes,
+            # so `store[d].update(...)` wouldn't work.
+            val.update({'physics_hours': physics_hours})
+            self.stored_data[d] = val
 
     def replace_history_with_default(self, *args):
         default_history = JsonStore(self.DEFAULT_STORAGE_NAME)
@@ -925,10 +952,11 @@ class EffRpgApp(App):
                 subj_dct.setdefault(act_name, DEFAULT_ACTION_VALUE_IN_STORE)
 
     def day_dict(self):
-        self.daily_goal_ratio_and_time()    # (creates hours and goals)
+        self.daily_goal_ratio_and_time_and_physics()    # (creates hours and goals)
         day_dct = {'focus_percent': self.focus_percent,
                    'productive_hours': self.productive_hours,
                    "goal_ratio": self.goal_ratio,
+                   "physics_hours": self.physics_hours,
                    'subjects_dict': {}}
         for s_name in self.LOWERCASE_SUBJECTS_NAMES:
             day_dct['subjects_dict'].update({s_name: getattr(self, s_name)})
@@ -1002,10 +1030,11 @@ class EffRpgApp(App):
         n = n or 1  # (avoid ZeroDivisionError)
         return tot_ratio_achieved/n, tot_hours
 
-    def daily_goal_ratio_and_time(self):
+    def daily_goal_ratio_and_time_and_physics(self):
         n = 0.
         ratios_sum = 0.
         tot_hours = 0.
+        physics_hours = 0.
         for s in ALL_SUBJECTS:
             subj_importance = s.IMPORTANCE
             n += subj_importance
@@ -1013,9 +1042,15 @@ class EffRpgApp(App):
             tot_hours += subj_time
             if not s.FILLER:
                 ratios_sum += subj_ratio * subj_importance
+            if s is PhysicsSubject:
+                physics_hours += subj_time
+
         self.goal_ratio = ratios_sum/n
         self.productive_hours = tot_hours
-        return self.goal_ratio, tot_hours
+        self.physics_hours = physics_hours
+        return {'goals': self.goal_ratio,
+                'productive_hours': tot_hours,
+                'physics': physics_hours}
 
     def _on_subj_dict_base(self, *args):
         # Scheduling used in order to avoid lots of redundant operations during storage.
@@ -1034,6 +1069,7 @@ DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
 
 def actions_dct_for_storage(subj):
     return {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in subj.ACTIONS_SEQUENCE}
+
 
 SUBJS_DICTS_DCT = {}
 for s in ALL_SUBJECTS:
