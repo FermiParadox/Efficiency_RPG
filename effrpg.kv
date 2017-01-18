@@ -156,7 +156,7 @@
         size_hint: .9,.9
         pos_hint: {'center_x': .5, 'center_y': .5}
         focus_text: '{}%'.format(root.focus) if root.focus else '?'
-        text: 'Goals: {:.0%}\nPhysics: {}\nTotal: {}\nFocus: {}'.format(root.goals, main.time_as_string(t=root.physics_hours), main.time_as_string(t=root.hours), self.focus_text)
+        text: 'Focus: {}\nGoals: {:.0%}\nPhysics: {}\nTotal: {}'.format(self.focus_text, root.goals, main.time_as_string(t=root.physics_hours), main.time_as_string(t=root.hours))
         font_size: '12sp'
 
 <CalendarPage>:

@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.10'
+__version__ = '0.0.11'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -270,7 +270,7 @@ class GunsTrainingAction(_Action):
     TIME_DATA = _TimeData(description='Operated guns (simulation)',
                           minutes_tpl=(5,10),
                           hours_tpl=(),
-                          completion_time=10/60.)
+                          completion_time=5/60.)
     BAR_GOAL_HINT = .5
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -890,25 +890,33 @@ class EffRpgApp(App):
 
     def __init__(self, **kwargs):
         super(EffRpgApp, self).__init__(**kwargs)
+        self.storage_scheduled_event = None
         self.increment_subj_dicts_changed_scheduled_event = None
         self.today = ''
         # Only restarting the app resets 'today',
         # in order to allow noting omitted data the following day in the morning.
         self.set_today()
-        # Storage file is checked/stored in different dir on androids
+        self.stored_data = None
+        self.set_stored_data()
+
+    def set_stored_data(self):
+        self.stored_data = JsonStore(self.storage_file_name, indent=4, sort_keys=True)
+        if self.stored_data and (self.today in self.stored_data):
+            self.add_subjs_and_acts_added_by_new_version()
+            self.update_subjs_dicts_from_store()
+        else:
+            self.store_today_data()
+
+    @property
+    def storage_file_name(self):
+        # Storage file is stored/searched for in different dir (than the app itself) on androids
         # to avoid overwriting it during updates.
         storage_file_name = self.DEFAULT_STORAGE_NAME
         if platform == 'android':
             storage_file_name = '/'.join([str(self.user_data_dir), storage_file_name])
         elif platform in ('ios', 'win'):
             raise NotImplementedError('Platform not implemented. Storage will be overridden on updates.')
-        self.stored_data = JsonStore(storage_file_name, indent=4, sort_keys=True)
-        if self.stored_data and (self.today in self.stored_data):
-            self.add_subjs_and_acts_added_by_new_version()
-            self.update_subjs_dicts_from_store()
-        else:
-            self.store_today_data()
-        self.storage_scheduled_event = None
+        return storage_file_name
 
     def fix_store_physics_hours(self):
         """Adds "physics_hours" in storage.
