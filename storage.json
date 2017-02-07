@@ -3809,9 +3809,9 @@
     }, 
     "2017-02-07": {
         "focus_percent": 0, 
-        "goal_ratio": 0.037037037037037035, 
+        "goal_ratio": 0.05555555555555555, 
         "physics_hours": 0.0, 
-        "productive_hours": 0.08333333333333333, 
+        "productive_hours": 0.6666666666666667, 
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
@@ -3865,8 +3865,8 @@
             }, 
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
-                    false
+                    0.08333333333333333, 
+                    0.08333333333333333
                 ]
             }, 
             "sciencesubject": {
@@ -3877,8 +3877,8 @@
             }, 
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
-                    false
+                    0.5, 
+                    0.05555555555555555
                 ]
             }
         }

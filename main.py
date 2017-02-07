@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.12'
+__version__ = '0.0.13'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -1074,9 +1074,6 @@ class EffRpgApp(App):
     def increment_subj_dicts_changed(self, *args):
         self.subj_dicts_changed += 1
 
-    def print_stored_data(self):
-        with open(self.storage_file_name) as f:
-            print(f.read())
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
