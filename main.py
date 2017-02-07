@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.11'
+__version__ = '0.0.12'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -221,7 +221,7 @@ class RunningAction(_Action):
     ICON_IMAGE_NAME = 'heart.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
-                          hours_tpl=(1,),
+                          hours_tpl=(),
                           completion_time=30/60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
@@ -280,7 +280,7 @@ class Course1Action(_Action):
     TITLE = '1st'
     ICON_IMAGE_NAME = 'book_pictogram_1.png'
     TIME_DATA = _TimeData(description='',
-                          minutes_tpl=(10, 30),
+                          minutes_tpl=(5, 10, 30),
                           hours_tpl=(1, 2, 5),
                           completion_time=1.)
     BAR_GOAL_HINT = 1
@@ -302,7 +302,7 @@ class ProgrammingAction(_Action):
     TITLE = 'Programming'
     ICON_IMAGE_NAME = 'programming.png'
     TIME_DATA = _TimeData(description='',
-                          minutes_tpl=(10, 30),
+                          minutes_tpl=(5, 10, 30),
                           hours_tpl=(1, 2, 5),
                           completion_time=1)
     BAR_GOAL_HINT = 1
@@ -359,7 +359,7 @@ class StudyScienceAction(_Action):
     TITLE = 'General science'
     ICON_IMAGE_NAME = 'book_pictogram.png'
     TIME_DATA = _TimeData(description='',
-                          minutes_tpl=(10, 30),
+                          minutes_tpl=(5, 10, 30),
                           hours_tpl=(1, 2, 5),
                           completion_time=1)
     BAR_GOAL_HINT = 1
@@ -1073,6 +1073,10 @@ class EffRpgApp(App):
 
     def increment_subj_dicts_changed(self, *args):
         self.subj_dicts_changed += 1
+
+    def print_stored_data(self):
+        with open(self.storage_file_name) as f:
+            print(f.read())
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)

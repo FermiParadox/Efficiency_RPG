@@ -222,6 +222,12 @@
                 text: 'Citations'
                 border: [0]*4
                 on_release: root.load_slide(citations_page)
+            Button:
+                text: 'Print json'
+                border: [0]*4
+                # Used for backups by running logcat and copying output.
+                on_release: app.print_stored_data()
+
     TodayPage:
         id: today_page
 
