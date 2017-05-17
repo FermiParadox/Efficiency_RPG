@@ -3882,5 +3882,233 @@
                 ]
             }
         }
+    }, 
+    "2017-02-28": {
+        "focus_percent": 0, 
+        "goal_ratio": 0.0, 
+        "physics_hours": 0.0, 
+        "productive_hours": 0.0, 
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0, 
+                    false
+                ], 
+                "lowerbodyaction": [
+                    0.0, 
+                    false
+                ], 
+                "mmaaction": [
+                    0.0, 
+                    false
+                ], 
+                "runningaction": [
+                    0.0, 
+                    false
+                ], 
+                "upperbodyaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "healthsubject": {
+                "breaksaction": [
+                    0.0, 
+                    false
+                ], 
+                "sleepstartaction": [
+                    0.0, 
+                    false
+                ], 
+                "teethaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "physicssubject": {
+                "course1action": [
+                    0.0, 
+                    false
+                ], 
+                "course2action": [
+                    0.0, 
+                    false
+                ], 
+                "course3action": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "programmingsubject": {
+                "programmingaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "sciencesubject": {
+                "studyscienceaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "teachingsubject": {
+                "teachingaction": [
+                    0.0, 
+                    false
+                ]
+            }
+        }
+    }, 
+    "2017-04-10": {
+        "focus_percent": 0, 
+        "goal_ratio": 0.0, 
+        "physics_hours": 0.0, 
+        "productive_hours": 0.0, 
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0, 
+                    false
+                ], 
+                "lowerbodyaction": [
+                    0.0, 
+                    false
+                ], 
+                "mmaaction": [
+                    0.0, 
+                    false
+                ], 
+                "runningaction": [
+                    0.0, 
+                    false
+                ], 
+                "upperbodyaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "healthsubject": {
+                "breaksaction": [
+                    0.0, 
+                    false
+                ], 
+                "sleepstartaction": [
+                    0.0, 
+                    false
+                ], 
+                "teethaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "physicssubject": {
+                "course1action": [
+                    0.0, 
+                    false
+                ], 
+                "course2action": [
+                    0.0, 
+                    false
+                ], 
+                "course3action": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "programmingsubject": {
+                "programmingaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "sciencesubject": {
+                "studyscienceaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "teachingsubject": {
+                "teachingaction": [
+                    0.0, 
+                    false
+                ]
+            }
+        }
+    }, 
+    "2017-05-08": {
+        "focus_percent": 0, 
+        "goal_ratio": 0.0, 
+        "physics_hours": 0.0, 
+        "productive_hours": 0.0, 
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0, 
+                    false
+                ], 
+                "lowerbodyaction": [
+                    0.0, 
+                    false
+                ], 
+                "mmaaction": [
+                    0.0, 
+                    false
+                ], 
+                "runningaction": [
+                    0.0, 
+                    false
+                ], 
+                "upperbodyaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "healthsubject": {
+                "breaksaction": [
+                    0.0, 
+                    false
+                ], 
+                "sleepstartaction": [
+                    0.0, 
+                    false
+                ], 
+                "teethaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "physicssubject": {
+                "course1action": [
+                    0.0, 
+                    false
+                ], 
+                "course2action": [
+                    0.0, 
+                    false
+                ], 
+                "course3action": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "programmingsubject": {
+                "programmingaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "sciencesubject": {
+                "studyscienceaction": [
+                    0.0, 
+                    false
+                ]
+            }, 
+            "teachingsubject": {
+                "teachingaction": [
+                    0.0, 
+                    false
+                ]
+            }
+        }
     }
 }

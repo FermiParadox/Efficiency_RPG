@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.13'
+__version__ = '0.0.14'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -81,7 +81,7 @@ class ButtonD(Button):
     re_enable_scheduled_event = ObjectProperty()
 
     def __init__(self, **kwargs):
-        super(Button, self).__init__(**kwargs)
+        super(ButtonD, self).__init__(**kwargs)
 
     def disable_for(self, time):
         Clock.unschedule(self.re_enable_scheduled_event)
@@ -281,7 +281,7 @@ class Course1Action(_Action):
     ICON_IMAGE_NAME = 'book_pictogram_1.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
-                          hours_tpl=(1, 2, 5),
+                          hours_tpl=(1, 2,),
                           completion_time=1.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
@@ -303,7 +303,7 @@ class ProgrammingAction(_Action):
     ICON_IMAGE_NAME = 'programming.png'
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
-                          hours_tpl=(1, 2, 5),
+                          hours_tpl=(1, 2,),
                           completion_time=1)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
@@ -519,11 +519,11 @@ class ScrollLabel(ScrollView):
     pass
 
 
-class CitationsBox(BoxLayout):
+class AttributionsBox(BoxLayout):
     # TODO: Grid buttons need to maintain ratio, without resorting to fixed size.
     def __init__(self, **kwargs):
-        super(CitationsBox, self).__init__(orientation='vertical', **kwargs)
-        self.add_widget(Label(text='Citations', size_hint_y=.2, bold=True))
+        super(AttributionsBox, self).__init__(orientation='vertical', **kwargs)
+        self.add_widget(Label(text='Attributions', size_hint_y=.2, bold=True))
         self.grid = GridLayout(cols=3)
         self.add_widget(self.grid)
         self.populate_grid()
@@ -1077,6 +1077,7 @@ class EffRpgApp(App):
 
 # Create tracked properties of all subjects and their actions.
 DEFAULT_ACTION_VALUE_IN_STORE = (0., False)
+
 
 def actions_dct_for_storage(subj):
     return {a.name(): DEFAULT_ACTION_VALUE_IN_STORE for a in subj.ACTIONS_SEQUENCE}

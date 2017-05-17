@@ -41,6 +41,9 @@
     size_hint_y: None
     height: self.texture_size[1]
 
+# Class code below (including the corresponding in main.py)
+# by Alexander Taylor
+# from https://github.com/kivy/kivy/wiki/Scrollable-Label
 <ScrollLabel>:
     text: ''
     color: 0,0,0,1
@@ -219,7 +222,7 @@
                 border: [0]*4
                 on_release: root.load_slide(about_page)
             Button:
-                text: 'Citations'
+                text: 'Attributions'
                 border: [0]*4
                 on_release: root.load_slide(citations_page)
 
@@ -314,7 +317,7 @@
             bold: True
         ScrollLabel:
             text: about_module.ABOUT_TEXT
-    CitationsBox:
+    AttributionsBox:
         id: citations_page
 
 

@@ -151,7 +151,7 @@ HEALTH = ImageCitation(
     url='https://pixabay.com/en/medicine-pharmacy-doctor-medic-37101/',
     extra_text='')
 
-TOOTHPASTE_TOOTHBRUSH= ImageCitation(
+TOOTHPASTE_TOOTHBRUSH = ImageCitation(
     work_name='toothbrush toothpaste white',
     creation_date='Nov 3, 2016',
     licence='public domain',
