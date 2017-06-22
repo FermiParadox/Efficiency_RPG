@@ -3,7 +3,7 @@
 # Used for screenshots that match size of current screenshots in GooglePlay
 
 
-if 1:
+if 0:
     from kivy.config import Config
     Config.set('graphics', 'width', '410')
     Config.set('graphics', 'height', '700')
@@ -38,7 +38,7 @@ import copy
 import citations
 
 
-__version__ = '0.0.14'
+__version__ = '0.0.15'
 
 APP_NAME = 'Efficiency RPG'
 
@@ -1002,7 +1002,6 @@ class EffRpgApp(App):
         compl_ratio = act.completion_ratio(hours_invested=tot_time)
         if compl_ratio == 'undefined':
             compl_ratio = not old_compl_ratio
-            tot_time = 1.
         subj_dct = getattr(self, subj_n)
         subj_dct[act_n] = (tot_time, compl_ratio)
 
