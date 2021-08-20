@@ -1,4112 +1,4188 @@
 {
     "2016-11-01": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.4533333333333333, 
-        "physics_hours": 0.0, 
-        "productive_hours": 5.75, 
+        "focus_percent": 90,
+        "goal_ratio": 0.4533333333333333,
+        "physics_hours": 0.0,
+        "productive_hours": 5.75,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.5, 
+                    1.5,
                     0.16666666666666666
                 ]
             }
         }
-    }, 
+    },
     "2016-11-02": {
-        "focus_percent": 70, 
-        "goal_ratio": 0.5988888888888889, 
-        "physics_hours": 2.0, 
-        "productive_hours": 6.916666666666666, 
+        "focus_percent": 70,
+        "goal_ratio": 0.5988888888888889,
+        "physics_hours": 2.0,
+        "productive_hours": 6.916666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.08333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-11-03": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.09074074074074073, 
-        "physics_hours": 0.16666666666666666, 
-        "productive_hours": 4.0, 
+        "focus_percent": 60,
+        "goal_ratio": 0.09074074074074073,
+        "physics_hours": 0.16666666666666666,
+        "productive_hours": 4.0,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.08333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    1.0, 
+                    1.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.0, 
+                    2.0,
                     0.2222222222222222
                 ]
             }
         }
-    }, 
+    },
     "2016-11-04": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.36296296296296293, 
-        "physics_hours": 0.0, 
-        "productive_hours": 3.166666666666667, 
+        "focus_percent": 80,
+        "goal_ratio": 0.36296296296296293,
+        "physics_hours": 0.0,
+        "productive_hours": 3.166666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    1.0, 
+                    1.0,
                     0.5
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-05": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.43703703703703706, 
-        "physics_hours": 0.0, 
-        "productive_hours": 2.833333333333333, 
+        "focus_percent": 90,
+        "goal_ratio": 0.43703703703703706,
+        "physics_hours": 0.0,
+        "productive_hours": 2.833333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     1.0
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.0, 
+                    1.0,
                     0.1111111111111111
                 ]
             }
         }
-    }, 
+    },
     "2016-11-06": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.32962962962962966, 
-        "physics_hours": 0.0, 
-        "productive_hours": 2.0, 
+        "focus_percent": 80,
+        "goal_ratio": 0.32962962962962966,
+        "physics_hours": 0.0,
+        "productive_hours": 2.0,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.5, 
+                    0.5,
                     0.25
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.5, 
+                    0.5,
                     0.05555555555555555
                 ]
             }
         }
-    }, 
+    },
     "2016-11-07": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.3094650205761317, 
-        "physics_hours": 1.3333333333333333, 
-        "productive_hours": 3.5, 
+        "focus_percent": 80,
+        "goal_ratio": 0.3094650205761317,
+        "physics_hours": 1.3333333333333333,
+        "productive_hours": 3.5,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-11-08": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.1037037037037037, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.16666666666666666, 
+        "focus_percent": 0,
+        "goal_ratio": 0.1037037037037037,
+        "physics_hours": 0.0,
+        "productive_hours": 0.16666666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     1.0
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     0.14814814814814814
                 ]
             }
         }
-    }, 
+    },
     "2016-11-09": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.11193415637860084, 
-        "physics_hours": 0.16666666666666666, 
-        "productive_hours": 0.3333333333333333, 
+        "focus_percent": 0,
+        "goal_ratio": 0.11193415637860084,
+        "physics_hours": 0.16666666666666666,
+        "productive_hours": 0.3333333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     1.0
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-10": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.49176954732510286, 
-        "physics_hours": 1.6666666666666667, 
-        "productive_hours": 5.583333333333334, 
+        "focus_percent": 60,
+        "goal_ratio": 0.49176954732510286,
+        "physics_hours": 1.6666666666666667,
+        "productive_hours": 5.583333333333334,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     1.0
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.6666666666666667, 
+                    1.6666666666666667,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.0, 
+                    1.0,
                     0.1111111111111111
                 ]
             }
         }
-    }, 
+    },
     "2016-11-11": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.24074074074074073, 
-        "physics_hours": 0.0, 
-        "productive_hours": 4.916666666666667, 
+        "focus_percent": 80,
+        "goal_ratio": 0.24074074074074073,
+        "physics_hours": 0.0,
+        "productive_hours": 4.916666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.6666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.6666666666666666, 
+                    0.6666666666666666,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.333333333333333, 
+                    2.333333333333333,
                     0.25925925925925924
                 ]
             }
         }
-    }, 
+    },
     "2016-11-12": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.248559670781893, 
-        "physics_hours": 2.1666666666666665, 
-        "productive_hours": 6.25, 
+        "focus_percent": 80,
+        "goal_ratio": 0.248559670781893,
+        "physics_hours": 2.1666666666666665,
+        "productive_hours": 6.25,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    2.1666666666666665, 
+                    2.1666666666666665,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.833333333333333, 
+                    2.833333333333333,
                     0.31481481481481477
                 ]
             }
         }
-    }, 
+    },
     "2016-11-13": {
-        "focus_percent": 70, 
-        "goal_ratio": 0.4037037037037037, 
-        "physics_hours": 2.0, 
-        "productive_hours": 4.583333333333333, 
+        "focus_percent": 70,
+        "goal_ratio": 0.4037037037037037,
+        "physics_hours": 2.0,
+        "productive_hours": 4.583333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    2.0, 
+                    2.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    1.1666666666666665, 
+                    1.1666666666666665,
                     0.5833333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-14": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.2197530864197531, 
-        "physics_hours": 1.0, 
-        "productive_hours": 3.9166666666666665, 
+        "focus_percent": 80,
+        "goal_ratio": 0.2197530864197531,
+        "physics_hours": 1.0,
+        "productive_hours": 3.9166666666666665,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.5, 
+                    1.5,
                     0.16666666666666666
                 ]
             }
         }
-    }, 
+    },
     "2016-11-15": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.2740740740740741, 
-        "physics_hours": 0.0, 
-        "productive_hours": 4.166666666666666, 
+        "focus_percent": 90,
+        "goal_ratio": 0.2740740740740741,
+        "physics_hours": 0.0,
+        "productive_hours": 4.166666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.5
-                ], 
+                ],
                 "runningaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.6666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.1666666666666665, 
+                    2.1666666666666665,
                     0.24074074074074073
                 ]
             }
         }
-    }, 
+    },
     "2016-11-16": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.22592592592592592, 
-        "physics_hours": 0.0, 
-        "productive_hours": 3.25, 
+        "focus_percent": 80,
+        "goal_ratio": 0.22592592592592592,
+        "physics_hours": 0.0,
+        "productive_hours": 3.25,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    1.5, 
+                    1.5,
                     0.75
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     0.14814814814814814
                 ]
             }
         }
-    }, 
+    },
     "2016-11-17": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.27777777777777773, 
-        "physics_hours": 2.0, 
-        "productive_hours": 6.083333333333333, 
+        "focus_percent": 80,
+        "goal_ratio": 0.27777777777777773,
+        "physics_hours": 2.0,
+        "productive_hours": 6.083333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.25, 
+                    0.25,
                     0.5
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    2.0, 
+                    2.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.5, 
+                    2.5,
                     0.2777777777777778
                 ]
             }
         }
-    }, 
+    },
     "2016-11-18": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.0625514403292181, 
-        "physics_hours": 0.6666666666666666, 
-        "productive_hours": 2.1666666666666665, 
+        "focus_percent": 80,
+        "goal_ratio": 0.0625514403292181,
+        "physics_hours": 0.6666666666666666,
+        "productive_hours": 2.1666666666666665,
         "subjects_dict": {
             "athleticssubject": {
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.6666666666666666, 
+                    0.6666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     0.14814814814814814
                 ]
             }
         }
-    }, 
+    },
     "2016-11-19": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.22901234567901232, 
-        "physics_hours": 0.0, 
-        "productive_hours": 4.916666666666666, 
+        "focus_percent": 80,
+        "goal_ratio": 0.22901234567901232,
+        "physics_hours": 0.0,
+        "productive_hours": 4.916666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.016666666666666666
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    1.0, 
+                    1.0,
                     true
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.8333333333333333, 
+                    0.8333333333333333,
                     0.41666666666666663
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.5, 
+                    2.5,
                     0.2777777777777778
                 ]
             }
         }
-    }, 
+    },
     "2016-11-20": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.20987654320987653, 
-        "physics_hours": 2.0, 
-        "productive_hours": 2.9166666666666665, 
+        "focus_percent": 90,
+        "goal_ratio": 0.20987654320987653,
+        "physics_hours": 2.0,
+        "productive_hours": 2.9166666666666665,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    2.0, 
+                    2.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-21": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.2098765432098765, 
-        "physics_hours": 2.0, 
-        "productive_hours": 4.333333333333333, 
+        "focus_percent": 90,
+        "goal_ratio": 0.2098765432098765,
+        "physics_hours": 2.0,
+        "productive_hours": 4.333333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    2.0, 
+                    2.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.3333333333333333, 
+                    1.3333333333333333,
                     0.14814814814814814
                 ]
             }
         }
-    }, 
+    },
     "2016-11-22": {
-        "focus_percent": 90, 
-        "goal_ratio": 0.31481481481481477, 
-        "physics_hours": 0.0, 
-        "productive_hours": 5.166666666666667, 
+        "focus_percent": 90,
+        "goal_ratio": 0.31481481481481477,
+        "physics_hours": 0.0,
+        "productive_hours": 5.166666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.5
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.41666666666666663, 
+                    0.41666666666666663,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.5, 
+                    0.5,
                     0.75
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "teethaction": [
-                    0.25, 
+                    0.25,
                     1.0
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.5, 
+                    2.5,
                     0.2777777777777778
                 ]
             }
         }
-    }, 
+    },
     "2016-11-23": {
-        "focus_percent": 70, 
-        "goal_ratio": 0.15432098765432098, 
-        "physics_hours": 1.0, 
-        "productive_hours": 1.5833333333333333, 
+        "focus_percent": 70,
+        "goal_ratio": 0.15432098765432098,
+        "physics_hours": 1.0,
+        "productive_hours": 1.5833333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.5
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.5
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-24": {
-        "focus_percent": 70, 
-        "goal_ratio": 0.1111111111111111, 
-        "physics_hours": 0.5, 
-        "productive_hours": 3.9166666666666665, 
+        "focus_percent": 70,
+        "goal_ratio": 0.1111111111111111,
+        "physics_hours": 0.5,
+        "productive_hours": 3.9166666666666665,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    3.0, 
+                    3.0,
                     0.3333333333333333
                 ]
             }
         }
-    }, 
+    },
     "2016-11-25": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.0617283950617284, 
-        "physics_hours": 0.5, 
-        "productive_hours": 0.75, 
+        "focus_percent": 80,
+        "goal_ratio": 0.0617283950617284,
+        "physics_hours": 0.5,
+        "productive_hours": 0.75,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.25, 
+                    0.25,
                     1.0
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-26": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.1358024691358025, 
-        "physics_hours": 0.5, 
-        "productive_hours": 3.75, 
+        "focus_percent": 0,
+        "goal_ratio": 0.1358024691358025,
+        "physics_hours": 0.5,
+        "productive_hours": 3.75,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.5
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.25, 
+                    0.25,
                     1.0
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.5, 
+                    0.5,
                     0.5
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.6666666666666665, 
+                    2.6666666666666665,
                     0.2962962962962963
                 ]
             }
         }
-    }, 
+    },
     "2016-11-27": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.23456790123456792, 
-        "physics_hours": 0.0, 
-        "productive_hours": 5.416666666666666, 
+        "focus_percent": 80,
+        "goal_ratio": 0.23456790123456792,
+        "physics_hours": 0.0,
+        "productive_hours": 5.416666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    3.8333333333333326, 
+                    3.8333333333333326,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     1.0
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-11-28": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.11728395061728396, 
-        "physics_hours": 1.0, 
-        "productive_hours": 2.5, 
+        "focus_percent": 80,
+        "goal_ratio": 0.11728395061728396,
+        "physics_hours": 1.0,
+        "productive_hours": 2.5,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-11-29": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.1419753086419753, 
-        "physics_hours": 0.0, 
-        "productive_hours": 3.416666666666667, 
+        "focus_percent": 0,
+        "goal_ratio": 0.1419753086419753,
+        "physics_hours": 0.0,
+        "productive_hours": 3.416666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.666666666666667, 
+                    2.666666666666667,
                     0.29629629629629634
                 ]
             }
         }
-    }, 
+    },
     "2016-11-30": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.09876543209876543, 
-        "physics_hours": 0.0, 
-        "productive_hours": 1.7500000000000002, 
+        "focus_percent": 0,
+        "goal_ratio": 0.09876543209876543,
+        "physics_hours": 0.0,
+        "productive_hours": 1.7500000000000002,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     1.0
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-12-01": {
-        "focus_percent": 50, 
-        "goal_ratio": 0.2222222222222222, 
-        "physics_hours": 1.0, 
-        "productive_hours": 6.166666666666666, 
+        "focus_percent": 50,
+        "goal_ratio": 0.2222222222222222,
+        "physics_hours": 1.0,
+        "productive_hours": 6.166666666666666,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    1.0, 
+                    1.0,
                     1.0
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.5, 
+                    0.5,
                     0.5
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    4.0, 
+                    4.0,
                     0.4444444444444444
                 ]
             }
         }
-    }, 
+    },
     "2016-12-02": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.08641975308641975, 
-        "physics_hours": 0.0, 
-        "productive_hours": 2.6666666666666665, 
+        "focus_percent": 0,
+        "goal_ratio": 0.08641975308641975,
+        "physics_hours": 0.0,
+        "productive_hours": 2.6666666666666665,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.1666666666666665, 
+                    2.1666666666666665,
                     0.24074074074074073
                 ]
             }
         }
-    }, 
+    },
     "2016-12-03": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.037037037037037035, 
-        "physics_hours": 0.0, 
-        "productive_hours": 1.5, 
+        "focus_percent": 0,
+        "goal_ratio": 0.037037037037037035,
+        "physics_hours": 0.0,
+        "productive_hours": 1.5,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-12-04": {
-        "focus_percent": 50, 
-        "goal_ratio": 0.15432098765432095, 
-        "physics_hours": 1.0, 
-        "productive_hours": 3.2500000000000004, 
+        "focus_percent": 50,
+        "goal_ratio": 0.15432098765432095,
+        "physics_hours": 1.0,
+        "productive_hours": 3.2500000000000004,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    1.0, 
+                    1.0,
                     1.0
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.5, 
+                    1.5,
                     0.16666666666666666
                 ]
             }
         }
-    }, 
+    },
     "2016-12-05": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.2037037037037037, 
-        "physics_hours": 1.5, 
-        "productive_hours": 4.083333333333334, 
+        "focus_percent": 60,
+        "goal_ratio": 0.2037037037037037,
+        "physics_hours": 1.5,
+        "productive_hours": 4.083333333333334,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.5
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    1.5, 
+                    1.5,
                     1.0
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.08333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.5000000000000002, 
+                    1.5000000000000002,
                     0.16666666666666669
                 ]
             }
         }
-    }, 
+    },
     "2016-12-06": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.08641975308641975, 
-        "physics_hours": 0.0, 
-        "productive_hours": 5.416666666666667, 
+        "focus_percent": 0,
+        "goal_ratio": 0.08641975308641975,
+        "physics_hours": 0.0,
+        "productive_hours": 5.416666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    5.0, 
+                    5.0,
                     0.5555555555555556
                 ]
             }
         }
-    }, 
+    },
     "2016-12-07": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.08847736625514403, 
-        "physics_hours": 0.16666666666666666, 
-        "productive_hours": 1.8333333333333333, 
+        "focus_percent": 0,
+        "goal_ratio": 0.08847736625514403,
+        "physics_hours": 0.16666666666666666,
+        "productive_hours": 1.8333333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.08333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.1666666666666667, 
+                    1.1666666666666667,
                     0.12962962962962965
                 ]
             }
         }
-    }, 
+    },
     "2016-12-08": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.30864197530864196, 
-        "physics_hours": 1.5, 
-        "productive_hours": 7.416666666666668, 
+        "focus_percent": 80,
+        "goal_ratio": 0.30864197530864196,
+        "physics_hours": 1.5,
+        "productive_hours": 7.416666666666668,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    1.0, 
+                    1.0,
                     1.0
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.5, 
+                    0.5,
                     0.25
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    3.8333333333333335, 
+                    3.8333333333333335,
                     0.42592592592592593
                 ]
             }
         }
-    }, 
+    },
     "2016-12-09": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.0823045267489712, 
-        "physics_hours": 1.1666666666666665, 
-        "productive_hours": 4.249999999999999, 
+        "focus_percent": 80,
+        "goal_ratio": 0.0823045267489712,
+        "physics_hours": 1.1666666666666665,
+        "productive_hours": 4.249999999999999,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.6666666666666666, 
+                    0.6666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    3.0, 
+                    3.0,
                     0.3333333333333333
                 ]
             }
         }
-    }, 
+    },
     "2016-12-10": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.012345679012345678, 
-        "physics_hours": 0.0, 
-        "productive_hours": 3.0833333333333335, 
+        "focus_percent": 0,
+        "goal_ratio": 0.012345679012345678,
+        "physics_hours": 0.0,
+        "productive_hours": 3.0833333333333335,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    3.0, 
+                    3.0,
                     0.3333333333333333
                 ]
             }
         }
-    }, 
+    },
     "2016-12-11": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.012345679012345678, 
-        "physics_hours": 0.0, 
-        "productive_hours": 1.7499999999999998, 
+        "focus_percent": 0,
+        "goal_ratio": 0.012345679012345678,
+        "physics_hours": 0.0,
+        "productive_hours": 1.7499999999999998,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.6666666666666665, 
+                    1.6666666666666665,
                     0.18518518518518517
                 ]
             }
         }
-    }, 
+    },
     "2016-12-12": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.14609053497942387, 
-        "physics_hours": 0.3333333333333333, 
-        "productive_hours": 4.5, 
+        "focus_percent": 60,
+        "goal_ratio": 0.14609053497942387,
+        "physics_hours": 0.3333333333333333,
+        "productive_hours": 4.5,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    1.0, 
+                    1.0,
                     true
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.833333333333333, 
+                    2.833333333333333,
                     0.31481481481481477
                 ]
             }
         }
-    }, 
+    },
     "2016-12-13": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.3395061728395062, 
-        "physics_hours": 0.0, 
-        "productive_hours": 7.0, 
+        "focus_percent": 60,
+        "goal_ratio": 0.3395061728395062,
+        "physics_hours": 0.0,
+        "productive_hours": 7.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.16666666666666666
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.25
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    3.3333333333333335, 
+                    3.3333333333333335,
                     1.0
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    3.0, 
+                    3.0,
                     0.3333333333333333
                 ]
             }
         }
-    }, 
+    },
     "2016-12-14": {
-        "focus_percent": 60, 
-        "goal_ratio": 0.1728395061728395, 
-        "physics_hours": 0.5, 
-        "productive_hours": 1.6666666666666667, 
+        "focus_percent": 60,
+        "goal_ratio": 0.1728395061728395,
+        "physics_hours": 0.5,
+        "productive_hours": 1.6666666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.5, 
+                    0.5,
                     0.5
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    1.0, 
+                    1.0,
                     0.5
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-12-15": {
-        "focus_percent": 70, 
-        "goal_ratio": 0.23456790123456786, 
-        "physics_hours": 1.0, 
-        "productive_hours": 4.416666666666667, 
+        "focus_percent": 70,
+        "goal_ratio": 0.23456790123456786,
+        "physics_hours": 1.0,
+        "productive_hours": 4.416666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.25, 
+                    0.25,
                     1.0
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.3333333333333333
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    1.0, 
+                    1.0,
                     1.0
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.6666666666666666, 
+                    0.6666666666666666,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    2.166666666666667, 
+                    2.166666666666667,
                     0.24074074074074078
                 ]
             }
         }
-    }, 
+    },
     "2016-12-16": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.08641975308641975, 
-        "physics_hours": 0.0, 
-        "productive_hours": 1.9999999999999998, 
+        "focus_percent": 0,
+        "goal_ratio": 0.08641975308641975,
+        "physics_hours": 0.0,
+        "productive_hours": 1.9999999999999998,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.6666666666666666
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.3333333333333333
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.3333333333333333, 
+                    0.3333333333333333,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    1.4166666666666665, 
+                    1.4166666666666665,
                     0.15740740740740738
                 ]
             }
         }
-    }, 
+    },
     "2016-12-17": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2016-12-28": {
-        "focus_percent": 80, 
-        "goal_ratio": 0.14814814814814814, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.8333333333333333, 
+        "focus_percent": 80,
+        "goal_ratio": 0.14814814814814814,
+        "physics_hours": 0.0,
+        "productive_hours": 0.8333333333333333,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     1.0
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.5, 
+                    0.5,
                     0.25
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-01-01": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-01-02": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-01-06": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.04218106995884773, 
-        "physics_hours": 0.6666666666666666, 
-        "productive_hours": 0.75, 
+        "focus_percent": 0,
+        "goal_ratio": 0.04218106995884773,
+        "physics_hours": 0.6666666666666666,
+        "productive_hours": 0.75,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.125
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.16666666666666666, 
+                    0.16666666666666666,
                     0.16666666666666666
-                ], 
+                ],
                 "course2action": [
-                    0.5, 
+                    0.5,
                     0.5
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-01-18": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-02-07": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.05555555555555555, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.6666666666666667, 
+        "focus_percent": 0,
+        "goal_ratio": 0.05555555555555555,
+        "physics_hours": 0.0,
+        "productive_hours": 0.6666666666666667,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.5
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.08333333333333333, 
+                    0.08333333333333333,
                     0.08333333333333333
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.5, 
+                    0.5,
                     0.05555555555555555
                 ]
             }
         }
-    }, 
+    },
     "2017-02-28": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-04-10": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
             }
         }
-    }, 
+    },
     "2017-05-08": {
-        "focus_percent": 0, 
-        "goal_ratio": 0.0, 
-        "physics_hours": 0.0, 
-        "productive_hours": 0.0, 
+        "focus_percent": 0,
+        "goal_ratio": 0.0,
+        "physics_hours": 0.0,
+        "productive_hours": 0.0,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "lowerbodyaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "mmaaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "runningaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "upperbodyaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "healthsubject": {
                 "breaksaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "sleepstartaction": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "teethaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "physicssubject": {
                 "course1action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course2action": [
-                    0.0, 
+                    0.0,
                     false
-                ], 
+                ],
                 "course3action": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "programmingsubject": {
                 "programmingaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "sciencesubject": {
                 "studyscienceaction": [
-                    0.0, 
+                    0.0,
                     false
                 ]
-            }, 
+            },
             "teachingsubject": {
                 "teachingaction": [
-                    0.0, 
+                    0.0,
                     false
+                ]
+            }
+        }
+    },
+    "2021-08-21": {
+        "focus_percent": 90,
+        "goal_ratio": 0.3333333333333333,
+        "physics_hours": 13.0,
+        "productive_hours": 16.75,
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0,
+                    false
+                ],
+                "lowerbodyaction": [
+                    0.0,
+                    false
+                ],
+                "mmaaction": [
+                    0.0,
+                    false
+                ],
+                "runningaction": [
+                    1.5,
+                    1.0
+                ],
+                "upperbodyaction": [
+                    1.25,
+                    1.0
+                ]
+            },
+            "healthsubject": {
+                "breaksaction": [
+                    0.0,
+                    false
+                ],
+                "sleepstartaction": [
+                    0.0,
+                    false
+                ],
+                "teethaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "physicssubject": {
+                "course1action": [
+                    10.0,
+                    1.0
+                ],
+                "course2action": [
+                    1.0,
+                    1.0
+                ],
+                "course3action": [
+                    2.0,
+                    1.0
+                ]
+            },
+            "programmingsubject": {
+                "programmingaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "sciencesubject": {
+                "studyscienceaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "teachingsubject": {
+                "teachingaction": [
+                    1.0,
+                    0.1111111111111111
                 ]
             }
         }

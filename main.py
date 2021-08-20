@@ -490,7 +490,7 @@ class ScienceSubject(_Subject):
     IMPORTANCE = .5
 
 
-ALL_SUBJECTS = sorted(_Subject.__subclasses__())
+ALL_SUBJECTS = _Subject.__subclasses__()
 DISPLAYED_SUBJECTS = (AthleticsSubject, PhysicsSubject, ProgrammingSubject, ScienceSubject, HealthSubject, TeachingSubject)
 
 # (Needed only for initializations)
@@ -714,7 +714,7 @@ class FocusButton(Button):
         self.bind(on_release=self.popup.open)
 
     def populate_buttons_box(self, *args):
-        for n in xrange(10, 101, 10):
+        for n in range(10, 101, 10):
             b = Button(text=str(n))
             b.val = n
             b.bind(on_release=self.set_focus_percent_and_dismiss)
@@ -796,7 +796,7 @@ class CalendarPage(BoxLayout):
         self.days_grid.clear_widgets()
         store = self.app.stored_data
         day = datetime.date.today() - datetime.timedelta(days=self.MAX_DAYS_DISPLAYED)
-        for n in xrange(0, self.MAX_DAYS_DISPLAYED):
+        for n in range(0, self.MAX_DAYS_DISPLAYED):
             day += datetime.timedelta(days=1)
             day_as_str = day.isoformat()
             if day_as_str in store:
