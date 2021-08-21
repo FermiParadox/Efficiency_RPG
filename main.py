@@ -3,7 +3,7 @@
 # Used for screenshots that match size of current screenshots in GooglePlay
 
 
-if 0:
+if 1:
     from kivy.config import Config
     Config.set('graphics', 'width', '410')
     Config.set('graphics', 'height', '700')
@@ -823,7 +823,7 @@ class CalendarPage(BoxLayout):
                                                                        focus=focus,
                                                                        physics_hours=physics_hours)
             else:
-                self.days_grid.add_widget(PaintedLabel(label_background=(0,0,0,1)))
+                self.days_grid.add_widget(PaintedLabel())
 
 
 class ResetTodayHistoryButton(Button):
