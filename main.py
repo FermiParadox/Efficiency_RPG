@@ -375,37 +375,44 @@ class _Subject(object):
     def name(cls):
         return cls.__name__.lower()
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def TITLE(self):
         pass
 
     # Filler-subjects have no requirements.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def FILLER(self):
         pass
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def BAR_COLOR(self):
         pass
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def ICON_IMAGE_NAME(self):
         pass
 
     # Sequence of all actions contained in a subject.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def ACTIONS_SEQUENCE(self):
         pass
 
     # `False` or `tuple`: (time_val, relevant_actions_lst)
     # Used when actions of a subject can have an arbitrary time individually,
     # but cumulatively must reach a time value in order to achieve the subject.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def CUMULATIVE_COMPLETION_TIME_AND_ACTIONS(self):
         pass
 
     # From 0 to 1; used as a weight factor for goal completion ratio
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def IMPORTANCE(self):
         pass
 

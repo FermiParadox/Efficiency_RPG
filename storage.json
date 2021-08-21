@@ -4264,10 +4264,10 @@
         }
     },
     "2021-08-21": {
-        "focus_percent": 70,
-        "goal_ratio": 0.8209876543209876,
-        "physics_hours": 4.0,
-        "productive_hours": 9.25,
+        "focus_percent": 60,
+        "goal_ratio": 0.8786008230452674,
+        "physics_hours": 5.333333333333333,
+        "productive_hours": 10.75,
         "subjects_dict": {
             "athleticssubject": {
                 "gunstrainingaction": [
@@ -4315,8 +4315,8 @@
                     1.0
                 ],
                 "course3action": [
-                    0.0,
-                    false
+                    1.3333333333333333,
+                    1.0
                 ]
             },
             "programmingsubject": {
@@ -4333,8 +4333,8 @@
             },
             "teachingsubject": {
                 "teachingaction": [
-                    2.0,
-                    0.2222222222222222
+                    2.1666666666666665,
+                    0.24074074074074073
                 ]
             }
         }
