@@ -10,26 +10,20 @@ if 1:
 
 from kivy.app import App
 from kivy.uix.button import Button as Button
-from kivy.animation import Animation
 from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.properties import ObjectProperty, DictProperty, NumericProperty, BooleanProperty, ListProperty, StringProperty
+from kivy.properties import ObjectProperty, DictProperty, NumericProperty, ListProperty, StringProperty
 from kivy.storage.jsonstore import JsonStore
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.dropdown import DropDown
 from kivy.uix.widget import Widget
 from kivy.uix.popup import Popup
 from kivy.uix.image import Image
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.stacklayout import StackLayout
 from kivy.clock import Clock
 from kivy.uix.carousel import Carousel
 from kivy import platform
-from kivy.event import EventDispatcher
 
-from functools import partial
 import abc
 import os
 import datetime
@@ -166,33 +160,39 @@ class _Action(object):
         return cls.__name__.lower()
 
     # Displayed on action's icon. Can be empty str.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def TITLE(self):
         pass
 
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def ICON_IMAGE_NAME(self):
         pass
 
     # `None` or "time_data_object". Used for time buttons when action is selected.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def TIME_DATA(self):
         pass
 
     # Bar size ratio from 0. to 1.
     # e.g. if 3 actions with BAR_GOAL_HINTs 1., .5, .5,
     # then they ll take up 50%, 25%, 25%.
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def BAR_GOAL_HINT(self):
         pass
 
     # `bool`; Mark on subject's bar when this action is omitted (e.g. "Sleep time")
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def MARK_WHEN_OMITTED(self):
         pass
 
     # 'all' or `tuple` of specific days the action is a goal or `int` of days per week
-    @abc.abstractproperty
+    @property
+    @abc.abstractmethod
     def DAYS_APPEARING(self):
         pass
 

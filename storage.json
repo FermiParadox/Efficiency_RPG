@@ -4338,5 +4338,81 @@
                 ]
             }
         }
+    },
+    "2021-08-22": {
+        "focus_percent": 50,
+        "goal_ratio": 0.12962962962962965,
+        "physics_hours": 0.0,
+        "productive_hours": 0.8333333333333333,
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0,
+                    false
+                ],
+                "lowerbodyaction": [
+                    0.0,
+                    false
+                ],
+                "mmaaction": [
+                    0.16666666666666666,
+                    1.0
+                ],
+                "runningaction": [
+                    0.5,
+                    1.0
+                ],
+                "upperbodyaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "healthsubject": {
+                "breaksaction": [
+                    0.16666666666666666,
+                    0.25
+                ],
+                "sleepstartaction": [
+                    0.0,
+                    false
+                ],
+                "teethaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "physicssubject": {
+                "course1action": [
+                    0.0,
+                    false
+                ],
+                "course2action": [
+                    0.0,
+                    false
+                ],
+                "course3action": [
+                    0.0,
+                    false
+                ]
+            },
+            "programmingsubject": {
+                "programmingaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "sciencesubject": {
+                "studyscienceaction": [
+                    0.0,
+                    false
+                ]
+            },
+            "teachingsubject": {
+                "teachingaction": [
+                    0.0,
+                    false
+                ]
+            }
+        }
     }
 }

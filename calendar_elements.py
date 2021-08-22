@@ -1,6 +1,3 @@
-import calendar
-
-
 class Day(object):
     def __init__(self, date, subjects_seq):
         self.date = date
@@ -14,10 +11,10 @@ class Day(object):
             self.subjects.append(cls())
 
     def productivity(self):
-        None
+        pass
 
     def goals_achieved_ratio(self):
-        None
+        pass
 
 
 class Week(object):
