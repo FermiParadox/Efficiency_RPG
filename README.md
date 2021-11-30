@@ -12,7 +12,7 @@ extent the user has achieved his goals.
 
 ## This is a prototype
 The final product will have 
-a user-friendly UI allowing modifying and 
+a user-friendly GUI allowing modifying and 
 customizing goals easily. 
 
 Major key concepts are omitted intentionally 
