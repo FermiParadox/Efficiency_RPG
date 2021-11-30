@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 # Used for screenshots that match size of current screenshots in GooglePlay
-
-
 if 1:
     from kivy.config import Config
+
     Config.set('graphics', 'width', '410')
     Config.set('graphics', 'height', '700')
 
@@ -31,7 +30,6 @@ import copy
 
 import citations
 
-
 __version__ = '0.0.15'
 
 APP_NAME = 'Efficiency RPG'
@@ -43,7 +41,6 @@ APP_NAME = 'Efficiency RPG'
         super(, self).__init__(**kwargs)
 
 """
-
 
 # ---------------------------------------------------------------------------------------------------
 OWN_IMAGES_DIR = 'own_images'
@@ -63,11 +60,11 @@ def image_path(im_name):
 # Misc
 CENTER_POS_HINT = {'center_x': .5, 'center_y': .5}
 
-FAINT_BLACK = (0,0,0,.1)
+FAINT_BLACK = (0, 0, 0, .1)
 
 POPULATING_DELAY = .3
 
-BACKGROUND_COLOR = .9,.9,1,1
+BACKGROUND_COLOR = .9, .9, 1, 1
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -104,7 +101,7 @@ class _TimeData(object):
 # WARNING !!! 10**-10 assumes the error occurs on the 11th decimal,
 # that is, there are 5 or less significant integers.
 # https://github.com/kivy/kivy/pull/4579#issuecomment-244723457
-FLOAT_COMPENSATOR = 10**-10
+FLOAT_COMPENSATOR = 10 ** -10
 
 
 def time_as_string(t):
@@ -222,7 +219,7 @@ class RunningAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(),
-                          completion_time=30/60.)
+                          completion_time=30 / 60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -268,9 +265,9 @@ class GunsTrainingAction(_Action):
     TITLE = 'Guns'
     ICON_IMAGE_NAME = 'handgun.jpg'
     TIME_DATA = _TimeData(description='Operated guns (simulation)',
-                          minutes_tpl=(5,10),
+                          minutes_tpl=(5, 10),
                           hours_tpl=(),
-                          completion_time=5/60.)
+                          completion_time=5 / 60.)
     BAR_GOAL_HINT = .5
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -328,7 +325,7 @@ class BreaksAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10, 30),
                           hours_tpl=(),
-                          completion_time=5/60. * 8)
+                          completion_time=5 / 60. * 8)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = True
     DAYS_APPEARING = 'all'
@@ -349,7 +346,7 @@ class TeethAction(_Action):
     TIME_DATA = _TimeData(description='',
                           minutes_tpl=(5, 10),
                           hours_tpl=(),
-                          completion_time=10/60.)
+                          completion_time=10 / 60.)
     BAR_GOAL_HINT = 1
     MARK_WHEN_OMITTED = False
     DAYS_APPEARING = 'all'
@@ -498,7 +495,8 @@ class ScienceSubject(_Subject):
 
 
 ALL_SUBJECTS = _Subject.__subclasses__()
-DISPLAYED_SUBJECTS = (AthleticsSubject, PhysicsSubject, ProgrammingSubject, ScienceSubject, HealthSubject, TeachingSubject)
+DISPLAYED_SUBJECTS = (AthleticsSubject, PhysicsSubject, ProgrammingSubject, ScienceSubject,
+                      HealthSubject, TeachingSubject)
 
 # (Needed only for initializations)
 DUMMY_SUBJ_CLASS = DISPLAYED_SUBJECTS[0]
@@ -507,8 +505,8 @@ DUMMY_ACTION_CLASS = DISPLAYED_SUBJECTS[0].ACTIONS_SEQUENCE[0]
 
 # ---------------------------------------------------------------------------------------------------
 class MyProgressBar(Widget):
-    DEFAULT_FILLED_COLOR = 0,1,0,1
-    DEFAULT_EMPTY_COLOR = 1,0,0,1
+    DEFAULT_FILLED_COLOR = 0, 1, 0, 1
+    DEFAULT_EMPTY_COLOR = 1, 0, 0, 1
     filled_color = ListProperty(DEFAULT_FILLED_COLOR)
     empty_color = ListProperty(DEFAULT_EMPTY_COLOR)
     filled_ratio = NumericProperty(.01)
@@ -549,7 +547,8 @@ class AttributionsBox(BoxLayout):
     def populate_grid(self):
         for im_name, citation_obj in citations.FIRST_IMAGE_TO_CITATION_MAP.items():
             im_path = self.image_path(im_name=im_name)
-            b = Button(background_normal=im_path, size_hint=(None, None), width='50sp', height='50sp', border=(0,0,0,0))
+            b = Button(background_normal=im_path, size_hint=(None, None), width='50sp', height='50sp',
+                       border=(0, 0, 0, 0))
             b.image_name = im_name
             b.image_text = citation_obj.full_text()
             b.bind(on_release=self.update_popup_and_open)
@@ -713,7 +712,7 @@ class FocusButton(Button):
 
     def __init__(self, **kwargs):
         super(FocusButton, self).__init__(**kwargs)
-        self.popup = Popup(title='Focus percentage: ', title_color=(0,0,0,1),
+        self.popup = Popup(title='Focus percentage: ', title_color=(0, 0, 0, 1),
                            size_hint=[.9, .7], separator_color=(0, 0, 0, 0))
         self.buttons_box = GridLayout(cols=3)
         self.popup.add_widget(self.buttons_box)
@@ -835,7 +834,7 @@ class CalendarPage(BoxLayout):
 
 class ResetTodayHistoryButton(Button):
     def __init__(self, **kwargs):
-        super(ResetTodayHistoryButton, self).__init__(text='Reset today', background_color=(1,.5,0,1), **kwargs)
+        super(ResetTodayHistoryButton, self).__init__(text='Reset today', background_color=(1, .5, 0, 1), **kwargs)
 
 
 class SetHistoryToDefaultButton(Button):
@@ -843,13 +842,14 @@ class SetHistoryToDefaultButton(Button):
     Used for setting history to default history,
     when for example the app is installed for the first time on a device.
     """
+
     def __init__(self, **kwargs):
-        super(SetHistoryToDefaultButton, self).__init__(text='Revert history', background_color=(1,.5,0,1), **kwargs)
+        super(SetHistoryToDefaultButton, self).__init__(text='Revert history', background_color=(1, .5, 0, 1), **kwargs)
         self.popup_widg = None
 
     def create_popup(self, *args):
         self.popup_widg = Popup(title='[b]Replace existing history with default?[/b] \n(this can [b]not[/b] be undone)',
-                                size_hint=[.9, .3], separator_color=(0, 0, 0, 0), title_color=(0,0,0,1))
+                                size_hint=[.9, .3], separator_color=(0, 0, 0, 0), title_color=(0, 0, 0, 1))
         yes_button = Button(text='YES', background_color=[1, 0, 0, 1])
         yes_button.bind(on_release=self.popup_widg.dismiss)
         yes_button.bind(on_release=self.app.replace_history_with_default)
@@ -969,7 +969,7 @@ class EffRpgApp(App):
                 subj_dct.setdefault(act_name, DEFAULT_ACTION_VALUE_IN_STORE)
 
     def day_dict(self):
-        self.daily_goal_ratio_and_time_and_physics()    # (creates hours and goals)
+        self.daily_goal_ratio_and_time_and_physics()  # (creates hours and goals)
         day_dct = {'focus_percent': self.focus_percent,
                    'productive_hours': self.productive_hours,
                    "goal_ratio": self.goal_ratio,
@@ -1044,7 +1044,7 @@ class EffRpgApp(App):
                 n += hint
 
         n = n or 1  # (avoid ZeroDivisionError)
-        return tot_ratio_achieved/n, tot_hours
+        return tot_ratio_achieved / n, tot_hours
 
     def daily_goal_ratio_and_time_and_physics(self):
         n = 0.
@@ -1061,7 +1061,7 @@ class EffRpgApp(App):
             if s is PhysicsSubject:
                 physics_hours += subj_time
 
-        self.goal_ratio = ratios_sum/n
+        self.goal_ratio = ratios_sum / n
         self.productive_hours = tot_hours
         self.physics_hours = physics_hours
         return {'goals': self.goal_ratio,
@@ -1097,7 +1097,6 @@ for s in ALL_SUBJECTS:
     setattr(EffRpgApp, 'on_' + s_name, EffRpgApp._on_subj_dict_base)
     EffRpgApp.LOWERCASE_SUBJECTS_NAMES.append(s_name)
     SUBJS_DICTS_DCT.update({s_name: act_d})
-
 
 if __name__ == '__main__':
 

@@ -4414,5 +4414,81 @@
                 ]
             }
         }
+    },
+    "2021-11-30": {
+        "focus_percent": 70,
+        "goal_ratio": 0.6810699588477367,
+        "physics_hours": 4.25,
+        "productive_hours": 14.166666666666666,
+        "subjects_dict": {
+            "athleticssubject": {
+                "gunstrainingaction": [
+                    0.0,
+                    false
+                ],
+                "lowerbodyaction": [
+                    0.0,
+                    false
+                ],
+                "mmaaction": [
+                    0.08333333333333333,
+                    0.5
+                ],
+                "runningaction": [
+                    0.5,
+                    1.0
+                ],
+                "upperbodyaction": [
+                    0.16666666666666666,
+                    0.6666666666666666
+                ]
+            },
+            "healthsubject": {
+                "breaksaction": [
+                    0.0,
+                    false
+                ],
+                "sleepstartaction": [
+                    0.0,
+                    false
+                ],
+                "teethaction": [
+                    0.16666666666666666,
+                    1.0
+                ]
+            },
+            "physicssubject": {
+                "course1action": [
+                    2.0,
+                    1.0
+                ],
+                "course2action": [
+                    0.08333333333333333,
+                    0.08333333333333333
+                ],
+                "course3action": [
+                    2.1666666666666665,
+                    1.0
+                ]
+            },
+            "programmingsubject": {
+                "programmingaction": [
+                    2.0,
+                    1.0
+                ]
+            },
+            "sciencesubject": {
+                "studyscienceaction": [
+                    3.0,
+                    1.0
+                ]
+            },
+            "teachingsubject": {
+                "teachingaction": [
+                    4.0,
+                    0.4444444444444444
+                ]
+            }
+        }
     }
 }
